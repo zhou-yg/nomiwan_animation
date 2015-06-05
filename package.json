@@ -13,6 +13,9 @@
     "express": "~4.12.4",
     "morgan": "~1.5.3",
     "serve-favicon": "~2.2.1",
-    "stylus": "0.42.3"
+    "stylus": "0.42.3",
+    "grunt":"0.4.5",
+    "grunt-contrib-coffee":"x.x.x",
+    "grunt-contrib-less":"x.x.x"
   }
 }
