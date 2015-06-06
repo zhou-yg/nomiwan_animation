@@ -1,0 +1,35 @@
+/* new Animation */
+#topNavbar {
+  width: 100%;
+  height: 65px;
+  color: #ffffff;
+  overflow: hidden;
+}
+#topNavbar h1 {
+  height: 55px;
+  color: #ffff00;
+  float: left;
+}
+#topNavbar h1 img {
+  vertical-align: middle;
+}
+#topNavbar .user-profile {
+  padding: 5px;
+  box-sizing: border-box;
+  height: 65px;
+  float: right;
+}
+#topNavbar .user-profile .avatar {
+  background-image: url(/images/login_bg01.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  float: left;
+}
+#topNavbar .user-profile .user-msg {
+  margin: 10px;
+  display: inline-block;
+  float: left;
+}

@@ -1,0 +1,33 @@
+@import "var";
+
+@newAnimationWidth: @containerWidth/2;
+
+@padding:5px;
+
+
+.newAnimation{
+  width: 50%;
+  height: 100%;
+  position: relative;
+
+  .animation-list{
+    box-sizing: border-box;
+    padding: @padding;
+
+    li{
+      box-sizing: border-box;
+      padding: @padding;
+      float: left;
+    }
+    li.middle{
+      margin: 1%;
+      width: 23%;
+      height: @animationLiHeight;
+    }
+    li.large{
+      margin: 1%;
+      width: 48%;
+      height: @animationLiHeight;
+    }
+  }
+}

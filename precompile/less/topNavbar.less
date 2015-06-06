@@ -1,0 +1,42 @@
+@import "index/var";
+
+@padding:5px;
+#topNavbar {
+  width: 100%;
+  height: @headerHeightWithPadding;
+  color: @hTextColor;
+
+  overflow: hidden;
+}
+#topNavbar{
+  h1{
+    height: @headerHeight;
+    color: #ffff00;
+    float: left;
+    img{
+      vertical-align: middle;
+    }
+  }
+
+  .user-profile{
+    padding: @padding;
+    box-sizing: border-box;
+    height: @headerHeightWithPadding;
+    float: right;
+
+    .avatar{
+      background-image: url(/images/login_bg01.jpg);
+      -webkit-background-size: cover;
+      background-size: cover;
+      width: @headerHeight;
+      height: @headerHeight;
+      display: inline-block;
+      float: left;
+    }
+    .user-msg{
+      margin: 10px;
+      display: inline-block;
+      float: left;
+    }
+  }
+}

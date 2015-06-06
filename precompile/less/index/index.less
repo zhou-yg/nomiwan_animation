@@ -13,22 +13,40 @@ div.top-bg{
   left: 0;
 }
 div.container{
+  overflow: hidden;
   position: absolute;
-  top: 50%;
-  left: 50%;
-}
-@media screen and (min-width: 600px){
-  div.container{
-    margin: -400px 0 0 -400px;
-    width: 800px;
-    height: 800px;
-  }
-}
-@media screen and (min-width: 800px){
-  div.container{
-    margin: -400px 0 0 -400px;
-    width: 800px;
-    height: 800px;
-  }
-}
+  top: 10%;
+  right: 10%;
+  bottom: 10%;
+  left: 10%;
 
+  .main-window{
+    margin-top: (@headerHeight+10)*1.5;
+    width: 100%;
+    
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    
+    overflow: hidden;
+
+    section{
+      float: left;
+
+      h2{
+        height: @headerHeight;
+        color: @hTextColor;
+      }
+    }
+    
+    .transparent-bg{
+      background-color: #ffffff;
+      opacity: 0.3;
+      position: absolute;
+      top: @headerHeight;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
