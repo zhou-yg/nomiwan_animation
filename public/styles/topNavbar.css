@@ -11,6 +11,7 @@
   float: left;
 }
 #topNavbar h1 img {
+  border-radius: 40%;
   vertical-align: middle;
 }
 #topNavbar .user-profile {
