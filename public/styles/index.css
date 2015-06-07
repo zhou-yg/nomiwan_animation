@@ -18,7 +18,11 @@ div.container {
   bottom: 10%;
   left: 10%;
 }
-div.container .main-window {
+div.container #main-window {
+  display: none;
+}
+div.container #main-window,
+div.container #ani-episodes {
   margin-top: 97.5px;
   width: 100%;
   position: absolute;
@@ -26,14 +30,17 @@ div.container .main-window {
   bottom: 0;
   overflow: hidden;
 }
-div.container .main-window section {
+div.container #main-window section,
+div.container #ani-episodes section {
   float: left;
 }
-div.container .main-window section h2 {
+div.container #main-window section h2,
+div.container #ani-episodes section h2 {
   height: 55px;
   color: #ffffff;
 }
-div.container .main-window .transparent-bg {
+div.container #main-window .transparent-bg,
+div.container #ani-episodes .transparent-bg {
   background-color: #ffffff;
   opacity: 0.3;
   position: absolute;

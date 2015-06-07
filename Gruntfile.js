@@ -1,5 +1,8 @@
 module.exports = function(grunt){
     grunt.initConfig({
+        clean:{
+            files:['public/js/**','public/styles/**']
+        },
         coffee: {
             files: {
                 expand: true,
@@ -22,5 +25,6 @@ module.exports = function(grunt){
     });
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.registerTask('default', ['coffee','less']);
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.registerTask('default', ['clean','coffee','less']);
 };

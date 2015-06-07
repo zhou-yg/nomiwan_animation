@@ -4,17 +4,18 @@
     <title>茵蒂克丝</title>
     <link rel="stylesheet" href="/styles/common/normalize.css"/>
     <link rel="stylesheet" href="/styles/common/basic.css"/>
-    <link rel="stylesheet" href="/styles/index/index.css"/>
-    <link rel="stylesheet" href="/styles/index/newAnimation.css"/>
-    <link rel="stylesheet" href="/styles/index/sysRecommend.css"/>
-    <link rel="stylesheet" href="/styles/index/msgBoard.css"/>
+    <link rel="stylesheet" href="/styles/index.css"/>
+    <link rel="stylesheet" href="/styles/main/newAnimation.css"/>
+    <link rel="stylesheet" href="/styles/main/sysRecommend.css"/>
+    <link rel="stylesheet" href="/styles/main/msgBoard.css"/>
+    <link rel="stylesheet" href="/styles/episodes/aniEpisodes.css"/>
 </head>
 <body>
 <div class="top-bg"></div>
 <div class="container">
     <% include ../topNavbar.ejs %>
 
-    <div class="main-window">
+    <div id="main-window">
         <!-- AV界面 -->
         <section class="newAnimation">
             <h2>
@@ -48,6 +49,27 @@
             </h2>
             <div class="transparent-bg"></div>
 
+        </section>
+    </div>
+
+    <div id="ani-episodes">
+        <!-- the animation window -->
+        <section class="episodes-summary">
+            <h2>
+                AV
+            </h2>
+            <div class="transparent-bg"></div>
+
+            <section class="animation">
+                <h3>
+                    魔法禁书目录
+                </h3>
+                <div class="ani-logo">
+                </div>
+                <p class="animation-summary">
+
+                </p>
+            </section>
         </section>
     </div>
 </div>

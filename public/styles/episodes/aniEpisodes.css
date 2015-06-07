@@ -1,0 +1,24 @@
+/* new Animation */
+.episodes-summary {
+  width: 60%;
+  height: 100%;
+  position: relative;
+  /*  */
+}
+.episodes-summary .animation {
+  background-color: #777;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 50%;
+  height: 100%;
+}
+.episodes-summary .animation > * {
+  margin-bottom: 10px;
+}
+.episodes-summary .animation .ani-logo {
+  background-image: url(/images/index.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  padding-top: 100%;
+}

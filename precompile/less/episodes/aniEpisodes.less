@@ -1,0 +1,34 @@
+@import "../var";
+
+@padding:10px;
+
+.episodes-summary{
+  width: 60%;
+  height: 100%;
+
+  position: relative;
+  
+  /*  */
+  .animation{
+    background-color: #777;
+    box-sizing: border-box;
+    padding: @padding;
+    width: 50%;
+    height: 100%;
+
+    > *{
+      margin-bottom: @padding;
+    }
+
+    h3{
+    }
+    .ani-logo{
+      background-image: @exampleBgi;
+      -webkit-background-size: cover;
+      background-size: cover;
+
+      width: 100%;
+      padding-top: 100%;
+    }
+  }
+}
