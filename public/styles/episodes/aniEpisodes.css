@@ -3,14 +3,16 @@
   width: 60%;
   height: 100%;
   position: relative;
-  /*  */
+  /* 新番大头 */
+  /* 其它 板 */
 }
 .episodes-summary .animation {
   background-color: #777;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 15px;
   width: 50%;
   height: 100%;
+  /* 番剧大头 */
 }
 .episodes-summary .animation > * {
   margin-bottom: 10px;
@@ -21,4 +23,43 @@
   background-size: cover;
   width: 100%;
   padding-top: 100%;
+}
+.episodes-summary .animation .animation-summary {
+  width: 100%;
+  padding-top: 75%;
+  font-size: 15px;
+  position: relative;
+}
+.episodes-summary .animation .animation-summary > h3 {
+  font-size: 1em;
+  position: absolute;
+  top: 0;
+}
+.episodes-summary .animation .animation-summary .summary-text {
+  width: 100%;
+  line-height: 1.5em;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
+}
+.episodes-summary .animation .animation-summary .show-more {
+  box-sizing: border-box;
+  background-color: #fff;
+  width: 100%;
+  height: 1.5em;
+  line-height: 1.5em;
+  border: solid 1px #000000;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+.episodes-summary .other-more {
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 15px;
+  width: 50%;
+  height: 55px;
+  position: absolute;
+  bottom: 0;
 }
