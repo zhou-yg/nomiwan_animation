@@ -1,0 +1,165 @@
+@import "../var";
+/* 剧集选择 */
+.episodes-selector {
+  display: flex;
+  box-sizing: border-box;
+  padding: @blankUnit*1.5;
+  width: 50%;
+  //height: 100%;
+  font-size: 14px;
+
+  flex-flow: column;
+
+  position: absolute;
+  top: @headerHeight;
+  bottom: 0;
+  right: 0;
+
+  h3 {
+    margin-bottom: @blankUnit;
+  }
+  .episode-sources {
+    margin-bottom: @blankUnit;
+    position: relative;
+    flex: 1;
+
+    @sourcesHeight: 2.5em;
+    @transparentColor: #545454;
+    > .sources {
+      overflow: hidden;
+      height: @sourcesHeight;
+      line-height: 2.5*12px - 2px;
+
+      > li {
+        box-sizing: border-box;
+        background-color: #62D3B1;
+        width: 25%;
+        border: 2px solid  @transparentColor;
+        text-align: center;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        float: left;
+      }
+    }
+    > .selector {
+      width: 100%;
+      position: absolute;
+      top: @sourcesHeight;
+      bottom: 0;
+
+      > .episodes-select {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: @sourcesHeight;
+
+        > li {
+          box-sizing: border-box;
+          background: #000;
+          border: 2px solid  @transparentColor;
+          width: 25%;
+          height: 33%;
+          font-size: 12px;
+          text-align: center;
+          float: left;
+
+          display: flex;
+          flex-direction: column;
+
+          cursor: pointer;
+
+          &:before, &:after {
+            content: '';
+            flex: 1;
+          }
+        }
+      }
+      @pagesButtonHeight: @sourcesHeight/5*4;
+      > .pages {
+        width: 100%;
+        height: @pagesButtonHeight;
+
+        position: absolute;
+        bottom: 0;
+
+        > li {
+          box-sizing: border-box;
+          background-color: #000000;
+
+          margin-right: -2px;
+          width: 20%;
+          height: @pagesButtonHeight;
+          line-height: @pagesButtonHeight;
+          border: 2px solid  @transparentColor;
+          text-align: center;
+          float: right;
+
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .ani-tags {
+    flex: 1;
+
+    h3 {
+    }
+
+    > ol {
+      overflow: hidden;
+
+      @mostDeepColor:red;
+
+      li {
+        background-color: #ffffff;
+        margin-right: @blankUnit/2;
+        margin-bottom: @blankUnit/2;
+        padding: @blankUnit/2 @blankUnit;
+        color: @normalArticleColor;
+        text-align: center;
+        float: left;
+
+        cursor: pointer;
+      }
+      li:nth-child(1){
+        background-color: lighten(@mostDeepColor,0);
+        color: #ffffff;
+      }
+      li:nth-child(2){
+        background-color: lighten(@mostDeepColor,10%);
+      }
+      li:nth-child(3){
+        background-color: lighten(@mostDeepColor,15%);
+      }
+      li:nth-child(4){
+        background-color: lighten(@mostDeepColor,20%);
+      }
+      li:nth-child(5){
+        background-color: lighten(@mostDeepColor,25%);
+      }
+      li:nth-child(6){
+        background-color: lighten(@mostDeepColor,30%);
+      }
+      li:nth-child(7){
+        background-color: lighten(@mostDeepColor,35%);
+      }
+      li:nth-child(8){
+        background-color: lighten(@mostDeepColor,40%);
+      }
+      li:nth-child(9){
+        background-color: lighten(@mostDeepColor,45%);
+      }
+      li:nth-child(10){
+        background-color: lighten(@mostDeepColor,50%);
+      }
+      li.selected{
+      }
+      li:hover{
+        background-color: darken(@mostDeepColor,15%);
+      }
+    }
+  }
+}

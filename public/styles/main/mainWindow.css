@@ -1,0 +1,46 @@
+#main-window {
+  /* basic */
+  /* init */
+  /* new Animation */
+  /*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
+}
+#main-window .new-animation {
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+#main-window .new-animation .animation-list {
+  box-sizing: border-box;
+  padding: 5px;
+}
+#main-window .new-animation .animation-list li {
+  box-sizing: border-box;
+  padding: 5px;
+  float: left;
+}
+#main-window .new-animation .animation-list li.middle {
+  margin: 1%;
+  width: 23%;
+  height: 110px;
+}
+#main-window .new-animation .animation-list li.large {
+  margin: 1%;
+  width: 48%;
+  height: 110px;
+}
+#main-window .sys-recommend {
+  margin-left: 1%;
+  width: 24%;
+  height: 100%;
+  position: relative;
+}
+#main-window .msg-board {
+  margin-left: 1%;
+  width: 24%;
+  height: 100%;
+  position: relative;
+}

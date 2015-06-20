@@ -1,13 +1,19 @@
+/* basic */
+/* init */
 /* new Animation */
-.episodes-summary {
+/*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
+#ani-episodes .episodes-summary {
   width: 60%;
   height: 100%;
   position: relative;
   /* 剧集logo&简介 */
   /* 剧集选择 */
 }
-.episodes-summary > .animation,
-.episodes-summary > .episodes-selector {
+#ani-episodes .episodes-summary .animation {
   display: flex;
   box-sizing: border-box;
   padding: 15px;
@@ -17,44 +23,54 @@
   position: absolute;
   top: 55px;
   bottom: 0;
-}
-.episodes-summary > .animation {
   left: 0;
   /* 簡介 */
 }
-.episodes-summary > .animation > * {
-  margin-bottom: 10px;
+#ani-episodes .episodes-summary .animation h3 {
+  margin-bottom: 20px;
 }
-.episodes-summary > .animation .ani-logo {
+#ani-episodes .episodes-summary .animation .ani-logo {
   flex: 1;
   background-image: url(/images/index.jpg);
+  margin-bottom: 20px;
   -webkit-background-size: cover;
   background-size: cover;
   width: 100%;
 }
-.episodes-summary > .animation .summary-text {
+#ani-episodes .episodes-summary .animation .summary-text {
   flex: 1;
+  margin-bottom: 20px;
   width: 100%;
   line-height: 1.5em;
   font-size: 12px;
   overflow-y: scroll;
 }
-.episodes-summary > .episodes-selector {
+#ani-episodes .episodes-summary .episodes-selector {
+  display: flex;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 50%;
+  font-size: 14px;
+  flex-flow: column;
+  position: absolute;
+  top: 55px;
+  bottom: 0;
   right: 0;
 }
-.episodes-summary > .episodes-selector > * {
+#ani-episodes .episodes-summary .episodes-selector h3 {
   margin-bottom: 10px;
 }
-.episodes-summary > .episodes-selector .episode-sources {
-  flex: 1;
+#ani-episodes .episodes-summary .episodes-selector .episode-sources {
+  margin-bottom: 10px;
   position: relative;
+  flex: 1;
 }
-.episodes-summary > .episodes-selector .episode-sources > .sources {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .sources {
   overflow: hidden;
   height: 2.5em;
   line-height: 28px;
 }
-.episodes-summary > .episodes-selector .episode-sources > .sources > li {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .sources > li {
   box-sizing: border-box;
   background-color: #62D3B1;
   width: 25%;
@@ -65,52 +81,266 @@
   overflow: hidden;
   float: left;
 }
-.episodes-summary > .episodes-selector .episode-sources > .selector {
-  background-color: #000000;
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector {
   width: 100%;
   position: absolute;
   top: 2.5em;
   bottom: 0;
 }
-.episodes-summary > .episodes-selector .episode-sources > .selector > .episodes-select {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector > .episodes-select {
   width: 100%;
   position: absolute;
   top: 0;
   bottom: 2.5em;
 }
-.episodes-summary > .episodes-selector .episode-sources > .selector > .episodes-select > li {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector > .episodes-select > li {
   box-sizing: border-box;
-  margin-top: -2px;
-  width: 25%;
-  height: 25%;
+  background: #000;
   border: 2px solid #545454;
+  width: 25%;
+  height: 33%;
+  font-size: 12px;
   text-align: center;
   float: left;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
-.episodes-summary > .episodes-selector .episode-sources > .selector > .episodes-select > li:before,
-.episodes-summary > .episodes-selector .episode-sources > .selector > .episodes-select > li:after {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector > .episodes-select > li:before,
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector > .episodes-select > li:after {
   content: '';
   flex: 1;
 }
-.episodes-summary > .episodes-selector .episode-sources > .selector > .pages {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector > .pages {
   width: 100%;
-  height: 2.5em;
+  height: 2em;
   position: absolute;
   bottom: 0;
 }
-.episodes-summary > .episodes-selector .episode-sources > .selector > .pages > li {
+#ani-episodes .episodes-summary .episodes-selector .episode-sources > .selector > .pages > li {
   box-sizing: border-box;
+  background-color: #000000;
   margin-right: -2px;
-  width: 15%;
-  height: 2.5em;
-  line-height: 2.5em;
+  width: 20%;
+  height: 2em;
+  line-height: 2em;
   border: 2px solid #545454;
   text-align: center;
   float: right;
+  cursor: pointer;
 }
-.episodes-summary > .episodes-selector .other {
-  background: #976521;
+#ani-episodes .episodes-summary .episodes-selector .ani-tags {
   flex: 1;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol {
+  overflow: hidden;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li {
+  background-color: #ffffff;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  color: #474747;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(1) {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(2) {
+  background-color: #ff3333;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(3) {
+  background-color: #ff4d4d;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(4) {
+  background-color: #ff6666;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(5) {
+  background-color: #ff8080;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(6) {
+  background-color: #ff9999;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(7) {
+  background-color: #ffb3b3;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(8) {
+  background-color: #ffcccc;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(9) {
+  background-color: #ffe5e5;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:nth-child(10) {
+  background-color: #ffffff;
+}
+#ani-episodes .episodes-summary .episodes-selector .ani-tags > ol li:hover {
+  background-color: #b30000;
+}
+#ani-episodes .vote-board {
+  margin-left: 2.5%;
+  width: 37.5%;
+  height: 100%;
+  position: relative;
+}
+#ani-episodes .vote-board .vote-list {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  overflow-y: scroll;
+}
+#ani-episodes .vote-board .vote-list > ul {
+  width: 100%;
+  height: 100%;
+}
+#ani-episodes .vote-board .vote-list > ul > li {
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  position: relative;
+}
+#ani-episodes .vote-board .vote-list > ul > li > * {
+  margin-bottom: 6.66666667px;
+}
+#ani-episodes .vote-board .vote-list > ul > li > header {
+  height: 45px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > header img {
+  height: 45px;
+  border-radius: 50%;
+  vertical-align: top;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+#ani-episodes .vote-board .vote-list > ul > li > header div {
+  margin-left: 55px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#ani-episodes .vote-board .vote-list > ul > li > header div span {
+  width: 100%;
+  font-size: 12px;
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > header div .time {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .description {
+  font-size: 12px;
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li:first-child {
+  border-top: 1px solid #d3d3d3;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li {
+  padding: 5px 0;
+  border-bottom: 1px solid #d3d3d3;
+  font-size: 12px;
+  color: #5bc0de;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li:after {
+  content: '';
+  opacity: 0.5;
+  transition: width 1s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB1:after {
+  background-color: #ff0000;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB2:after {
+  background-color: #ff8000;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB3:after {
+  background-color: #ffff00;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB4:after {
+  background-color: #00ff00;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB5:after {
+  background-color: #00ffff;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB6:after {
+  background-color: #0000ff;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.rainbowB7:after {
+  background-color: #8000ff;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent10 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent10:after {
+  width: 10%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent20 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent20:after {
+  width: 20%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent30 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent30:after {
+  width: 30%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent40 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent40:after {
+  width: 40%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent50 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent50:after {
+  width: 50%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent60 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent60:after {
+  width: 60%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent70 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent70:after {
+  width: 70%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent80 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent80:after {
+  width: 80%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent90 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent90:after {
+  width: 90%;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent100 {
+  color: #474747;
+}
+#ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent100:after {
+  right: 100%;
 }

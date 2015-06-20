@@ -17,6 +17,7 @@
     "grunt":"0.4.5",
     "grunt-contrib-coffee":"x.x.x",
     "grunt-contrib-less":"x.x.x",
-    "grunt-contrib-clean":"x.x.x"
+    "grunt-contrib-clean":"x.x.x",
+    "grunt-contrib-watch":"x.x.x"
   }
 }

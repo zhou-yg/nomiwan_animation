@@ -1,4 +1,11 @@
+/* basic */
+/* init */
 /* new Animation */
+/*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
 div.top-bg {
   background-image: url(/images/bg1.jpg);
   background-repeat: no-repeat;

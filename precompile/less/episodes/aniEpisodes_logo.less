@@ -1,0 +1,41 @@
+@import "../var";
+/* 剧集logo&简介 */
+
+.animation{
+  display: flex;
+  box-sizing: border-box;
+  padding: @blankUnit*1.5;
+  width: 50%;
+  //height: 100%;
+  font-size: 14px;
+
+  flex-flow: column;
+
+  position: absolute;
+  top:@headerHeight;
+  bottom: 0;
+  left: 0;
+
+  h3{
+    margin-bottom: @blankUnit*2;
+  }
+  .ani-logo{
+    flex: 1;
+    background-image: @exampleBgi;
+    margin-bottom: @blankUnit*2;
+    -webkit-background-size: cover;
+    background-size: cover;
+
+    width: 100%;
+  }
+  /* 簡介 */
+  .summary-text{
+    flex: 1;
+    margin-bottom: @blankUnit*2;
+    width: 100%;
+    line-height: 1.5em;
+    font-size: 12px;
+
+    overflow-y: scroll;
+  }
+}
