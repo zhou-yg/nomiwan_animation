@@ -11,7 +11,7 @@
 <body>
 <div class="top-bg"></div>
 <div class="container">
-    <% include ../topNavbar.ejs %>
+    <% include ../common/topNavbar.ejs %>
 
     <div id="main-window">
         <!-- AV界面 -->
@@ -20,15 +20,18 @@
                 AV
             </h2>
             <div class="transparent-bg"></div>
-            <ul class="animation-list">
-                <li class="large orange"></li>
-                <li class="middle red"></li>
-                <li class="middle blue"></li>
-                <li class="large cyan"></li>
-                <li class="large purple"></li>
-                <li class="middle yellow"></li>
-                <li class="middle green"></li>
-            </ul>
+
+            <div class="animation-list">
+                <ul>
+                    <li class="large orange"></li>
+                    <li class="large red"></li>
+                    <li class="large blue"></li>
+                    <li class="middle cyan"></li>
+                    <li class="middle purple"></li>
+                    <li class="middle yellow"></li>
+                    <li class="middle green"></li>
+                </ul>
+            </div>
         </section>
 
         <!-- 日推 or center bar-->
@@ -146,9 +149,9 @@
                             一部建立辛辣讽刺上的温和喜剧，好在情感的跨度上没什么明显的落差。奥莉芙对“阳光小美女”的执着是整个故事的动力之源，她时而默默地自省，时而表现出有力的怜悯之心——再硬的心肠，也被这个小女孩所融化了，正是她一个人的力量，将整部影片从黑色电影的冷硬边缘，重新拉回到温暖的气息下。
                         </p>
                         <ul class="selectors">
-                            <li class="rainbowB1 percent60">
+                            <li>
                                 选项1
-                            <li class="rainbowB2 percent40">
+                            <li>
                                 选项2
                             </li>
                         </ul>
@@ -170,7 +173,7 @@
                             <li class="rainbowB2 percent40">
                                 cccccccccccccccccccc
                             </li>
-                            <li class="rainbowB2 percent50">
+                            <li class="rainbowB3 percent50">
                                 cccccccccccccccccccc
                             </li>
                         </ul>

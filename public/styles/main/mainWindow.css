@@ -1,4 +1,7 @@
-#main-window {
+#main-window .new-animation {
+  width: 50%;
+  height: 100%;
+  position: relative;
   /* basic */
   /* init */
   /* new Animation */
@@ -8,26 +11,24 @@ background-color;
 color;
 */
 }
-#main-window .new-animation {
-  width: 50%;
-  height: 100%;
-  position: relative;
-}
 #main-window .new-animation .animation-list {
   box-sizing: border-box;
   padding: 5px;
 }
-#main-window .new-animation .animation-list li {
+#main-window .new-animation .animation-list ul {
+  overflow: hidden;
+}
+#main-window .new-animation .animation-list ul li {
   box-sizing: border-box;
   padding: 5px;
   float: left;
 }
-#main-window .new-animation .animation-list li.middle {
+#main-window .new-animation .animation-list ul li.middle {
   margin: 1%;
   width: 23%;
   height: 110px;
 }
-#main-window .new-animation .animation-list li.large {
+#main-window .new-animation .animation-list ul li.large {
   margin: 1%;
   width: 48%;
   height: 110px;

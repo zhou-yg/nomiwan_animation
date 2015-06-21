@@ -200,7 +200,6 @@ color;
 }
 #ani-episodes .vote-board .vote-list > ul > li {
   box-sizing: border-box;
-  background-color: #fff;
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
@@ -212,14 +211,12 @@ color;
 #ani-episodes .vote-board .vote-list > ul > li > header {
   height: 45px;
   padding-bottom: 4px;
-  border-bottom: 1px solid #474747;
 }
 #ani-episodes .vote-board .vote-list > ul > li > header img {
   height: 45px;
   border-radius: 50%;
   vertical-align: top;
   position: absolute;
-  top: 4px;
   left: 4px;
 }
 #ani-episodes .vote-board .vote-list > ul > li > header div {
@@ -231,7 +228,7 @@ color;
 #ani-episodes .vote-board .vote-list > ul > li > header div span {
   width: 100%;
   font-size: 12px;
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > header div .time {
   position: absolute;
@@ -240,14 +237,14 @@ color;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .description {
   font-size: 12px;
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li:first-child {
-  border-top: 1px solid #d3d3d3;
+  border-top: 1px solid #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li {
   padding: 5px 0;
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid #ffffff;
   font-size: 12px;
   color: #5bc0de;
   text-align: center;
@@ -285,61 +282,61 @@ color;
   background-color: #8000ff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent10 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent10:after {
   width: 10%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent20 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent20:after {
   width: 20%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent30 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent30:after {
   width: 30%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent40 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent40:after {
   width: 40%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent50 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent50:after {
   width: 50%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent60 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent60:after {
   width: 60%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent70 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent70:after {
   width: 70%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent80 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent80:after {
   width: 80%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent90 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent90:after {
   width: 90%;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent100 {
-  color: #474747;
+  color: #ffffff;
 }
 #ani-episodes .vote-board .vote-list > ul > li > .selectors li.percent100:after {
   right: 100%;

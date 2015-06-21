@@ -2,31 +2,31 @@
 
 @newAnimationWidth: @containerWidth/2;
 
-@padding:5px;
+@padding: 5px;
 
-.new-animation{
-  width: 50%;
-  height: 100%;
-  position: relative;
+.animation-list {
+  box-sizing: border-box;
+  padding: @padding;
 
-  .animation-list{
-    box-sizing: border-box;
-    padding: @padding;
+  ul {
 
-    li{
+    overflow: hidden;
+
+    li {
       box-sizing: border-box;
       padding: @padding;
       float: left;
     }
-    li.middle{
+    li.middle {
       margin: 1%;
       width: 23%;
       height: @animationLiHeight;
     }
-    li.large{
+    li.large {
       margin: 1%;
       width: 48%;
       height: @animationLiHeight;
     }
+
   }
 }
