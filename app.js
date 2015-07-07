@@ -4,7 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//---------------- 自定义 --------------------------
+var avDataHandler = require('./model/avDataHandler')(__dirname);
 
+
+//----------------- 开始    ---------------------------
 var app = express();
 
 // view engine setup
