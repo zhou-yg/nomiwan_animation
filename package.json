@@ -18,6 +18,9 @@
     "grunt-contrib-coffee":"x.x.x",
     "grunt-contrib-less":"x.x.x",
     "grunt-contrib-clean":"x.x.x",
-    "grunt-contrib-watch":"x.x.x"
+    "grunt-contrib-watch":"x.x.x",
+
+
+    "immutable":"~x.x.x"
   }
 }
