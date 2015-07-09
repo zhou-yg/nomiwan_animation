@@ -14,7 +14,8 @@ var allModelArr;
 var cache = {
     isUpdate:false,
     animation:null,
-    episode:{}
+    episode:{},
+    sources:{}
 };
 
 var utils = {
@@ -39,7 +40,7 @@ var read = function(allJsonFullName){
             encode:'utf-8'
         }));
     }else{
-        console.log('"',allJsonFullName,'"not exist');
+        utils.log('"',allJsonFullName,'"not exist');
     }
 
     return result;
@@ -76,8 +77,31 @@ module.exports = function(__dirname) {
             result = cache.animation;
             return result;
         },
-        getSources:function(animation){
+        getSources:function(targetAnimationName){
+            var key = animation;
             var result = [];
+
+            if(!cache.sources[key] || !cache.isUpdate){
+                var allModelArrCopy = allModelArr.toArray();
+
+                for(var ani= 0,allAniLen=allModelArrCopy.length;ani<allAniLen;ani++){
+                    var map = allModelArr[ani];
+                    var aniName = map.get('name');
+
+                    utils.log(aniName,targetAnimationName,aniName === targetAnimationName);
+
+                    if(aniName === targetAnimationName) {
+
+                        utils.log(map.get('sources'));
+
+                        var sources = map.get('sources').toArray();
+                        cache.sources[key] = sources;
+                        break;
+                    }
+                }
+            }
+            result = cache.sources[key];
+            return result;
         },
         getEpisodes:function(targetAnimationName,targetSource){
             var key =targetAnimationName+'_'+targetSource;
@@ -89,22 +113,27 @@ module.exports = function(__dirname) {
                 for(var ani= 0,allAniLen=allModelArrCopy.length;ani<allAniLen;ani++){
                     var map = allModelArr[ani];
                     var aniName = map.get('name');
-                    console.log(aniName,targetAnimationName,aniName === targetAnimationName);
+
+                    utils.log(aniName,targetAnimationName,aniName === targetAnimationName);
 
                     if(aniName === targetAnimationName){
-                        console.log(map.get('sources'));
+
+                        utils.log(map.get('sources'));
 
                         var sources = map.get('sources').toArray();
 
                         for(var i= 0,len=sources.length;i<len;i++){
                             var sourceMap = sources[i];
-                            console.log(sourceMap);
+
+                            utils.log(sourceMap);
 
                             if(sourceMap.get('sourceName') === targetSource){
                                 var videos = sourceMap.get('videos');
                                 videos = videos.map(function(videoSrcObj){
                                     var srcArr = videoSrcObj.get('videoSrcArr').filter(function(src){
-                                        console.log('src:',src);
+
+                                        utils.log('src:',src);
+
                                         return utils.checkEmbed(src);
                                     });
                                 });

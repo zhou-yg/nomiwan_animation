@@ -1,15 +1,25 @@
+
 module.exports = function (grunt) {
+    var auto = require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         clean: {
             cssFiles: [ 'public/styles/**'],
             jsFiles:['public/js/**']
         },
         coffee: {
-            files: {
+            public: {
                 expand: true,
-                cwd: 'precompile/coffee/',
+                cwd: 'precompile/public/',
                 src: ['**/*.coffee'],
                 dest: 'public/js/',
+                ext: '.js'
+            },
+            components: {
+                expand: true,
+                cwd: 'precompile/components/',
+                src: ['**/*.coffee'],
+                dest: 'components/',
                 ext: '.js'
             }
         },
@@ -32,13 +42,10 @@ module.exports = function (grunt) {
             },
             lessTask:{
                 files:['**/*.less'],
-                tasks:['clean:cssFiles','less']
+                tasks:['clean:less','less','coffee']
             }
         }
     });
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
-    grunt.loadNpmTasks('grunt-contrib-less');
+
     grunt.registerTask('default', ['watch']);
 };

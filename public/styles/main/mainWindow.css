@@ -2,6 +2,8 @@
   width: 50%;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
   /* basic */
   /* init */
   /* new Animation */
@@ -14,6 +16,9 @@ color;
 #main-window .new-animation .animation-list {
   box-sizing: border-box;
   padding: 5px;
+  flex: 1;
+  overflow-y: scroll;
+  position: relative;
 }
 #main-window .new-animation .animation-list ul {
   overflow: hidden;

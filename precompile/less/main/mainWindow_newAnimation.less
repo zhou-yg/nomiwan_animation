@@ -8,8 +8,16 @@
   box-sizing: border-box;
   padding: @padding;
 
-  ul {
+  flex: 1;
+  overflow-y: scroll;
 
+  position: relative;
+
+  > h2{
+
+  }
+
+  ul {
     overflow: hidden;
 
     li {
@@ -27,6 +35,5 @@
       width: 48%;
       height: @animationLiHeight;
     }
-
   }
 }
