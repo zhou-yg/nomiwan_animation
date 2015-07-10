@@ -41,11 +41,11 @@ module.exports = function (grunt) {
                 }
             },
             lessTask:{
-                files:['**/*.less'],
-                tasks:['clean:less','less','coffee']
+                files:['precompile/**/*.less','precompile/**/*.coffee'],
+                tasks:['clean:cssFiles','less','coffee:public','coffee:components']
             }
         }
     });
 
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['coffee','watch']);
 };

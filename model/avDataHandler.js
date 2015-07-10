@@ -55,26 +55,49 @@ var initAllJson = function(){
 };
 
 module.exports = function(__dirname) {
-    dirName = __dirname;
-    jsonPath = require(path.join(dirName,'config/jsonPath'));
+    console.log(dirName);
+    if(__dirname){
+        dirName = __dirname;
+        jsonPath = require(path.join(dirName,'config/jsonPath'));
 
-    //初始化所有的动漫数据
-    allModelArr = initAllJson();
+        //初始化所有的动漫数据
+        allModelArr = initAllJson();
+    }
 
     return {
-        getAnimation:function(){
+        /**
+         * 获取动漫
+         * @param startIndex 开始下标，包含
+         * @param endIndex   结束的下标，不包含
+         * @returns [{
+         *      name,
+         *      images
+         * }]
+         */
+        getAnimation:function(startIndex,endIndex){
             var result = [];
             if(!cache.animation || !cache.isUpdate){
                 cache.animation = [];
-                allModelArr.forEach(function(map){
+                allModelArr.forEach(function(map,i){
+                    var size = 0;
+                    try{
+                        size = map.get('sources').get(0).get('videos').size;
+                    }catch (e){
+                        //部分没有videos
+                    }
                     var obj = {
                         name:map.get('name'),
-                        image:map.get('images').get(0)
+                        image:map.get('images').get(0),
+                        len:size
                     };
                     cache.animation.push(obj);
                 });
             }
-            result = cache.animation;
+            if((startIndex || startIndex===0 )&& endIndex){
+                result = cache.animation.slice(startIndex,endIndex);
+            }else{
+                result = cache.animation;
+            }
             return result;
         },
         getSources:function(targetAnimationName){

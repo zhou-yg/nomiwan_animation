@@ -60,25 +60,25 @@ input {
   outline: none;
 }
 .red {
-  background-color: red;
+  background-color: #D84747;
 }
 .orange {
-  background-color: orange;
+  background-color: #ec9800;
 }
 .yellow {
-  background-color: #ffff00;
+  background-color: #D38800;
 }
 .green {
-  background-color: green;
+  background-color: #46ae46;
 }
 .blue {
-  background-color: blue;
+  background-color: #6cabff;
 }
 .cyan {
-  background-color: cyan;
+  background-color: #009393;
 }
 .purple {
-  background-color: purple;
+  background-color: #b500b5;
 }
 .orange,
 .yellow,
