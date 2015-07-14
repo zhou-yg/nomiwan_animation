@@ -27,9 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //---------------------------------------------------
 var routesDirPath = './routes/';
-var routes = require(routesDirPath+'index/main');
+var mainRoute = require(routesDirPath+'index/main'),
+    episodesRoute = require(routesDirPath+'episodes/aniEpisodes');
 
-app.use('/', routes);
+app.use('/', mainRoute);
+app.use('/', episodesRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

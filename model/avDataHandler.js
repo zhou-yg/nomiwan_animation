@@ -55,7 +55,7 @@ var initAllJson = function(){
 };
 
 module.exports = function(__dirname) {
-    console.log(dirName);
+    console.log('dirName:',dirName);
     if(__dirname){
         dirName = __dirname;
         jsonPath = require(path.join(dirName,'config/jsonPath'));

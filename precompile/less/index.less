@@ -1,5 +1,11 @@
 @import "var";
 
+//13寸满窗口下的高度
+body{
+  min-height: 679px;
+  position: relative;
+}
+
 div.top-bg{
   background-image: @topBackgroudImage;
   background-repeat: no-repeat;
@@ -15,16 +21,16 @@ div.top-bg{
 div.container{
   overflow: hidden;
   position: absolute;
-  top: 10%;
-  right: 10%;
-  bottom: 10%;
-  left: 10%;
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
 
   #main-window{
     //display: none;
   }
   #ani-episodes{
-    display: none;
+    //display: none;
   }
   #main-window,#ani-episodes{
     margin-top: (@headerHeight+10)*1.5;

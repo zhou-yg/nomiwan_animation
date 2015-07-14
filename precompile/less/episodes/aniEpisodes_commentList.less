@@ -1,0 +1,47 @@
+ul.comments{
+  padding: 0 @blankUnit;
+  font-size: 12px;
+  
+  > li{
+    padding: 10px 0px;
+    border-bottom: 1px solid #DDD;
+    position: relative;
+    a{
+      outline: medium none;
+      color: #00A1D6;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .facebox{
+      float: left;
+      width: 60px;
+      position: relative;
+      margin-right: 5px;
+    }
+    .t{
+      color: #AAA;
+      line-height: 18px;
+
+      a{
+        margin:0 5px;
+      }
+      .lnum{
+        padding: 2px 5px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .content{
+      line-height: 20px;
+      padding: 5px 0px;
+      font-size: 14px;
+      text-shadow: none;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+    .elinfo{
+      color: #999;
+      line-height: 26px;
+    }
+  }
+}

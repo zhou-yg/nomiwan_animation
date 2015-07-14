@@ -5,7 +5,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
         clean: {
             cssFiles: [ 'public/styles/**'],
-            jsFiles:['public/js/**']
+            jsFiles:['public/js/**.js'],
+            components:['components/**.js','components/**.coffee']
         },
         coffee: {
             public: {
@@ -42,7 +43,13 @@ module.exports = function (grunt) {
             },
             lessTask:{
                 files:['precompile/**/*.less','precompile/**/*.coffee'],
-                tasks:['clean:cssFiles','less','coffee:public','coffee:components']
+                tasks:[
+                    'clean:cssFiles',
+                    'clean:jsFiles',
+                    'clean:components',
+                    'less','coffee:public',
+                    'coffee:components'
+                ]
             }
         }
     });

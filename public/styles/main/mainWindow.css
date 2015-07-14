@@ -29,14 +29,14 @@ color;
   float: left;
   position: relative;
 }
-#main-window .new-animation .animation-list ul li > img {
+#main-window .new-animation .animation-list ul li img {
   background-image: url("http://r2.ykimg.com/05100000558D1F3467BC3D5815095E6A");
   background-size: cover;
   width: 50%;
   height: 100%;
   float: left;
 }
-#main-window .new-animation .animation-list ul li > .message {
+#main-window .new-animation .animation-list ul li .message {
   box-sizing: border-box;
   padding: 0 10px;
   position: absolute;
@@ -45,15 +45,15 @@ color;
   right: 0;
   bottom: 10px;
 }
-#main-window .new-animation .animation-list ul li > .message > h3 {
+#main-window .new-animation .animation-list ul li .message > h3 {
   font-size: 17px;
 }
-#main-window .new-animation .animation-list ul li > .message > p {
+#main-window .new-animation .animation-list ul li .message > p {
   font-size: 14px;
   position: absolute;
   bottom: 0;
 }
-#main-window .new-animation .animation-list ul li > .message > p .episode {
+#main-window .new-animation .animation-list ul li .message > p .episode {
   font-size: 14px;
 }
 #main-window .new-animation .animation-list ul li.middle {

@@ -6,6 +6,10 @@
 background-color;
 color;
 */
+body {
+  min-height: 679px;
+  position: relative;
+}
 div.top-bg {
   background-image: url(/images/bg1.jpg);
   background-repeat: no-repeat;
@@ -20,13 +24,10 @@ div.top-bg {
 div.container {
   overflow: hidden;
   position: absolute;
-  top: 10%;
-  right: 10%;
-  bottom: 10%;
-  left: 10%;
-}
-div.container #ani-episodes {
-  display: none;
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
 }
 div.container #main-window,
 div.container #ani-episodes {

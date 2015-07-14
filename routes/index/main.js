@@ -2,28 +2,41 @@ var express = require('express');
 var router = express.Router();
 var avDataHandler = require('../../model/avDataHandler.js')();
 
-console.log(avDataHandler);
+var components = require('../../components/');
+
+
+var titles = {
+  newAnimationTitle:'AV'
+};
 
 var getNewAnimationComponent = function(animations){
 
+  newAnimationEleStr = components.NewAnimationComponent({
+    title:'AV',
+    animations:animations
+  });
 
+  return newAnimationEleStr
 };
 
 var getViewsData = function(){
-
   var animations = avDataHandler.getAnimation(0,10);
-  console.log(animations);
 
-  var newAnimationComponent = getNewAnimationComponent(animations);
+  var newAnimationHTML = getNewAnimationComponent(animations);
 
+  return {
+    newAnimation:newAnimationHTML
+  }
 };
 
-/* GET home page. */
+/* GET main.ejs page. */
 router.get('/', function(req, res, next) {
 
   var viewObj = getViewsData();
 
-  res.render('index/main', { title: '糯米丸' });
+  viewObj.title = titles.newAnimationTitle;
+
+  res.render('index/main', viewObj );
 });
 
 module.exports = router;
