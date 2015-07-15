@@ -1,5 +1,5 @@
 (function() {
-  var NewAnimationComponent, React, cc, ce, rs;
+  var CommentsComponent, NewAnimationComponent, React, cc, ce, rs;
 
   React = require('react');
 
@@ -11,9 +11,14 @@
 
   NewAnimationComponent = require('./NewAnimationComponent');
 
+  CommentsComponent = require('./CommentsComponent');
+
   module.exports = {
     NewAnimationComponent: function(props) {
       return rs(NewAnimationComponent(props));
+    },
+    CommentsComponent: function(props) {
+      return rs(CommentsComponent(props));
     }
   };
 

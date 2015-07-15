@@ -355,7 +355,7 @@ color;
   font-size: 12px;
 }
 #ani-episodes .comment-list ul.comments > li {
-  padding: 10px 0px;
+  padding: 10px 0 5px;
   border-bottom: 1px solid #DDD;
   position: relative;
 }
@@ -365,33 +365,28 @@ color;
   text-decoration: none;
   cursor: pointer;
 }
-#ani-episodes .comment-list ul.comments > li .facebox {
+#ani-episodes .comment-list ul.comments > li .avatar {
   float: left;
   width: 60px;
   position: relative;
   margin-right: 5px;
 }
-#ani-episodes .comment-list ul.comments > li .t {
+#ani-episodes .comment-list ul.comments > li .comment-header {
   color: #AAA;
   line-height: 18px;
 }
-#ani-episodes .comment-list ul.comments > li .t a {
-  margin: 0 5px;
-}
-#ani-episodes .comment-list ul.comments > li .t .lnum {
-  padding: 2px 5px;
-  display: inline-block;
-  vertical-align: middle;
+#ani-episodes .comment-list ul.comments > li .comment-header a {
+  margin-right: 5px;
 }
 #ani-episodes .comment-list ul.comments > li .content {
   line-height: 20px;
   padding: 5px 0px;
-  font-size: 14px;
+  font-size: 12px;
   text-shadow: none;
   overflow: hidden;
   word-wrap: break-word;
 }
-#ani-episodes .comment-list ul.comments > li .elinfo {
+#ani-episodes .comment-list ul.comments > li .time {
   color: #999;
   line-height: 26px;
 }

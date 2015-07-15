@@ -3,7 +3,7 @@ ul.comments{
   font-size: 12px;
   
   > li{
-    padding: 10px 0px;
+    padding: 10px 0 5px;
     border-bottom: 1px solid #DDD;
     position: relative;
     a{
@@ -12,34 +12,29 @@ ul.comments{
       text-decoration: none;
       cursor: pointer;
     }
-    .facebox{
+    .avatar{
       float: left;
       width: 60px;
       position: relative;
       margin-right: 5px;
     }
-    .t{
+    .comment-header{
       color: #AAA;
       line-height: 18px;
 
       a{
-        margin:0 5px;
-      }
-      .lnum{
-        padding: 2px 5px;
-        display: inline-block;
-        vertical-align: middle;
+        margin-right: 5px;
       }
     }
     .content{
       line-height: 20px;
       padding: 5px 0px;
-      font-size: 14px;
+      font-size: 12px;
       text-shadow: none;
       overflow: hidden;
       word-wrap: break-word;
     }
-    .elinfo{
+    .time{
       color: #999;
       line-height: 26px;
     }

@@ -12,29 +12,35 @@ var titles = {
     newAnimationTitle:'AV'
 };
 
-var getNewAnimationComponent = function(animations){
+var getCommentsComponent = function(){
 
-    newAnimationEleStr = components.NewAnimationComponents({
+
+    var commentsEleStr = components.CommentsComponent({
         title:'AV',
-        animations:animations
+        comments:[{
+            avatar:'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
+            username:'Zero丶one',
+            time:'10秒前',
+            content:'看评论看评论看评论看评论论'
+        }]
     });
 
-    return newAnimationEleStr
+    return commentsEleStr
 };
 
 var getViewsData = function(){
-    var animations = avDataHandler.getAnimation(0,10);
 
-    var newAnimationHTML = getNewAnimationComponent(animations);
+    var commentsHTML = getCommentsComponent();
 
     return {
-        newAnimation:newAnimationHTML
+        commentList:commentsHTML
     }
 };
 
 /* GET episodes.ejs page. */
 router.get('/episodes', function(req, res, next) {
-    var viewObj = {};
+    var viewObj = getViewsData();
+    console.log(viewObj);
 
     viewObj.title = titles.newAnimationTitle;
 
