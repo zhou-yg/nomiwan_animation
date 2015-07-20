@@ -20,6 +20,8 @@
     "grunt-contrib-clean":"x.x.x",
     "grunt-contrib-watch":"x.x.x",
 
+    "load-grunt-tasks":"~0.2.0",
+    "react":"0.13.3",
 
     "immutable":"~x.x.x"
   }

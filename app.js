@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //---------------- 自定义 --------------------------
+var childProcess = require('child_process');
+
 //初始化
 var avDataHandler = require('./model/avDataHandler')(__dirname);
 

@@ -7,7 +7,7 @@ ce = React.createElement
 
 T = React.PropTypes
 
-
+#一条评论
 CommentOne = cf cc {
 
   propTypes:
@@ -26,7 +26,7 @@ CommentOne = cf cc {
       ce 'div',{ className:'content'},commentOjb.content
 }
 
-
+#评论列表
 module.exports = cf cc {
   displayName:'commentList'
 
