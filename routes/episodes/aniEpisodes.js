@@ -15,13 +15,18 @@ var titles = {
 var getCommentsComponent = function(){
 
 
-    var commentsEleStr = components.CommentsComponent({
+    var commentsEleStr = components.struct.CommentsComponent({
         title:'AV',
         comments:[{
             avatar:'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
             username:'Zero丶one',
             time:'10秒前',
             content:'看评论看评论看评论看评论论'
+        },{
+            avatar:'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
+            username:'Zero丶one',
+            time:'10秒前',
+            content:'看评论看评论看评论看评论论评论看评论论评论看评论论评论看评论论评论看评论论'
         }]
     });
 

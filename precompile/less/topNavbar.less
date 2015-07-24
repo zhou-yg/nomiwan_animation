@@ -11,11 +11,14 @@
 #topNavbar{
   h1{
     height: @headerHeight;
-    color: #ffff00;
     float: left;
     img{
       border-radius: 40%;
       vertical-align: middle;
+    }
+    span{
+      margin-left: 10px;
+      color: #ffff00;
     }
   }
 
@@ -23,21 +26,59 @@
     padding: @padding;
     box-sizing: border-box;
     height: @headerHeightWithPadding;
+
+    position: relative;
+
     float: right;
 
+    @msgWidth:80px;
+    .user-msg{
+      width: @msgWidth;
+      height: 100%;
+
+      text-align: right;
+
+      position: relative;
+      right: @headerHeight+@padding*2;
+
+      > .username{
+        text-align: right;
+        font-size: 18px;
+
+        position: relative;
+        top: @padding;
+      }
+
+      > .user-guide{
+
+        width: 100%;
+
+        overflow: hidden;
+
+        display: flex;
+
+        position: absolute;
+        bottom: @padding;
+        
+        > li{
+          text-align: right;
+          font-size: 14px;
+          flex: 1;
+        }
+      }
+    }
+
     .avatar{
-      background-image: url(/images/login_bg01.jpg);
-      -webkit-background-size: cover;
+      background-color: #ffffff;
       background-size: cover;
+      border-radius: 5px;
       width: @headerHeight;
       height: @headerHeight;
-      display: inline-block;
-      float: left;
-    }
-    .user-msg{
-      margin: 10px;
-      display: inline-block;
-      float: left;
+
+
+      position: absolute;
+      right: @padding;
+      top: @padding;
     }
   }
 }

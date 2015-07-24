@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/styles/common/normalize.css"/>
     <link rel="stylesheet" href="/styles/common/basic.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+
+    <link rel="stylesheet" href="/styles/topNavbar.css"/>
     <!-- -->
 
     <!-- 对应 -->
@@ -15,7 +17,7 @@
 <body>
 <div class="top-bg"></div>
 <div class="container">
-    <% include ../common/topNavbar.ejs %>
+    <%- navbar %>
 
     <div id="main-window">
         <%- newAnimation %>

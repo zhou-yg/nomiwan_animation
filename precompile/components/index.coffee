@@ -4,13 +4,20 @@ cc = React.createClass
 ce = React.createElement
 rs = React.renderToString
 
-NewAnimationComponent = require './NewAnimationComponent'
-CommentsComponent = require './CommentsComponent'
+NavBarComponent = require './structure/NavBarComponent'
+
+NewAnimationComponent = require './structure/NewAnimationComponent'
+CommentsComponent = require './structure/CommentsComponent'
 
 module.exports = {
-  NewAnimationComponent:(props)->
-    return rs NewAnimationComponent props
+  structure:{
+    NewAnimationComponent:(props)->
+      return rs NewAnimationComponent props
 
-  CommentsComponent:(props)->
-    return rs CommentsComponent props
+    CommentsComponent:(props)->
+      return rs CommentsComponent props
+
+    NavBarComponent:(props)->
+      return rs NavBarComponent props
+  }
 }

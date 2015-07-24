@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/styles/common/normalize.css"/>
     <link rel="stylesheet" href="/styles/common/basic.css"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+
+    <link rel="stylesheet" href="/styles/topNavbar.css"/>
     <!-- -->
     <!-- 对应的 -->
     <link rel="stylesheet" href="/styles/episodes/aniEpisodes.css"/>
@@ -14,7 +16,7 @@
 <body>
 <div class="top-bg"></div>
 <div class="container">
-    <% include ../common/topNavbar.ejs %>
+    <%- navbar %>
 
     <div id="ani-episodes">
         <!-- the animation window -->
@@ -131,24 +133,6 @@
             <div class="transparent-bg"></div>
 
             <%- commentList %>
-
-            <ul class="comments">
-                <li>
-                    <a style="" href="http://space.bilibili.com/4616089" target="_blank" card="Zero丶one">
-                        <div class="avatar">
-                            <img src="http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg" />
-                        </div>
-                    </a>
-
-                    <div class="comment-header">
-                        <a href="http://space.bilibili.com/4616089" target="_blank" card="Zero丶one">
-                            Zero丶one
-                        </a>
-                        <span class="time">10秒前</span>
-                    </div>
-                    <div class="content">看评论看评论看评论看评论看评论看评论看评论看评论看评论看评论看评论看评论看评论看评论</div>
-                </li>
-            </ul>
 
         </section>
     </div>

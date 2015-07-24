@@ -35,7 +35,7 @@ AnimationOne = cf cc {
         updateTo = ce 'p',{},'暂无',
 
       ce 'li',{ key:'newAnimationLi'+i,className:finalClassName },
-        ce 'a',{ href:'/episodes?name='+animationObj.name },
+        ce 'a',{ href:'/episodes?name='+animationObj.name,'target':'_blank' },
           ce 'img',{ style:{
             backgroundImage:'url('+animationObj.image+')'
           }}

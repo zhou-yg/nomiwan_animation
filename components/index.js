@@ -1,5 +1,5 @@
 (function() {
-  var CommentsComponent, NewAnimationComponent, React, cc, ce, rs;
+  var CommentsComponent, NavBarComponent, NewAnimationComponent, React, cc, ce, rs;
 
   React = require('react');
 
@@ -9,16 +9,23 @@
 
   rs = React.renderToString;
 
-  NewAnimationComponent = require('./NewAnimationComponent');
+  NavBarComponent = require('./structure/NavBarComponent');
 
-  CommentsComponent = require('./CommentsComponent');
+  NewAnimationComponent = require('./structure/NewAnimationComponent');
+
+  CommentsComponent = require('./structure/CommentsComponent');
 
   module.exports = {
-    NewAnimationComponent: function(props) {
-      return rs(NewAnimationComponent(props));
-    },
-    CommentsComponent: function(props) {
-      return rs(CommentsComponent(props));
+    structure: {
+      NewAnimationComponent: function(props) {
+        return rs(NewAnimationComponent(props));
+      },
+      CommentsComponent: function(props) {
+        return rs(CommentsComponent(props));
+      },
+      NavBarComponent: function(props) {
+        return rs(NavBarComponent(props));
+      }
     }
   };
 
