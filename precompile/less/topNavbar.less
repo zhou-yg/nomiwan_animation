@@ -27,43 +27,38 @@
     box-sizing: border-box;
     height: @headerHeightWithPadding;
 
-    position: relative;
 
+    display: flex;
     float: right;
 
-    @msgWidth:80px;
     .user-msg{
-      width: @msgWidth;
       height: 100%;
 
       text-align: right;
 
-      position: relative;
-      right: @headerHeight+@padding*2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      > .username{
+      > .title{
         text-align: right;
         font-size: 18px;
-
-        position: relative;
-        top: @padding;
+        float: right;
+        cursor: pointer;
+        &:hover{
+          color: @mainColor;
+        }
       }
 
       > .user-guide{
 
-        width: 100%;
-
         overflow: hidden;
-
-        display: flex;
-
-        position: absolute;
-        bottom: @padding;
-        
         > li{
+          margin-left: @padding;
           text-align: right;
           font-size: 14px;
-          flex: 1;
+
+          float: right;
         }
       }
     }
@@ -71,14 +66,11 @@
     .avatar{
       background-color: #ffffff;
       background-size: cover;
+      margin-left: @padding*2;
       border-radius: 5px;
       width: @headerHeight;
       height: @headerHeight;
 
-
-      position: absolute;
-      right: @padding;
-      top: @padding;
     }
   }
 }

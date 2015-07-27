@@ -12,10 +12,10 @@ var titles = {
 //获取新番板块的HTML
 var getNewAnimationComponent = function(animations){
 
-  var newAnimationEleStr = components.structure.NewAnimationComponent({
+  var newAnimationEleStr = components.rs(components.structure.NewAnimationComponent({
     title:'AV',
     animations:animations
-  });
+  }));
 
   return newAnimationEleStr
 };
@@ -23,9 +23,8 @@ var getNewAnimationComponent = function(animations){
 //获取导航板块的HTML
 var getNavBarComponent = function(){
 
-  var navbarStr = components.structure.NavBarComponent({
-
-  });
+  var navbarStr = components.rs(components.structure.NavBarComponent({
+  }));
 
   return navbarStr;
 };
@@ -35,7 +34,6 @@ var getViewsData = function(){
 
   var animations = avDataHandler.getAnimation(0,10);
   var newAnimationHTML = getNewAnimationComponent(animations);
-
 
   return {
     navbar:navbarHTML,
