@@ -23,6 +23,10 @@
     "load-grunt-tasks":"~0.2.0",
     "react":"0.13.3",
 
-    "immutable":"~x.x.x"
+    "immutable":"~x.x.x",
+
+    "webpack":"~x.x.x",
+    "jsx-loader":"~x.x.x",
+    "coffee-loader":"~x.x.x"
   }
 }

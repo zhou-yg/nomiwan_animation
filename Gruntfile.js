@@ -11,23 +11,16 @@ module.exports = function (grunt) {
         coffee: {
             public: {
                 expand: true,
-                cwd: 'precompile/public/',
+                cwd: 'precompile/assets/',
                 src: ['**/*.coffee'],
-                dest: 'public/js/',
+                dest: 'assets/js/',
                 ext: '.js'
             },
-            components1: {
+            components: {
                 expand: true,
                 cwd: 'precompile/components/',
                 src: ['**/*.coffee'],
                 dest: 'components/',
-                ext: '.js'
-            },
-            components2: {
-                expand: true,
-                cwd: 'precompile/components/',
-                src: ['**/*.coffee'],
-                dest: 'public/js/components/',
                 ext: '.js'
             }
         },
@@ -54,9 +47,9 @@ module.exports = function (grunt) {
                     'clean:cssFiles',
                     'clean:jsFiles',
                     'clean:components',
-                    'less','coffee:public',
-                    'coffee:components1',
-                    'coffee:components2'
+                    'less',
+                    'coffee:public',
+                    'coffee:components'
                 ]
             }
         }
