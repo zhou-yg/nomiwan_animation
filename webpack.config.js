@@ -9,11 +9,12 @@ var componentsPlugin = new webpack.optimize.CommonsChunkPlugin('/common/componen
 module.exports = {
 
     entry:{
-        episodeIndex:'./assets/js/index/episodes/index.js',
-        mainIndex:'./assets/js/index/main/index.js'
+        episodeIndex:'./assets/index/episodes/index.js',
+        mainIndex:'./assets/index/main/index.js'
     },
     output:{
         path:'./public/js/',
+        publicPath:'http://localhost:8080/public/js/',
         filename:'[name].js'
     },
     resolve: {
@@ -22,7 +23,8 @@ module.exports = {
     },
     module:{
         loaders:[
-            { test: /\.coffee$/, loader: 'coffee-loader' }
+            { test: /\.coffee$/, loader: 'coffee-loader' },
+            { test: /\.css$/, loader: 'style!css' }
         ]
     },
     plugins:[componentsPlugin]

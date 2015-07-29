@@ -13,7 +13,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'precompile/assets/',
                 src: ['**/*.coffee'],
-                dest: 'assets/js/',
+                dest: 'assets/',
                 ext: '.js'
             },
             components: {

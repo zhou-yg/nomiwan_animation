@@ -1,7 +1,7 @@
 #main-window {
   display: flex;
 }
-#main-window .new-animation {
+#main-window .new-animation-box {
   flex-shrink: 0;
   flex-grow: 1.2;
   height: 100%;
@@ -17,30 +17,36 @@ background-color;
 color;
 */
 }
-#main-window .new-animation .animation-list {
+#main-window .new-animation-box .new-animation {
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+#main-window .new-animation-box .new-animation .animation-list {
   box-sizing: border-box;
   padding: 5px;
   flex: 1;
   overflow-y: scroll;
   position: relative;
 }
-#main-window .new-animation .animation-list ul {
+#main-window .new-animation-box .new-animation .animation-list ul {
   overflow: hidden;
 }
-#main-window .new-animation .animation-list ul li {
+#main-window .new-animation-box .new-animation .animation-list ul li {
   box-sizing: border-box;
   padding: 10px;
   float: left;
   position: relative;
 }
-#main-window .new-animation .animation-list ul li img {
+#main-window .new-animation-box .new-animation .animation-list ul li img {
   background-image: url("http://r2.ykimg.com/05100000558D1F3467BC3D5815095E6A");
   background-size: cover;
   width: 50%;
   height: 100%;
   float: left;
 }
-#main-window .new-animation .animation-list ul li .message {
+#main-window .new-animation-box .new-animation .animation-list ul li .message {
   box-sizing: border-box;
   padding: 0 10px;
   position: absolute;
@@ -49,34 +55,34 @@ color;
   right: 0;
   bottom: 10px;
 }
-#main-window .new-animation .animation-list ul li .message > h3 {
+#main-window .new-animation-box .new-animation .animation-list ul li .message > h3 {
   font-size: 17px;
 }
-#main-window .new-animation .animation-list ul li .message > p {
+#main-window .new-animation-box .new-animation .animation-list ul li .message > p {
   font-size: 14px;
   position: absolute;
   bottom: 0;
 }
-#main-window .new-animation .animation-list ul li .message > p .episode {
+#main-window .new-animation-box .new-animation .animation-list ul li .message > p .episode {
   font-size: 14px;
 }
-#main-window .new-animation .animation-list ul li.middle {
+#main-window .new-animation-box .new-animation .animation-list ul li.middle {
   margin: 1%;
   width: 23%;
   height: 110px;
 }
-#main-window .new-animation .animation-list ul li.large {
+#main-window .new-animation-box .new-animation .animation-list ul li.large {
   margin: 1%;
   width: 48%;
   height: 110px;
 }
-#main-window .sys-recommend {
+#main-window .sys-recommend-box {
   flex-grow: 1.1;
   margin-left: 1%;
   height: 100%;
   position: relative;
 }
-#main-window .msg-board {
+#main-window .msg-board-box {
   flex-grow: 1.1;
   margin-left: 1%;
   height: 100%;

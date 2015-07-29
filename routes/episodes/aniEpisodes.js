@@ -15,7 +15,7 @@ var titles = {
 var getCommentsComponent = function(){
 
 
-    var commentsEleStr = components.rs(components.struct.CommentsComponent({
+    var commentsEleStr = components.rs(components.structure.CommentsComponent({
         title:'AV',
         comments:[{
             avatar:'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
@@ -32,12 +32,22 @@ var getCommentsComponent = function(){
 
     return commentsEleStr
 };
+//获取导航板块的HTML
+var getNavBarComponent = function(){
+
+    var navbarStr = components.rs(components.structure.NavBarComponent({
+    }));
+
+    return navbarStr;
+};
 
 var getViewsData = function(){
+    var navbarHTML = getNavBarComponent();
 
     var commentsHTML = getCommentsComponent();
 
     return {
+        navbar:navbarHTML,
         commentList:commentsHTML
     }
 };

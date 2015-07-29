@@ -6,10 +6,6 @@
 background-color;
 color;
 */
-body {
-  min-height: 679px;
-  position: relative;
-}
 div.top-bg {
   background-image: url(/images/bg1.jpg);
   background-repeat: no-repeat;
@@ -38,12 +34,12 @@ div.container #ani-episodes {
   bottom: 0;
   overflow: hidden;
 }
-div.container #main-window > section,
-div.container #ani-episodes > section {
+div.container #main-window section,
+div.container #ani-episodes section {
   float: left;
 }
-div.container #main-window > section h2,
-div.container #ani-episodes > section h2 {
+div.container #main-window section h2,
+div.container #ani-episodes section h2 {
   height: 55px;
   color: #ffffff;
 }

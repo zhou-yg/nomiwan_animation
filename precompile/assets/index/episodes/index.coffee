@@ -1,3 +1,3 @@
-LoginComponent = require '../../../../components/functions/LoginComponent.js'
+LoginComponent = require '../../../components/functions/LoginComponent.js'
 
 

@@ -5,8 +5,8 @@
     <!-- 公共的 -->
     <link rel="stylesheet" href="/styles/common/normalize.css"/>
     <link rel="stylesheet" href="/styles/common/basic.css"/>
-    <link rel="stylesheet" href="/styles/index.css"/>
 
+    <link rel="stylesheet" href="/styles/index.css"/>
     <link rel="stylesheet" href="/styles/topNavbar.css"/>
     <link rel="stylesheet" href="/styles/functions/login.css"/>
     <!-- / -->
@@ -21,7 +21,6 @@
     <%- navbar %>
 
     <div id="main-window">
-        <%- newAnimation %>
         <!-- AV界面 -->
         <!--
         <section class="new-animation">
@@ -46,29 +45,35 @@
             </div>
         </section>
         -->
+        <div class="new-animation-box">
+            <%- newAnimation %>
+        </div>
+
 
         <!-- 日推 or center bar-->
-        <section class="sys-recommend">
-            <h2>
-                R
-            </h2>
-            <div class="transparent-bg"></div>
+        <div class="sys-recommend-box">
+            <section class="sys-recommend">
+                <h2>
+                    R
+                </h2>
+                <div class="transparent-bg"></div>
 
-        </section>
+            </section>
+        </div>
 
         <!--  信息板 message board-->
-        <section class="msg-board">
-            <h2>
-                M
-            </h2>
-            <div class="transparent-bg"></div>
+        <div class="msg-board-box">
+            <section class="msg-board">
+                <h2>
+                    M
+                </h2>
+                <div class="transparent-bg"></div>
 
-        </section>
+            </section>
+        </div>
     </div>
-
-</div>s
+</div>
 </body>
-<script src="/js/components/all.js"></script>
-
-<script src="/js/index/main/index2.js"></script>
+<script src="http://localhost:8080/public/js/common/components.js"></script>
+<script src="http://localhost:8080/public/js/mainIndex.js"></script>
 </html>
