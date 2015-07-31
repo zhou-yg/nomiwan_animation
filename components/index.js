@@ -1,5 +1,5 @@
 (function() {
-  var CommentsComponent, LoginComponent, NavBarComponent, NewAnimationComponent, React, cc, ce, exports, rs;
+  var CommentsComponent, LoginComponent, MsgBoardComponent, NavBarComponent, NewAnimationComponent, React, SysRecommendComponent, cc, ce, exports, rs;
 
   React = require('react');
 
@@ -11,6 +11,10 @@
 
   NewAnimationComponent = require('./structure/NewAnimationComponent');
 
+  SysRecommendComponent = require('./structure/SysRecommendComponent');
+
+  MsgBoardComponent = require('./structure/MsgBoardComponent');
+
   CommentsComponent = require('./structure/CommentsComponent');
 
   NavBarComponent = require('./structure/NavBarComponent');
@@ -21,6 +25,12 @@
     structure: {
       NewAnimationComponent: function(props) {
         return NewAnimationComponent(props);
+      },
+      SysRecommendComponent: function(props) {
+        return SysRecommendComponent(props);
+      },
+      MsgBoardComponent: function(props) {
+        return MsgBoardComponent(props);
       },
       CommentsComponent: function(props) {
         return CommentsComponent(props);

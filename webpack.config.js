@@ -8,6 +8,9 @@ var componentsPlugin = new webpack.optimize.CommonsChunkPlugin('/common/componen
 
 module.exports = {
 
+    externals:{
+        'react':"React"
+    },
     entry:{
         episodeIndex:'./assets/index/episodes/index.js',
         mainIndex:'./assets/index/main/index.js'
@@ -19,7 +22,7 @@ module.exports = {
     },
     resolve: {
         // 现在可以写 require('file') 代替 require('file.coffee')
-        //extensions: ['.js','.coffee']
+        extensions: ['','.js','.coffee']
     },
     module:{
         loaders:[

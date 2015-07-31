@@ -14,6 +14,9 @@
   T = React.PropTypes;
 
   module.exports = cf(cc({
+    propTypes: {
+      userMsg: T.object.isRequired
+    },
     getInitialState: function() {
       return {
         title: {
@@ -23,7 +26,9 @@
       };
     },
     render: function() {
-      var title;
+      var props, title;
+      console.log('render navbar');
+      props = this.props;
       title = this.state.title;
       return ce('header', {
         id: 'topNavbar'
@@ -32,7 +37,7 @@
         alt: 'logo',
         height: '100%'
       }), title.name), NavUserProfile({
-        userMsg: {}
+        userMsg: props.userMsg
       }));
     }
   }));

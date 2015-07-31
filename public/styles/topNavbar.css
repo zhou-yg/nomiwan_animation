@@ -29,7 +29,8 @@ color;
   box-sizing: border-box;
   height: 65px;
   display: flex;
-  float: right;
+  position: absolute;
+  right: 0;
 }
 #topNavbar .user-profile .user-msg {
   height: 100%;

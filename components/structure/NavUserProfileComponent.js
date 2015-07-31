@@ -66,6 +66,9 @@
         userMsg: userMsg
       };
     },
+    clickOnUsername: function(e) {
+      return console.log('click on username');
+    },
     login: function(e) {
       return console.log(e);
     },
@@ -77,7 +80,8 @@
         userBoard = ce('div', {
           className: 'user-msg'
         }, ce('span', {
-          className: 'title'
+          className: 'title',
+          onClick: this.clickOnUsername
         }, username), ce(UserGuide, {}));
       } else {
         userBoard = ce('div', {

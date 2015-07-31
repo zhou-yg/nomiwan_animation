@@ -5,7 +5,12 @@ ce = React.createElement
 rs = React.renderToString
 
 #界面
+#主界面
 NewAnimationComponent = require './structure/NewAnimationComponent'
+SysRecommendComponent = require './structure/SysRecommendComponent'
+MsgBoardComponent = require './structure/MsgBoardComponent'
+
+#剧集界面
 CommentsComponent = require './structure/CommentsComponent'
 NavBarComponent = require './structure/NavBarComponent'
 
@@ -17,6 +22,13 @@ exports = {
     NewAnimationComponent:(props)->
       return NewAnimationComponent props
 
+    SysRecommendComponent:(props)->
+      return SysRecommendComponent props
+
+    MsgBoardComponent:(props)->
+      return MsgBoardComponent props
+
+    #------
     CommentsComponent:(props)->
       return CommentsComponent props
 

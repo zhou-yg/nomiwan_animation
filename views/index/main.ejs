@@ -18,7 +18,9 @@
 <body>
 <div class="top-bg"></div>
 <div class="container">
-    <%- navbar %>
+    <div class="navbar-box">
+        <%- navbar %>
+    </div>
 
     <div id="main-window">
         <!-- AV界面 -->
@@ -52,28 +54,26 @@
 
         <!-- 日推 or center bar-->
         <div class="sys-recommend-box">
-            <section class="sys-recommend">
-                <h2>
-                    R
-                </h2>
-                <div class="transparent-bg"></div>
-
-            </section>
+            <%- sysRecommend %>
         </div>
 
         <!--  信息板 message board-->
         <div class="msg-board-box">
-            <section class="msg-board">
-                <h2>
-                    M
-                </h2>
-                <div class="transparent-bg"></div>
-
-            </section>
+            <%- msgBoard %>
         </div>
     </div>
 </div>
 </body>
+
+<!-- webpack server 热切 -->
+
 <script src="http://localhost:8080/public/js/common/components.js"></script>
 <script src="http://localhost:8080/public/js/mainIndex.js"></script>
+
+<!-- 项目静态 -->
+
+<!--
+<script src="/js/common/components.js"></script>
+<script src="/js/mainIndex.js"></script>
+-->
 </html>

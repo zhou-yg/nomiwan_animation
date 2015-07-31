@@ -4,9 +4,9 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         clean: {
-            cssFiles: [ 'public/styles/**'],
-            jsFiles:['public/js/**.js'],
-            components:['components/**.js','components/**.coffee']
+            css: [ 'public/styles/**'],
+            assets:['public/js/**/*.js','assets/**/*.js'],
+            components:['components/**.js']
         },
         coffee: {
             public: {
@@ -39,14 +39,13 @@ module.exports = function (grunt) {
                 dateFormat: function(time) {
                     grunt.log.writeln('The watch finished in ' + time + 'ms at' + (new Date()).toString());
                     grunt.log.writeln('Waiting for more changes...');
-                }
+                },
+                spawn:false
             },
             lessTask:{
                 files:['precompile/**/*.less','precompile/**/*.coffee'],
                 tasks:[
-                    'clean:cssFiles',
-                    'clean:jsFiles',
-                    'clean:components',
+                    'clean',
                     'less',
                     'coffee:public',
                     'coffee:components'
@@ -55,5 +54,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['coffee','watch']);
+    grunt.registerTask('default', ['clean','less','coffee','watch']);
 };

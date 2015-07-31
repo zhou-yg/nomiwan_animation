@@ -10,6 +10,9 @@ T = React.PropTypes
 
 module.exports = cf cc {
 
+  propTypes:
+    userMsg:T.object.isRequired
+
   getInitialState:->
     {
       title:{
@@ -19,11 +22,14 @@ module.exports = cf cc {
     }
 
   render:->
+    console.log 'render navbar'
+
+    props = @props
     title = @state.title
 
     ce 'header',{ id:'topNavbar' },
       ce 'h1',{},
         ce 'img',{ src:title.logo,alt:'logo',height:'100%'}
         title.name
-      NavUserProfile { userMsg:{} }
+      NavUserProfile { userMsg:props.userMsg }
 }

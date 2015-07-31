@@ -53,6 +53,8 @@ module.exports = cf cc {
       userMsg:userMsg,
     }
 
+  clickOnUsername:(e)->
+    console.log 'click on username'
   login:(e)->
     console.log e
 
@@ -62,7 +64,7 @@ module.exports = cf cc {
 
     if username
       userBoard = ce 'div',{ className:'user-msg' },
-                    ce 'span',{ className:'title' },username
+                    ce 'span',{ className:'title',onClick:@clickOnUsername },username
                     ce UserGuide, {}
     else
       userBoard = ce 'div',{ className:'user-msg' },
