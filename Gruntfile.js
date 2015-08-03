@@ -3,9 +3,18 @@ module.exports = function (grunt) {
     var auto = require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
+        copy:{
+            move: {
+                expand: true,
+                flatten: true,
+                src: ['bower_components/*/*.js','bower_components/*/*.min.js', 'bower_components/*/*-min.js'],
+                dest: 'public/js/libs/',
+                filter: 'isFile'
+            }
+        },
         clean: {
             css: [ 'public/styles/**'],
-            assets:['public/js/**/*.js','assets/**/*.js'],
+            assets:['public/js/**/*.js','assets/**/*.js','!public/js/libs/*.js'],
             components:['components/**.js']
         },
         coffee: {
@@ -54,5 +63,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['clean','less','coffee','watch']);
+    grunt.registerTask('default', ['copy','clean','less','coffee','watch']);
 };

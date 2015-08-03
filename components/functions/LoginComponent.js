@@ -288,7 +288,11 @@
       formState = state.formState;
       type = this.props.fromType;
       if (type === 'register') {
-        return ce('form', {
+        return ce('div', {
+          className: 'loginContainer'
+        }, ce('div', {
+          className: 'black-bg'
+        }), ce('form', {
           method: 'post',
           action: ''
         }, ce(InputControlComponent, {
@@ -320,9 +324,13 @@
           action: 'forgot',
           type: 'other',
           text: '忘记密码？重置'
-        })));
+        }))));
       } else if (type === 'login') {
-        return ce('form', {
+        return ce('div', {
+          className: 'loginContainer'
+        }, ce('div', {
+          className: 'black-bg'
+        }), ce('form', {
           method: 'post',
           action: ''
         }, ce(InputControlComponent, {
@@ -350,7 +358,7 @@
           action: 'forgot',
           type: 'other',
           text: '忘记密码？重置'
-        })));
+        }))));
       }
     }
   }));

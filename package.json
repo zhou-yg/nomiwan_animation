@@ -19,6 +19,7 @@
     "grunt-contrib-less":"x.x.x",
     "grunt-contrib-clean":"x.x.x",
     "grunt-contrib-watch":"x.x.x",
+    "grunt-contrib-copy":"x.x.x",
 
     "load-grunt-tasks":"~0.2.0",
     "react":"0.13.3",

@@ -5,30 +5,39 @@ body {
   color: #383838;
   background-color: #fff;
 }
-.topbanner {
+.login-container .black-bg {
+  background-color: #000000;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.login-container .topbanner {
   width: 100%;
   height: 220px;
   background: url(../../../images/topbanner.jpg) center bottom / cover no-repeat;
   position: relative;
 }
-.topbanner .poswrap {
+.login-container .topbanner .poswrap {
   position: absolute;
   width: 100%;
   bottom: 25px;
   text-align: center;
 }
-.topbanner .poswrap .brand {
+.login-container .topbanner .poswrap .brand {
   width: 289px;
   background-size: 289px 46px;
 }
-.topbanner .poswrap .brand h1 {
+.login-container .topbanner .poswrap .brand h1 {
   color: #fff;
   -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-.topbanner .poswrap .desc {
+.login-container .topbanner .poswrap .desc {
   color: #fff;
   font-size: 18px;
   -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
@@ -36,20 +45,20 @@ body {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-.form-unit {
+.login-container .form-unit {
   width: 100%;
   max-width: 320px;
   margin: 30px auto;
   padding: 0 10px;
 }
-.form-unit .horizontal-line {
+.login-container .form-unit .horizontal-line {
   width: 100%;
   height: 1px;
   background-color: #d9d9d9;
   margin-bottom: 30px;
   margin-top: 10px;
 }
-.form-unit .validation {
+.login-container .form-unit .validation {
   border: 1px solid #ff6d58;
   display: none;
   margin-bottom: 20px;
@@ -59,7 +68,7 @@ body {
   width: 100%;
   color: #ff6d58;
 }
-.form-unit .form-control {
+.login-container .form-unit .form-control {
   background-color: #fff;
   border: 1px solid #d9d9d9;
   border-radius: 3px;
@@ -71,7 +80,7 @@ body {
   line-height: 20px;
   -webkit-appearance: none;
 }
-.form-unit .btn {
+.login-container .form-unit .btn {
   margin-bottom: 20px;
   padding: 12px;
   height: 44px;
@@ -83,7 +92,7 @@ body {
   border-radius: 3px;
   position: relative;
 }
-.form-unit .btn a {
+.login-container .form-unit .btn a {
   position: absolute;
   text-align: center;
   line-height: 44px;
@@ -92,51 +101,51 @@ body {
   bottom: 0;
   left: 0;
 }
-.form-unit .btn:focus {
+.login-container .form-unit .btn:focus {
   outline: none;
 }
-.form-unit .btn-primary {
+.login-container .form-unit .btn-primary {
   color: #fff;
 }
-.form-unit .anim-blue-all {
+.login-container .form-unit .anim-blue-all {
   position: relative;
   border: 1px solid;
 }
-.form-unit .anim-blue-all a {
+.login-container .form-unit .anim-blue-all a {
   color: #fff;
   -webkit-transition: padding-right 218ms ease;
   -o-transition: padding-right 218ms ease;
   transition: padding-right 218ms ease;
 }
-.form-unit .anim-blue {
+.login-container .form-unit .anim-blue {
   position: relative;
   border: 1px solid #03a9f4;
   background-color: #fff;
 }
-.form-unit .anim-blue a {
+.login-container .form-unit .anim-blue a {
   color: #03a9f4;
 }
-.form-unit .anim-blue:hover {
+.login-container .form-unit .anim-blue:hover {
   background-color: #03a9f4;
 }
-.form-unit .anim-blue:hover a {
+.login-container .form-unit .anim-blue:hover a {
   color: #fff;
 }
-.form-unit .anim-blue-all:hover {
+.login-container .form-unit .anim-blue-all:hover {
   border: 1px solid #03a9f4;
   background-color: #03a9f4;
 }
-.form-unit .anim-grey {
+.login-container .form-unit .anim-grey {
   position: relative;
   border: 1px solid #aaa;
   background-color: #fff;
 }
-.form-unit .anim-grey a {
+.login-container .form-unit .anim-grey a {
   color: #aaaaaa;
 }
-.form-unit .anim-grey:hover {
+.login-container .form-unit .anim-grey:hover {
   background-color: #aaa;
 }
-.form-unit .anim-grey:hover a {
+.login-container .form-unit .anim-grey:hover a {
   color: #fff;
 }

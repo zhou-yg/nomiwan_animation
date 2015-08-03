@@ -1,17 +1,9 @@
 (function() {
-  var React, T, UserGuide, cc, ce, cf;
+  var LoginComponent, React, T, UserGuide, cc, ce, cf;
 
   React = require('react');
 
-  cf = React.createFactory;
-
-  cc = React.createClass;
-
-  ce = React.createElement;
-
-  T = React.PropTypes;
-
-  React = require('react');
+  LoginComponent = require('../functions/LoginComponent');
 
   cf = React.createFactory;
 

@@ -1,12 +1,6 @@
 React = require 'react'
 
-cf = React.createFactory
-cc = React.createClass
-ce = React.createElement
-
-T = React.PropTypes
-
-React = require 'react'
+LoginComponent = require '../functions/LoginComponent'
 
 cf = React.createFactory
 cc = React.createClass

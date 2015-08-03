@@ -233,24 +233,28 @@ module.exports = cf cc {
     type = @props.fromType
 
     if type is 'register'
-      ce 'form',{ method:'post',action:'' },
-        ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
-        ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
-        ce InputControlComponent,{ formState:formState,type:'passwordRepeat',placeholder:'重复密码' }
-        ce ButtonComponent,{ formState:formState,action:'register',type:'select',text:'注册' }
-        ce 'div',{ className:'horizontal-line' }
-        ce 'div',{},
-          ce ButtonComponent,{ formState:formState,action:'signin',type:'highlight',text:'已有账号？登录' }
-          ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
+      ce 'div',{ className:'loginContainer' },
+        ce 'div',{ className:'black-bg' }
+        ce 'form',{ method:'post',action:'' },
+          ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
+          ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
+          ce InputControlComponent,{ formState:formState,type:'passwordRepeat',placeholder:'重复密码' }
+          ce ButtonComponent,{ formState:formState,action:'register',type:'select',text:'注册' }
+          ce 'div',{ className:'horizontal-line' }
+          ce 'div',{},
+            ce ButtonComponent,{ formState:formState,action:'signin',type:'highlight',text:'已有账号？登录' }
+            ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
 
     else if type is 'login'
-      ce 'form',{ method:'post',action:'' },
-        ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
-        ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
-        ce ButtonComponent,{ formState:formState,action:'login',type:'select',text:'登录' }
-        ce 'div',{ className:'horizontal-line' }
-        ce 'div',{},
-          ce ButtonComponent,{ formState:formState,action:'signup',type:'highlight',text:'还没有账号？免费注册' }
-          ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
+      ce 'div',{ className:'loginContainer' },
+        ce 'div',{ className:'black-bg' }
+        ce 'form',{ method:'post',action:'' },
+          ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
+          ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
+          ce ButtonComponent,{ formState:formState,action:'login',type:'select',text:'登录' }
+          ce 'div',{ className:'horizontal-line' }
+          ce 'div',{},
+            ce ButtonComponent,{ formState:formState,action:'signup',type:'highlight',text:'还没有账号？免费注册' }
+            ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
 
 }

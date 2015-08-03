@@ -14,7 +14,6 @@ NavBarBoxDom = document.querySelector('.navbar-box')
 console.log 'a'
 
 React.render(
-
-  NavBarComponent { userMsg:{username:'from client'} }
+  NavBarComponent { userMsg:{} }
   NavBarBoxDom
 )
