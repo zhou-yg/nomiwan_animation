@@ -1,22 +1,24 @@
 (function() {
-  var MsgBoardComponent, NavBarBoxDom, NavBarComponent, NewAnimationComponent, React, SysRecommendComponent;
+  var $, LoginAction, NavBarComponent, React;
 
   React = require('react');
 
-  NavBarComponent = require('../../../precompile/components/structure/NavBarComponent');
+  $ = require('jquery');
 
-  NewAnimationComponent = require('../../../precompile/components/structure/NewAnimationComponent');
+  LoginAction = require('../../actions/LoginAction');
 
-  SysRecommendComponent = require('../../../precompile/components/structure/SysRecommendComponent');
+  NavBarComponent = require('../../../components/structure/NavBarComponent');
 
-  MsgBoardComponent = require('../../../precompile/components/structure/MsgBoardComponent');
+  (function() {
+    var NavBarBoxDom;
+    NavBarBoxDom = $('.navbar-box')[0];
+    return React.render(NavBarComponent({
+      userMsg: {}
+    }), NavBarBoxDom);
+  })();
 
-  NavBarBoxDom = document.querySelector('.navbar-box');
-
-  console.log('a');
-
-  React.render(NavBarComponent({
-    userMsg: {}
-  }), NavBarBoxDom);
+  LoginAction.login.listen(function() {
+    return console.log('click on login');
+  });
 
 }).call(this);

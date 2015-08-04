@@ -1,19 +1,18 @@
 React = require 'react'
+$ = require 'jquery'
 
-NavBarComponent = require '../../../precompile/components/structure/NavBarComponent'
+LoginAction = require '../../actions/LoginAction'
 
-NewAnimationComponent= require '../../../precompile/components/structure/NewAnimationComponent'
+NavBarComponent = require '../../../components/structure/NavBarComponent'
 
-SysRecommendComponent = require '../../../precompile/components/structure/SysRecommendComponent'
+do ->
+  #渲染头部栏
+  NavBarBoxDom = $('.navbar-box')[0]
 
-MsgBoardComponent = require '../../../precompile/components/structure/MsgBoardComponent'
+  React.render(
+    NavBarComponent { userMsg:{} }
+    NavBarBoxDom
+  )
 
-
-NavBarBoxDom = document.querySelector('.navbar-box')
-
-console.log 'a'
-
-React.render(
-  NavBarComponent { userMsg:{} }
-  NavBarBoxDom
-)
+LoginAction.login.listen ->
+  console.log 'click on login'

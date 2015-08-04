@@ -1,77 +1,70 @@
-var express = require('express');
-var router = express.Router();
-var avDataHandler = require('../../model/avDataHandler.js')();
+(function() {
+  var avDataHandler, components, express, getMsgBoardComponent, getNavBarComponent, getNewAnimationComponent, getSysRecommendComponent, getViewsData, router, titles;
 
-var components = require('../../components/');
+  express = require('express');
 
+  router = express.Router();
 
-var titles = {
-  newAnimationTitle:'AV'
-};
+  avDataHandler = require('../../model/avDataHandler.js')();
 
-//获取消息HTML
-var getMsgBoardComponent = function(recommends){
+  components = require('../../components/');
 
-  return components.rs(components.structure.MsgBoardComponent({
-    title:'M'
-  }))
-};
+  titles = {
+    newAnimationTitle: 'AV'
+  };
 
-//获取推荐HTML
-var getSysRecommendComponent = function(recommends){
+  getMsgBoardComponent = function(recommends) {
+    return components.rs(components.structure.MsgBoardComponent({
+      title: 'M'
+    }));
+  };
 
-  return components.rs(components.structure.SysRecommendComponent({
-    title:'R'
-  }))
-};
+  getSysRecommendComponent = function(recommends) {
+    return components.rs(components.structure.SysRecommendComponent({
+      title: 'R'
+    }));
+  };
 
-//获取新番板块的HTML
-var getNewAnimationComponent = function(animations){
+  getNewAnimationComponent = function(animations) {
+    return components.rs(components.structure.NewAnimationComponent({
+      title: 'AV',
+      animations: animations
+    }));
+  };
 
-  return components.rs(components.structure.NewAnimationComponent({
-    title:'AV',
-    animations:animations
-  }));
-};
+  getNavBarComponent = function() {
+    var navbarStr;
+    navbarStr = components.rs(components.structure.NavBarComponent({
+      userMsg: {
+        username: 'zhouyg from server'
+      }
+    }));
+    return navbarStr;
+  };
 
-//获取导航板块的HTML
-var getNavBarComponent = function(){
+  getViewsData = function() {
+    var animations, msgBoardHTML, navbarHTML, newAnimationHTML, sysRecommendHTML;
+    navbarHTML = getNavBarComponent();
+    animations = avDataHandler.getAnimation(0, 10);
+    newAnimationHTML = getNewAnimationComponent(animations);
+    sysRecommendHTML = getSysRecommendComponent();
+    msgBoardHTML = getMsgBoardComponent();
+    return {
+      navbar: navbarHTML,
+      newAnimation: newAnimationHTML,
+      sysRecommend: sysRecommendHTML,
+      msgBoard: msgBoardHTML
+    };
+  };
 
-  var navbarStr = components.rs(components.structure.NavBarComponent({
-    userMsg:{
-      username:'zhouyg from server'
-    }
-  }));
+  router.get('/', function(req, res, next) {
+    var viewObj;
+    console.log('main---in');
+    viewObj = getViewsData();
+    viewObj.title = titles.newAnimationTitle;
+    return res.render('index/main', viewObj);
+  });
 
-  return navbarStr;
-};
+  module.exports = router;
 
-var getViewsData = function(){
-  var navbarHTML = getNavBarComponent();
-
-  var animations = avDataHandler.getAnimation(0,10);
-  var newAnimationHTML = getNewAnimationComponent(animations);
-
-  var sysRecommendHTML = getSysRecommendComponent();
-
-  var msgBoardHTML = getMsgBoardComponent();
-
-  return {
-    navbar:navbarHTML,
-    newAnimation:newAnimationHTML,
-    sysRecommend:sysRecommendHTML,
-    msgBoard:msgBoardHTML
-  }
-};
-
-/* GET main.ejs page. */
-router.get('/', function(req, res, next) {
-
-  var viewObj = getViewsData();
-
-  viewObj.title = titles.newAnimationTitle;
-
-  res.render('index/main', viewObj );
-});
-
-module.exports = router;
+}).call(this);

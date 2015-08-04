@@ -7,7 +7,7 @@ module.exports = function (grunt) {
             move: {
                 expand: true,
                 flatten: true,
-                src: ['bower_components/*/*.js','bower_components/*/*.min.js', 'bower_components/*/*-min.js'],
+                src: ['bower_components/*/*.js','bower_components/*/dist/*.js','bower_components/*/*.min.js', 'bower_components/*/*-min.js'],
                 dest: 'public/js/libs/',
                 filter: 'isFile'
             }
@@ -30,6 +30,13 @@ module.exports = function (grunt) {
                 cwd: 'precompile/components/',
                 src: ['**/*.coffee'],
                 dest: 'components/',
+                ext: '.js'
+            },
+            router:{
+                expand: true,
+                cwd: 'precompile/routes/',
+                src: ['**/*.coffee'],
+                dest: 'routes/',
                 ext: '.js'
             }
         },

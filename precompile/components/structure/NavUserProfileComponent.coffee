@@ -1,6 +1,6 @@
 React = require 'react'
 
-LoginComponent = require '../functions/LoginComponent'
+LoginAction = require '../../assets/actions/LoginAction'
 
 cf = React.createFactory
 cc = React.createClass
@@ -11,14 +11,14 @@ T = React.PropTypes
 UserGuide = cc {
   getInitialState:->
     {
-    liArr:[{
-      name:'消息'
-      type:'message'
-    },{
-      name:'历史'
-      type:'history'
-    }]
-    username:'zhouyg'
+      liArr:[{
+        name:'消息'
+        type:'message'
+      },{
+        name:'历史'
+        type:'history'
+      }]
+      username:'zhouyg'
     }
 
   clickOnGuide:(type)->
@@ -48,9 +48,12 @@ module.exports = cf cc {
     }
 
   clickOnUsername:(e)->
-    console.log 'click on username'
+
   login:(e)->
-    console.log e
+    LoginAction.login();
+
+  register:(e)->
+    LoginAction.register()
 
   render:->
     userMsg = @state.userMsg
@@ -63,7 +66,7 @@ module.exports = cf cc {
     else
       userBoard = ce 'div',{ className:'user-msg' },
                     ce 'span',{ className:'title',type:'login',onClick:@login },'登录'
-                    ce 'span',{ className:'title',type:'register',onClick:@login },'注册'
+                    ce 'span',{ className:'title',type:'register',onClick:@register },'注册'
 
     ce 'div',{ className:'user-profile' },
       userBoard

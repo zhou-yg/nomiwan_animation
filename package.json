@@ -24,10 +24,15 @@
     "load-grunt-tasks":"~0.2.0",
     "react":"0.13.3",
 
-    "immutable":"~x.x.x",
+    "immutable":"~3.7.4",
+
+    "reflux":"~0.2.11",
+
+    "lodash":"~3.10.1",
 
     "webpack":"~x.x.x",
     "jsx-loader":"~x.x.x",
-    "coffee-loader":"~x.x.x"
+    "coffee-loader":"~x.x.x",
+    "jquery":"~2.1.4"
   }
 }

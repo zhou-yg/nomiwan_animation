@@ -31,10 +31,12 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 //---------------------------------------------------
 var routesDirPath = './routes/';
 var mainRoute = require(routesDirPath+'index/main'),
-    episodesRoute = require(routesDirPath+'episodes/aniEpisodes');
+    episodesRoute = require(routesDirPath+'episodes/aniEpisodes'),
+    loginRoute = require(routesDirPath+'login/login');
 
 app.use('/', mainRoute);
 app.use('/', episodesRoute);
+app.use('/', loginRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

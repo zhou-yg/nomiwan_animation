@@ -1,9 +1,9 @@
 (function() {
-  var LoginComponent, React, T, UserGuide, cc, ce, cf;
+  var LoginAction, React, T, UserGuide, cc, ce, cf;
 
   React = require('react');
 
-  LoginComponent = require('../functions/LoginComponent');
+  LoginAction = require('../../assets/actions/LoginAction');
 
   cf = React.createFactory;
 
@@ -58,11 +58,12 @@
         userMsg: userMsg
       };
     },
-    clickOnUsername: function(e) {
-      return console.log('click on username');
-    },
+    clickOnUsername: function(e) {},
     login: function(e) {
-      return console.log(e);
+      return LoginAction.login();
+    },
+    register: function(e) {
+      return LoginAction.register();
     },
     render: function() {
       var userBoard, userMsg, username;
@@ -85,7 +86,7 @@
         }, '登录'), ce('span', {
           className: 'title',
           type: 'register',
-          onClick: this.login
+          onClick: this.register
         }, '注册'));
       }
       return ce('div', {

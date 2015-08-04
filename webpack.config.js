@@ -9,11 +9,12 @@ var componentsPlugin = new webpack.optimize.CommonsChunkPlugin('/common/componen
 module.exports = {
 
     externals:{
-        'react':"React"
+        'react':"React",
+        'reflux':"Reflux"
     },
     entry:{
-        episodeIndex:'./assets/index/episodes/index.js',
-        mainIndex:'./assets/index/main/index.js'
+        episodeIndex:'./precompile/assets/index/episodes/index',
+        mainIndex:'./precompile/assets/index/main/index'
     },
     output:{
         path:'./public/js/',
