@@ -1,10 +1,10 @@
 @import "var";
 
 //13寸满窗口下的高度
-body{
+body {
 }
 
-div.top-bg{
+div.top-bg {
   background-image: @topBackgroudImage;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -16,7 +16,8 @@ div.top-bg{
   bottom: 0;
   left: 0;
 }
-div.container{
+
+div.container {
   overflow: hidden;
   position: absolute;
   top: 5%;
@@ -24,33 +25,33 @@ div.container{
   bottom: 5%;
   left: 5%;
 
-  #main-window{
+  #main-window {
     //display: none;
   }
-  #ani-episodes{
+  #ani-episodes {
     //display: none;
   }
-  #main-window,#ani-episodes{
+  #main-window, #ani-episodes {
     margin-top: (@headerHeight+10)*1.5;
     width: 100%;
-    
+
     position: absolute;
     top: 0;
     bottom: 0;
-    
+
     overflow: hidden;
 
-    section{
+    section {
 
       float: left;
 
-      h2{
+      h2 {
         height: @headerHeight;
         color: @hTextColor;
       }
     }
-    
-    .transparent-bg{
+
+    .transparent-bg {
       background-color: #ffffff;
       opacity: 0.3;
       position: absolute;

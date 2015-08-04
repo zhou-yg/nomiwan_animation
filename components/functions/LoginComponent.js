@@ -286,13 +286,12 @@
       var formState, state, type;
       state = this.state;
       formState = state.formState;
-      type = this.props.fromType;
+      type = this.props.formType;
       if (type === 'register') {
         return ce('div', {
-          className: 'loginContainer'
-        }, ce('div', {
-          className: 'black-bg'
-        }), ce('form', {
+          className: 'login-container'
+        }, ce('form', {
+          className: 'form-unit',
           method: 'post',
           action: ''
         }, ce(InputControlComponent, {
@@ -327,12 +326,10 @@
         }))));
       } else if (type === 'login') {
         return ce('div', {
-          className: 'loginContainer'
-        }, ce('div', {
-          className: 'black-bg'
-        }), ce('form', {
-          method: 'post',
-          action: ''
+          className: 'login-container'
+        }, ce('form', {
+          className: 'form-unit',
+          method: 'post'
         }, ce(InputControlComponent, {
           formState: formState,
           type: 'email',

@@ -1,50 +1,11 @@
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #383838;
-  background-color: #fff;
-}
-.login-container .black-bg {
-  background-color: #000000;
-  opacity: 0.5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.login-container .topbanner {
-  width: 100%;
-  height: 220px;
-  background: url(../../../images/topbanner.jpg) center bottom / cover no-repeat;
-  position: relative;
-}
-.login-container .topbanner .poswrap {
-  position: absolute;
-  width: 100%;
-  bottom: 25px;
-  text-align: center;
-}
-.login-container .topbanner .poswrap .brand {
-  width: 289px;
-  background-size: 289px 46px;
-}
-.login-container .topbanner .poswrap .brand h1 {
-  color: #fff;
-  -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  text-align: center;
-}
-.login-container .topbanner .poswrap .desc {
-  color: #fff;
-  font-size: 18px;
-  -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-  text-align: center;
-}
+/* basic */
+/* init */
+/* new Animation */
+/*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
 .login-container .form-unit {
   width: 100%;
   max-width: 320px;
@@ -70,12 +31,13 @@ body {
 }
 .login-container .form-unit .form-control {
   background-color: #fff;
+  margin-bottom: 20px;
   border: 1px solid #d9d9d9;
   border-radius: 3px;
+  padding: 12px;
   height: auto;
   width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
+  color: #474747;
   font-size: 16px;
   line-height: 20px;
   -webkit-appearance: none;

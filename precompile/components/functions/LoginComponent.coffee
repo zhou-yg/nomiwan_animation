@@ -230,12 +230,11 @@ module.exports = cf cc {
   render:->
     state = @state
     formState = state.formState
-    type = @props.fromType
+    type = @props.formType
 
     if type is 'register'
-      ce 'div',{ className:'loginContainer' },
-        ce 'div',{ className:'black-bg' }
-        ce 'form',{ method:'post',action:'' },
+      ce 'div',{ className:'login-container' },
+        ce 'form',{  className:'form-unit', method:'post',action:'' },
           ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
           ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
           ce InputControlComponent,{ formState:formState,type:'passwordRepeat',placeholder:'重复密码' }
@@ -246,9 +245,8 @@ module.exports = cf cc {
             ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
 
     else if type is 'login'
-      ce 'div',{ className:'loginContainer' },
-        ce 'div',{ className:'black-bg' }
-        ce 'form',{ method:'post',action:'' },
+      ce 'div',{ className:'login-container' },
+        ce 'form',{ className:'form-unit',method:'post' },
           ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
           ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
           ce ButtonComponent,{ formState:formState,action:'login',type:'select',text:'登录' }

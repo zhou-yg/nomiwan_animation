@@ -20,6 +20,7 @@
     "react":"x.x.x",
     "backbone":"x.x.x",
     "jquery":"x.x.x",
-    "reflux":"~x.x.x"
+    "reflux":"~x.x.x",
+    "bootstrap":"~3.3.5"
   }
 }

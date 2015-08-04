@@ -1,11 +1,17 @@
 (function() {
-  var components, express, getNavBarComponent, getViewsData, router;
+  var components, express, getLoginComponent, getNavBarComponent, getViewsData, router;
 
   express = require('express');
 
   router = express.Router();
 
   components = require('../../components/');
+
+  getLoginComponent = function() {
+    return components.rs(components.functions.LoginComponent({
+      formType: 'register'
+    }));
+  };
 
   getNavBarComponent = function() {
     var navbarStr;
@@ -18,10 +24,12 @@
   };
 
   getViewsData = function() {
-    var navbarHTML;
+    var loginHTML, navbarHTML;
     navbarHTML = getNavBarComponent();
+    loginHTML = getLoginComponent();
     return {
-      navbar: navbarHTML
+      navbar: navbarHTML,
+      login: loginHTML
     };
   };
 

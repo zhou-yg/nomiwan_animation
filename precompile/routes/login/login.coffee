@@ -3,6 +3,12 @@ router = express.Router()
 
 components = require('../../components/')
 
+#获取登录
+getLoginComponent = ->
+    return components.rs components.functions.LoginComponent {
+        formType:'register'
+    }
+
 #获取导航板块的HTML
 getNavBarComponent = ->
 
@@ -13,13 +19,15 @@ getNavBarComponent = ->
     }))
 
     return navbarStr
-
-
+#
 getViewsData = ->
     navbarHTML = getNavBarComponent()
 
+    loginHTML = getLoginComponent()
+
     return {
         navbar:navbarHTML
+        login:loginHTML
     }
 # GET login.ejs page.
 router.get '/login', (req, res, next)->
