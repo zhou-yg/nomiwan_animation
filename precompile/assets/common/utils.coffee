@@ -29,6 +29,29 @@ module.exports =
     return blackBg
 
   ###
+  # 从url中获取值
+  #
+   # key,url中的键
+  ###
+  getValueFromUrl:(key)->
+    #直接从hash中获取第一个值
+    result = null
+
+    if !key
+      urlRegExp = /#([\w]+)&?/
+      str = location.hash
+
+    else
+      urlRegExp = new RegExp(key+'=([\\w]+)')
+      str = location.href
+
+    matchKeys = str.match(urlRegExp)
+    if matchKeys
+      result = matchKeys[1]
+
+    return result
+
+  ###
   # 链接跳转的控制方法,
   #     外部链接一律新窗口
   #

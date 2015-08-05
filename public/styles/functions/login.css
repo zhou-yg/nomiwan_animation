@@ -6,20 +6,20 @@
 background-color;
 color;
 */
-.login-container .form-unit {
+.form-unit {
   width: 100%;
   max-width: 320px;
   margin: 30px auto;
   padding: 0 10px;
 }
-.login-container .form-unit .horizontal-line {
+.form-unit .horizontal-line {
   width: 100%;
   height: 1px;
   background-color: #d9d9d9;
   margin-bottom: 30px;
   margin-top: 10px;
 }
-.login-container .form-unit .validation {
+.form-unit .validation {
   border: 1px solid #ff6d58;
   display: none;
   margin-bottom: 20px;
@@ -29,7 +29,8 @@ color;
   width: 100%;
   color: #ff6d58;
 }
-.login-container .form-unit .form-control {
+.form-unit .form-control {
+  box-sizing: border-box;
   background-color: #fff;
   margin-bottom: 20px;
   border: 1px solid #d9d9d9;
@@ -40,9 +41,12 @@ color;
   color: #474747;
   font-size: 16px;
   line-height: 20px;
+  -webkit-transition: -webkit-box-shadow ease-in-out 0.15s;
+  transition: box-shadow ease-in-out 0.15s;
   -webkit-appearance: none;
+  display: block;
 }
-.login-container .form-unit .btn {
+.form-unit .btn {
   margin-bottom: 20px;
   padding: 12px;
   height: 44px;
@@ -54,7 +58,7 @@ color;
   border-radius: 3px;
   position: relative;
 }
-.login-container .form-unit .btn a {
+.form-unit .btn a {
   position: absolute;
   text-align: center;
   line-height: 44px;
@@ -63,51 +67,40 @@ color;
   bottom: 0;
   left: 0;
 }
-.login-container .form-unit .btn:focus {
+.form-unit .btn:focus {
   outline: none;
 }
-.login-container .form-unit .btn-primary {
+.form-unit .btn-primary {
   color: #fff;
 }
-.login-container .form-unit .anim-blue-all {
+.form-unit .anim-blue-all {
   position: relative;
-  border: 1px solid;
-}
-.login-container .form-unit .anim-blue-all a {
+  border: 1px solid #2e6da4;
   color: #fff;
   -webkit-transition: padding-right 218ms ease;
-  -o-transition: padding-right 218ms ease;
   transition: padding-right 218ms ease;
 }
-.login-container .form-unit .anim-blue {
+.form-unit .anim-blue {
   position: relative;
   border: 1px solid #03a9f4;
   background-color: #fff;
-}
-.login-container .form-unit .anim-blue a {
   color: #03a9f4;
 }
-.login-container .form-unit .anim-blue:hover {
+.form-unit .anim-blue:hover {
   background-color: #03a9f4;
-}
-.login-container .form-unit .anim-blue:hover a {
   color: #fff;
 }
-.login-container .form-unit .anim-blue-all:hover {
+.form-unit .anim-blue-all:hover {
   border: 1px solid #03a9f4;
   background-color: #03a9f4;
 }
-.login-container .form-unit .anim-grey {
+.form-unit .anim-grey {
   position: relative;
   border: 1px solid #aaa;
   background-color: #fff;
-}
-.login-container .form-unit .anim-grey a {
   color: #aaaaaa;
 }
-.login-container .form-unit .anim-grey:hover {
+.form-unit .anim-grey:hover {
   background-color: #aaa;
-}
-.login-container .form-unit .anim-grey:hover a {
   color: #fff;
 }

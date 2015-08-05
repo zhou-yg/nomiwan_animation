@@ -1,7 +1,9 @@
 (function() {
-  var ButtonComponent, InputControlComponent, LoginFormClass, React, RegisterFormClass, T, cc, ce, cf, formDataValidations;
+  var ButtonComponent, FormAction, InputControlComponent, LoginFormClass, React, Reflux, RegisterFormClass, T, cc, ce, cf, formDataValidations;
 
   React = require('react');
+
+  Reflux = require('reflux');
 
   cf = React.createFactory;
 
@@ -10,6 +12,19 @@
   ce = React.createElement;
 
   T = React.PropTypes;
+
+  FormAction = Reflux.createActions({
+    down: {},
+    login: {
+      children: ['success', 'fail']
+    },
+    register: {
+      children: ['success', 'fail']
+    },
+    forget: {
+      children: ['success', 'fail']
+    }
+  });
 
   formDataValidations = {
     emailRegExp: /^[.\w]*@[a-zA-Z0-9]+(?:.[a-zA-Z]+)+$/,
@@ -78,7 +93,6 @@
       inputValue = inputDom.value;
       inputPropertyObj = this.state.inputPropertyObj;
       validateName = inputPropertyObj.validate.name;
-      console.log(validateName);
       if (validateName === 'validatePasswordRepeat') {
         validateResult = formData.password === inputValue;
       } else {
@@ -151,28 +165,26 @@
       };
       typePropertyObj = buttonMap[buttonType] || buttonMap.other;
       return {
-        action: '#' + (props.action || ''),
+        action: props.action,
         text: props.text,
         typePropertyObj: typePropertyObj
       };
     },
     clicked: function() {
-      this.props.formState.action = this.state.action;
-      return formComponent.forceUpdate();
+      return FormAction.down({
+        formState: this.state.action
+      });
     },
     render: function() {
-      var action, state, text, typePropertyObj;
+      var state, text, typePropertyObj;
       state = this.state;
-      action = state.action;
       text = state.text;
       typePropertyObj = state.typePropertyObj;
       return ce('button', {
         type: typePropertyObj.type,
         className: typePropertyObj.className,
         onClick: this.clicked
-      }, ce('a', {
-        href: action
-      }, text));
+      }, text);
     }
   });
 
@@ -281,6 +293,16 @@
         }
       };
     },
+    componentWillMount: function() {
+      return FormAction.down.listen((function(_this) {
+        return function(data) {
+          console.log(data);
+          return _this.setState({
+            formData: data
+          });
+        };
+      })(this));
+    },
     onc: function() {},
     render: function() {
       var formState, state, type;
@@ -289,9 +311,8 @@
       type = this.props.formType;
       if (type === 'register') {
         return ce('div', {
-          className: 'login-container'
+          className: 'form-unit'
         }, ce('form', {
-          className: 'form-unit',
           method: 'post',
           action: ''
         }, ce(InputControlComponent, {
@@ -326,9 +347,8 @@
         }))));
       } else if (type === 'login') {
         return ce('div', {
-          className: 'login-container'
+          className: 'form-unit'
         }, ce('form', {
-          className: 'form-unit',
           method: 'post'
         }, ce(InputControlComponent, {
           formState: formState,

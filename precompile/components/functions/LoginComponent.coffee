@@ -1,10 +1,25 @@
 React = require 'react'
+Reflux = require 'reflux'
 
 cf = React.createFactory
 cc = React.createClass
 ce = React.createElement
 
 T = React.PropTypes
+
+FormAction = Reflux.createActions {
+  down:{
+
+  }
+  login:
+    children:['success','fail']
+
+  register:
+    children:['success','fail']
+
+  forget:
+    children:['success','fail']
+}
 
 formDataValidations = {
 
@@ -23,10 +38,11 @@ formDataValidations = {
 
   validatePassword:(ps)->
     return @psRegExp.test(ps)
+
   validatePasswordRepeat:(ps)->
+
     return @psRegExp.test(ps)
 }
-
 #type
 #placeholder
 InputControlComponent = cc {
@@ -64,9 +80,9 @@ InputControlComponent = cc {
     }
 
     {
-    errorMsg:null
-    placeholder:placeholder
-    inputPropertyObj:typeMap[inputType]
+      errorMsg:null
+      placeholder:placeholder
+      inputPropertyObj:typeMap[inputType]
     }
   validateInput:->
     formData = @props.formState.formData
@@ -78,7 +94,6 @@ InputControlComponent = cc {
 
     validateName = inputPropertyObj.validate.name
 
-    console.log validateName
     if validateName is 'validatePasswordRepeat'
       validateResult = formData.password is inputValue
     else
@@ -145,17 +160,15 @@ ButtonComponent = cc {
     }
     typePropertyObj = buttonMap[buttonType] or buttonMap.other
     {
-    action:'#'+(props.action or '')
-    text:props.text
-    typePropertyObj:typePropertyObj
+      action:props.action
+      text:props.text
+      typePropertyObj:typePropertyObj
     }
   clicked:->
-    @props.formState.action = @state.action
-    formComponent.forceUpdate()
+    FormAction.down formState:@state.action
 
   render:->
     state = @state
-    action = state.action
     text = state.text
     typePropertyObj = state.typePropertyObj
 
@@ -163,8 +176,7 @@ ButtonComponent = cc {
         type:typePropertyObj.type
         className:typePropertyObj.className
         onClick:@clicked
-      },
-      ce 'a',{ href:action },text
+      },text
 }
 #登录板
 LoginFormClass = cc {
@@ -225,6 +237,11 @@ module.exports = cf cc {
         formData:{
         }
     }
+
+  componentWillMount:->
+    FormAction.down.listen (data)=>
+      console.log data
+      @setState formData:data
   onc:->
 
   render:->
@@ -233,8 +250,8 @@ module.exports = cf cc {
     type = @props.formType
 
     if type is 'register'
-      ce 'div',{ className:'login-container' },
-        ce 'form',{  className:'form-unit', method:'post',action:'' },
+      ce 'div',{ className:'form-unit' },
+        ce 'form',{ method:'post',action:'' },
           ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
           ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
           ce InputControlComponent,{ formState:formState,type:'passwordRepeat',placeholder:'重复密码' }
@@ -245,8 +262,8 @@ module.exports = cf cc {
             ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
 
     else if type is 'login'
-      ce 'div',{ className:'login-container' },
-        ce 'form',{ className:'form-unit',method:'post' },
+      ce 'div',{ className:'form-unit' },
+        ce 'form',{ method:'post' },
           ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
           ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
           ce ButtonComponent,{ formState:formState,action:'login',type:'select',text:'登录' }
@@ -254,5 +271,4 @@ module.exports = cf cc {
           ce 'div',{},
             ce ButtonComponent,{ formState:formState,action:'signup',type:'highlight',text:'还没有账号？免费注册' }
             ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
-
 }

@@ -14,7 +14,8 @@ module.exports = {
     },
     entry:{
         episodeIndex:'./precompile/assets/index/episodes/index',
-        mainIndex:'./precompile/assets/index/main/index'
+        mainIndex:'./precompile/assets/index/main/index',
+        loginIndex:'./precompile/assets/index/login/index'
     },
     output:{
         path:'./public/js/',

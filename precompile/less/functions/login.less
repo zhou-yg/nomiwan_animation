@@ -1,123 +1,117 @@
 @import "../var";
 
-.login-container{
-  
-  .form-unit {
+@highlight: #03a9f4;
+
+.form-unit {
+  width: 100%;
+  max-width: 320px;
+  margin: 30px auto;
+  padding: 0 10px;
+
+  .horizontal-line {
     width: 100%;
-    max-width: 320px;
-    margin: 30px auto;
-    padding: 0 10px;
+    height: 1px;
+    background-color: #d9d9d9;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
 
-    .horizontal-line {
-      width: 100%;
-      height: 1px;
-      background-color: #d9d9d9;
-      margin-bottom: 30px;
-      margin-top: 10px;
-    }
+  .validation {
+    border: 1px solid #ff6d58;
+    display: none;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    position: relative;
+    border-radius: 3px;
+    width: 100%;
+    color: #ff6d58;
+  }
 
-    .validation {
-      border: 1px solid #ff6d58;
-      display: none;
-      margin-bottom: 20px;
-      padding: 10px 15px;
-      position: relative;
-      border-radius: 3px;
-      width: 100%;
-      color: #ff6d58;
-    }
+  .form-control {
+    box-sizing: border-box;
 
-    .form-control {
-      background-color: #fff;
-      margin-bottom: 20px;
-      border: 1px solid #d9d9d9;
-      border-radius: 3px;
-      padding: 12px;
-      height: auto;
-      width: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    padding: 12px;
+    height: auto;
+    width: 100%;
 
-      color: @normalArticleColor;
-      font-size: 16px;
-      line-height: 20px;
+    color: @normalArticleColor;
+    font-size: 16px;
+    line-height: 20px;
 
-      -webkit-appearance: none
-    }
+    -webkit-transition: -webkit-box-shadow ease-in-out .15s;
+    transition: box-shadow ease-in-out .15s;
 
-    @btnPadding: 12px;
-    @btnLineHeight: 20px;
-    @btnHeight: @btnPadding*2+@btnLineHeight;
-    @btnMg: 20px;
+    -webkit-appearance: none;
+    display: block;
+  }
 
-    .btn {
-      margin-bottom: @btnMg;
-      padding: @btnPadding;
-      height: @btnHeight;
-      font-size: 16px;
-      width: 100%;
-      display: inline-block;
-      outline: 0;
-      border: none;
-      border-radius: 3px;
+  @btnPadding: 12px;
+  @btnLineHeight: 20px;
+  @btnHeight: @btnPadding*2+@btnLineHeight;
+  @btnMg: 20px;
 
-      position: relative;
+  .btn {
+    margin-bottom: @btnMg;
+    padding: @btnPadding;
+    height: @btnHeight;
+    font-size: 16px;
+    width: 100%;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    border-radius: 3px;
 
-      a {
-        position: absolute;
-        text-align: center;
-        line-height: @btnHeight;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
+    position: relative;
+
+    a {
+      position: absolute;
+      text-align: center;
+      line-height: @btnHeight;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
-    .btn:focus {
-      outline: none;
-    }
-    .btn-primary {
-      color: #fff;
-    }
-    .anim-blue-all {
-      position: relative;
-      border: 1px solid;
-      a {
-        color: #fff;
-        -webkit-transition: padding-right 218ms ease;
-        -o-transition: padding-right 218ms ease;
-        transition: padding-right 218ms ease;
-      }
-    }
-    .anim-blue {
-      position: relative;
-      border: 1px solid #03a9f4;
-      background-color: #fff;
-      a {
-        color: #03a9f4;
-      }
-    }
-    .anim-blue:hover {
-      background-color: #03a9f4;
-      a {
-        color: #fff;
-      }
-    }
-    .anim-blue-all:hover {
-      border: 1px solid #03a9f4;
-      background-color: #03a9f4;
-    }
-    .anim-grey {
-      position: relative;
-      border: 1px solid #aaa;
-      background-color: #fff;
-      a {
-        color: #aaa
-      }
-    }
-    .anim-grey:hover {
-      background-color: #aaa;
-      a {
-        color: #fff;
-      }
-    }
+  }
+  .btn:focus {
+    outline: none;
+  }
+  .btn-primary {
+    color: #fff;
+  }
+  .anim-blue-all {
+    position: relative;
+    border: 1px solid #2e6da4;
+    color: #fff;
+    -webkit-transition: padding-right 218ms ease;
+    transition: padding-right 218ms ease;
+  }
+  .anim-blue {
+    position: relative;
+    border: 1px solid @highlight;
+    background-color: #fff;
+    color: @highlight;
+  }
+  .anim-blue:hover {
+    background-color: @highlight;
+    color: #fff;
+  }
+  .anim-blue-all:hover {
+    border: 1px solid @highlight;
+    background-color: @highlight;
+  }
+  .anim-grey {
+    position: relative;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    color: #aaa
+  }
+  .anim-grey:hover {
+    background-color: #aaa;
+    color: #fff;
   }
 }

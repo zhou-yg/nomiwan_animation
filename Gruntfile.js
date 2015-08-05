@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         },
         coffee: {
             //前端资源
-            //assets: {expand: true,cwd: 'precompile/assets/',src: ['**/*.coffee'],dest: 'assets/',ext: '.js'},
+            assets: {expand: true,cwd: 'precompile/assets/',src: ['**/*.coffee'],dest: 'assets/',ext: '.js'},
             //前后端共用的react组件
             components: {
                 expand: true,
@@ -60,8 +60,7 @@ module.exports = function (grunt) {
                 tasks:[
                     'clean',
                     'less',
-                    'coffee:public',
-                    'coffee:components'
+                    'coffee'
                 ]
             }
         }
