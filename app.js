@@ -10,7 +10,6 @@ var childProcess = require('child_process');
 //初始化
 var avDataHandler = require('./model/avDataHandler')(__dirname);
 
-
 //----------------- 开始    ---------------------------
 var app = express();
 

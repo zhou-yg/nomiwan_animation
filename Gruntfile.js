@@ -13,7 +13,7 @@ module.exports = function (grunt) {
             }
         },
         clean: {
-            css: [ 'public/styles/**'],
+            css: ['!public/style/libs/*.css','public/styles/**/*.css'],
             assets:['public/js/**/*.js','assets/**/*.js','!public/js/libs/*.js'],
             components:['components/**.js']
         },
