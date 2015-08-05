@@ -18,13 +18,9 @@ module.exports = function (grunt) {
             components:['components/**.js']
         },
         coffee: {
-            public: {
-                expand: true,
-                cwd: 'precompile/assets/',
-                src: ['**/*.coffee'],
-                dest: 'assets/',
-                ext: '.js'
-            },
+            //前端资源
+            //assets: {expand: true,cwd: 'precompile/assets/',src: ['**/*.coffee'],dest: 'assets/',ext: '.js'},
+            //前后端共用的react组件
             components: {
                 expand: true,
                 cwd: 'precompile/components/',
@@ -32,6 +28,7 @@ module.exports = function (grunt) {
                 dest: 'components/',
                 ext: '.js'
             },
+            //express的路由部分
             router:{
                 expand: true,
                 cwd: 'precompile/routes/',
