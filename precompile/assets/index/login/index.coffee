@@ -12,7 +12,7 @@ do ->
   loginType = utils.getValueFromUrl('type')
 
   #渲染登录 
-  mainWindow = $('#main-window')[0]
+  mainWindow = $('#login-frame')[0]
 
   React.render(
     LoginComponent { formType:loginType }

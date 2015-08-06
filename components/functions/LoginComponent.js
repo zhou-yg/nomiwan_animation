@@ -1,5 +1,5 @@
 (function() {
-  var ButtonComponent, FormAction, InputControlComponent, LoginFormClass, React, Reflux, RegisterFormClass, T, cc, ce, cf, formDataValidations;
+  var ButtonComponent, FormAction, FormStore, InputControlComponent, LoginFormClass, React, Reflux, RegisterFormClass, T, cc, ce, cf, formDataValidations;
 
   React = require('react');
 
@@ -23,6 +23,13 @@
     },
     forget: {
       children: ['success', 'fail']
+    }
+  });
+
+  FormStore = Reflux.createStore({
+    listenables: FormAction,
+    onDown: function(data) {
+      return this.trigger(data);
     }
   });
 
@@ -111,10 +118,9 @@
     componentWillReceiveProps: function(nextProps) {
       var formState;
       formState = nextProps.formState;
-      if (formState.action === '#login' || formState.action === '#register') {
-        this.validateInput();
+      if (formState.action === 'login' || formState.action === 'register') {
+        return this.validateInput();
       }
-      return console.log(formState.formData);
     },
     render: function() {
       var errorMsg, inputPropertyObj, placeholder, state;
@@ -127,13 +133,9 @@
       }, ce('div', {
         className: 'validation',
         style: {
-          display: errorMsg ? 'block' : 'none'
+          opacity: errorMsg ? 1 : 0
         }
-      }, ce('p', {
-        style: {
-          textAlign: 'center'
-        }
-      }, errorMsg)), ce('input', {
+      }, ce('p', {}, errorMsg ? ' ' : ' ')), ce('input', {
         ref: 'input',
         placeholder: placeholder,
         type: inputPropertyObj.type,
@@ -172,7 +174,7 @@
     },
     clicked: function() {
       return FormAction.down({
-        formState: this.state.action
+        action: this.state.action
       });
     },
     render: function() {
@@ -191,12 +193,23 @@
   LoginFormClass = cc({
     getInitialState: function() {
       return {
-        formState: {
-          formData: {}
-        }
+        formState: this.props.formState
       };
     },
-    onc: function() {},
+    componentWillMount: function() {
+      console.log('login will Mount');
+      return FormStore.listen((function(_this) {
+        return function(data) {
+          var formState;
+          console.log(data);
+          formState = _this.state.formState;
+          formState.action = data.action;
+          return _this.setState({
+            formState: formState
+          });
+        };
+      })(this));
+    },
     render: function() {
       var formState, state;
       state = this.state;
@@ -204,7 +217,9 @@
       return ce('form', {
         method: 'post',
         action: ''
-      }, ce(InputControlComponent, {
+      }, ce('div', {
+        className: 'transparent-bg'
+      }), ce(InputControlComponent, {
         formState: formState,
         type: 'email',
         placeholder: '邮箱/手机号'
@@ -236,12 +251,22 @@
   RegisterFormClass = cc({
     getInitialState: function() {
       return {
-        formState: {
-          formData: {}
-        }
+        formState: this.props.formState
       };
     },
-    onc: function() {},
+    componentWillMount: function() {
+      return FormStore.listen((function(_this) {
+        return function(data) {
+          var formState;
+          console.log(data);
+          formState = _this.state.formState;
+          formState.action = data.action;
+          return _this.setState({
+            formState: formState
+          });
+        };
+      })(this));
+    },
     render: function() {
       var formState, state;
       state = this.state;
@@ -249,7 +274,9 @@
       return ce('form', {
         method: 'post',
         action: ''
-      }, ce(InputControlComponent, {
+      }, ce('div', {
+        className: 'transparent-bg'
+      }), ce(InputControlComponent, {
         formState: formState,
         type: 'email',
         placeholder: '邮箱/手机号'
@@ -283,99 +310,54 @@
   });
 
   module.exports = cf(cc({
+    displayName: 'formBoard',
     propTypes: {
       formType: T.string.isRequired
     },
     getInitialState: function() {
       return {
         formState: {
+          action: this.props.formType,
           formData: {}
-        }
+        },
+        formTypes: ['signin', 'signup']
       };
     },
     componentWillMount: function() {
-      return FormAction.down.listen((function(_this) {
+      var formTypes;
+      formTypes = this.state.formTypes;
+      return FormStore.listen((function(_this) {
         return function(data) {
-          console.log(data);
-          return _this.setState({
-            formData: data
-          });
+          var action, formState;
+          action = data.action;
+          if (-1 !== formTypes.indexOf(action)) {
+            formState = _this.state.formState;
+            formState.action = data.action;
+            return _this.setState({
+              formState: formState
+            });
+          }
         };
       })(this));
     },
     onc: function() {},
     render: function() {
-      var formState, state, type;
+      var formState, formType, state;
       state = this.state;
       formState = state.formState;
-      type = this.props.formType;
-      if (type === 'register') {
+      formType = state.formState.action;
+      if (formType === 'signup') {
         return ce('div', {
           className: 'form-unit'
-        }, ce('form', {
-          method: 'post',
-          action: ''
-        }, ce(InputControlComponent, {
-          formState: formState,
-          type: 'email',
-          placeholder: '邮箱/手机号'
-        }), ce(InputControlComponent, {
-          formState: formState,
-          type: 'password',
-          placeholder: '密码'
-        }), ce(InputControlComponent, {
-          formState: formState,
-          type: 'passwordRepeat',
-          placeholder: '重复密码'
-        }), ce(ButtonComponent, {
-          formState: formState,
-          action: 'register',
-          type: 'select',
-          text: '注册'
-        }), ce('div', {
-          className: 'horizontal-line'
-        }), ce('div', {}, ce(ButtonComponent, {
-          formState: formState,
-          action: 'signin',
-          type: 'highlight',
-          text: '已有账号？登录'
-        }), ce(ButtonComponent, {
-          formState: formState,
-          action: 'forgot',
-          type: 'other',
-          text: '忘记密码？重置'
-        }))));
-      } else if (type === 'login') {
+        }, ce(RegisterFormClass, {
+          formState: formState
+        }));
+      } else if (formType === 'signin') {
         return ce('div', {
           className: 'form-unit'
-        }, ce('form', {
-          method: 'post'
-        }, ce(InputControlComponent, {
-          formState: formState,
-          type: 'email',
-          placeholder: '邮箱/手机号'
-        }), ce(InputControlComponent, {
-          formState: formState,
-          type: 'password',
-          placeholder: '密码'
-        }), ce(ButtonComponent, {
-          formState: formState,
-          action: 'login',
-          type: 'select',
-          text: '登录'
-        }), ce('div', {
-          className: 'horizontal-line'
-        }), ce('div', {}, ce(ButtonComponent, {
-          formState: formState,
-          action: 'signup',
-          type: 'highlight',
-          text: '还没有账号？免费注册'
-        }), ce(ButtonComponent, {
-          formState: formState,
-          action: 'forgot',
-          type: 'other',
-          text: '忘记密码？重置'
-        }))));
+        }, ce(LoginFormClass, {
+          formState: formState
+        }));
       }
     }
   }));

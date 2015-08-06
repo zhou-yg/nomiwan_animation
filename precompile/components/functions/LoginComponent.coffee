@@ -9,7 +9,6 @@ T = React.PropTypes
 
 FormAction = Reflux.createActions {
   down:{
-
   }
   login:
     children:['success','fail']
@@ -19,6 +18,13 @@ FormAction = Reflux.createActions {
 
   forget:
     children:['success','fail']
+}
+
+FormStore = Reflux.createStore {
+  listenables:FormAction
+
+  onDown:(data)->
+    this.trigger(data)
 }
 
 formDataValidations = {
@@ -110,10 +116,8 @@ InputControlComponent = cc {
     }
   componentWillReceiveProps:(nextProps)->
     formState = nextProps.formState
-    if formState.action is '#login' or formState.action is '#register'
+    if formState.action is 'login' or formState.action is 'register'
       @validateInput()
-
-    console.log(formState.formData)
 
   render:->
     state = @state
@@ -124,9 +128,9 @@ InputControlComponent = cc {
 
     ce 'div',{ className:'form-field' },
       ce 'div',{ className:'validation',style:{
-          display:if errorMsg then 'block' else 'none'
+          opacity:if errorMsg then 1 else 0
         }},
-        ce 'p',{ style:{textAlign:'center'} },errorMsg
+        ce 'p',{},if errorMsg then ' ' else ' '
       ce 'input',{
         ref:'input'
         placeholder:placeholder
@@ -165,7 +169,7 @@ ButtonComponent = cc {
       typePropertyObj:typePropertyObj
     }
   clicked:->
-    FormAction.down formState:@state.action
+    FormAction.down action:@state.action
 
   render:->
     state = @state
@@ -182,17 +186,25 @@ ButtonComponent = cc {
 LoginFormClass = cc {
   getInitialState:->
     {
-      formState:
-        formData:{
-        }
+      formState:@props.formState
     }
-  onc:->
+  componentWillMount:->
+    console.log 'login will Mount'
+
+    FormStore.listen (data)=>
+      console.log data
+
+      formState = @state.formState
+      formState.action = data.action
+
+      @setState formState: formState
 
   render:->
     state = @state
     formState = state.formState
 
     ce 'form',{ method:'post',action:'' },
+      ce 'div',{ className:'transparent-bg' }
       ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
       ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
       ce ButtonComponent,{ formState:formState,action:'login',type:'select',text:'登录' }
@@ -205,17 +217,23 @@ LoginFormClass = cc {
 RegisterFormClass = cc {
   getInitialState:->
     {
-      formState:
-        formData:{
-        }
+      formState:@props.formState
     }
-  onc:->
+  componentWillMount:->
+    FormStore.listen (data)=>
+      console.log data
+
+      formState = @state.formState
+      formState.action = data.action
+
+      @setState formState: formState
 
   render:->
     state = @state
     formState = state.formState
 
     ce 'form',{ method:'post',action:'' },
+      ce 'div',{ className:'transparent-bg' }
       ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
       ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
       ce InputControlComponent,{ formState:formState,type:'passwordRepeat',placeholder:'重复密码' }
@@ -228,47 +246,43 @@ RegisterFormClass = cc {
 
 module.exports = cf cc {
 
+  displayName:'formBoard'
+
   propTypes:
     formType:T.string.isRequired
 
   getInitialState:->
     {
       formState:
+        action:@props.formType
         formData:{
+
         }
+      formTypes:['signin','signup']
     }
 
   componentWillMount:->
-    FormAction.down.listen (data)=>
-      console.log data
-      @setState formData:data
+    formTypes = @state.formTypes
+
+    FormStore.listen (data)=>
+      action = data.action
+      if -1 isnt formTypes.indexOf action
+        formState = @state.formState
+        formState.action = data.action
+
+        @setState formState:formState
+
   onc:->
 
   render:->
     state = @state
     formState = state.formState
-    type = @props.formType
+    formType = state.formState.action
 
-    if type is 'register'
+    if formType is 'signup'
       ce 'div',{ className:'form-unit' },
-        ce 'form',{ method:'post',action:'' },
-          ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
-          ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
-          ce InputControlComponent,{ formState:formState,type:'passwordRepeat',placeholder:'重复密码' }
-          ce ButtonComponent,{ formState:formState,action:'register',type:'select',text:'注册' }
-          ce 'div',{ className:'horizontal-line' }
-          ce 'div',{},
-            ce ButtonComponent,{ formState:formState,action:'signin',type:'highlight',text:'已有账号？登录' }
-            ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
-
-    else if type is 'login'
+        ce RegisterFormClass,{ formState:formState }
+    else if formType is 'signin'
       ce 'div',{ className:'form-unit' },
-        ce 'form',{ method:'post' },
-          ce InputControlComponent,{ formState:formState,type:'email',placeholder:'邮箱/手机号' }
-          ce InputControlComponent,{ formState:formState,type:'password',placeholder:'密码' }
-          ce ButtonComponent,{ formState:formState,action:'login',type:'select',text:'登录' }
-          ce 'div',{ className:'horizontal-line' }
-          ce 'div',{},
-            ce ButtonComponent,{ formState:formState,action:'signup',type:'highlight',text:'还没有账号？免费注册' }
-            ce ButtonComponent,{ formState:formState,action:'forgot',type:'other',text:'忘记密码？重置' }
+        ce LoginFormClass,{ formState:formState }
 }

@@ -10,7 +10,13 @@ color;
   width: 100%;
   max-width: 320px;
   margin: 30px auto;
-  padding: 0 10px;
+}
+.form-unit > form {
+  padding: 20px;
+  position: relative;
+}
+.form-unit > form > .form-field {
+  position: relative;
 }
 .form-unit .horizontal-line {
   width: 100%;
@@ -20,14 +26,17 @@ color;
   margin-top: 10px;
 }
 .form-unit .validation {
-  border: 1px solid #ff6d58;
-  display: none;
+  box-sizing: border-box;
   margin-bottom: 20px;
-  padding: 10px 15px;
-  position: relative;
+  border: 1px solid #ff6d58;
   border-radius: 3px;
+  padding: 10px 15px;
   width: 100%;
   color: #ff6d58;
+  position: absolute;
+  left: 320px;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 .form-unit .form-control {
   box-sizing: border-box;

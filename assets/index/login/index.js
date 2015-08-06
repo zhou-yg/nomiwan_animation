@@ -14,7 +14,7 @@
   (function() {
     var loginType, mainWindow;
     loginType = utils.getValueFromUrl('type');
-    mainWindow = $('#main-window')[0];
+    mainWindow = $('#login-frame')[0];
     return React.render(LoginComponent({
       formType: loginType
     }), mainWindow);

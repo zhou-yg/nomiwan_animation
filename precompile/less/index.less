@@ -31,7 +31,7 @@ div.container {
   #ani-episodes {
     //display: none;
   }
-  #main-window, #ani-episodes {
+  #main-window, #ani-episodes,#login-frame {
     margin-top: (@headerHeight+10)*1.5;
     width: 100%;
 
@@ -40,6 +40,8 @@ div.container {
     bottom: 0;
 
     overflow: hidden;
+  }
+  #main-window, #ani-episodes{
 
     section {
 
@@ -52,13 +54,7 @@ div.container {
     }
 
     .transparent-bg {
-      background-color: #ffffff;
-      opacity: 0.3;
-      position: absolute;
       top: @headerHeight;
-      right: 0;
-      bottom: 0;
-      left: 0;
     }
   }
 }

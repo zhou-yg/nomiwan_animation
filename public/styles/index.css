@@ -26,7 +26,8 @@ div.container {
   left: 5%;
 }
 div.container #main-window,
-div.container #ani-episodes {
+div.container #ani-episodes,
+div.container #login-frame {
   margin-top: 97.5px;
   width: 100%;
   position: absolute;
@@ -45,11 +46,5 @@ div.container #ani-episodes section h2 {
 }
 div.container #main-window .transparent-bg,
 div.container #ani-episodes .transparent-bg {
-  background-color: #ffffff;
-  opacity: 0.3;
-  position: absolute;
   top: 55px;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
