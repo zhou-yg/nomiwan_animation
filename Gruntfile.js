@@ -17,26 +17,6 @@ module.exports = function (grunt) {
             assets:['public/js/**/*.js','assets/**/*.js','!public/js/libs/*.js'],
             components:['components/**.js']
         },
-        coffee: {
-            //前端资源
-            assets: {expand: true,cwd: 'precompile/assets/',src: ['**/*.coffee'],dest: 'assets/',ext: '.js'},
-            //前后端共用的react组件
-            components: {
-                expand: true,
-                cwd: 'precompile/components/',
-                src: ['**/*.coffee'],
-                dest: 'components/',
-                ext: '.js'
-            },
-            //express的路由部分
-            router:{
-                expand: true,
-                cwd: 'precompile/routes/',
-                src: ['**/*.coffee'],
-                dest: 'routes/',
-                ext: '.js'
-            }
-        },
         less: {
             files: {
                 expand: true,
@@ -60,11 +40,10 @@ module.exports = function (grunt) {
                 tasks:[
                     'clean',
                     'less',
-                    'coffee'
                 ]
             }
         }
     });
 
-    grunt.registerTask('default', ['copy','clean','less','coffee','watch']);
+    grunt.registerTask('default', ['copy','clean','less','watch']);
 };
