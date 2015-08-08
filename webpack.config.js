@@ -8,29 +8,45 @@ var componentsPlugin = new webpack.optimize.CommonsChunkPlugin('/common/componen
 
 module.exports = {
 
-    externals:{
-        'react':"React",
-        'reflux':"Reflux"
+    externals: {
+        'react': "React",
+        'reflux': "Reflux"
     },
-    entry:{
-        episodeIndex:'./precompile/assets/index/episodes/index',
-        mainIndex:'./precompile/assets/index/main/index',
-        loginIndex:'./precompile/assets/index/login/index'
+    entry: {
+        episodeIndex: './precompile/assets/index/episodes/index',
+        mainIndex: './precompile/assets/index/main/index',
+        loginIndex: './precompile/assets/index/login/index'
     },
-    output:{
-        path:'./public/js/',
-        publicPath:'http://localhost:8080/public/js/',
-        filename:'[name].js'
+    output: {
+        path: './public/js/',
+        publicPath: 'http://localhost:8080/public/js/',
+        filename: '[name].js'
     },
     resolve: {
         // 现在可以写 require('file') 代替 require('file.coffee')
-        extensions: ['','.js','.coffee']
+        extensions: ['', '.js', '.jsx', '.coffee   ', '.less']
     },
-    module:{
-        loaders:[
-            { test: /\.coffee$/, loader: 'coffee-loader' },
-            { test: /\.css$/, loader: 'style!css' }
-        ]
+    module: {
+        loaders: [{
+                test: /\.coffee$/,
+                exclude: /node_modules|bower_components/,
+                loader: 'coffee-loader'
+            },
+            {
+                test: /\.jsx$|\.js/,
+                exclude: /node_modules|bower_components/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.css$/,
+                exclude: /node_modules|bower_components/,
+                loader: 'style!css'
+            },
+            {
+                test: /\.less$/,
+                exclude: /node_modules|bower_components/,
+                loader: 'style-loader!css-loader!less-loader'
+        }]
     },
-    plugins:[componentsPlugin]
+    plugins: [componentsPlugin]
 };
