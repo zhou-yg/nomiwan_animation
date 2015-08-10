@@ -1,23 +1,31 @@
-(function() {
-  var $, LoginAction, LoginComponent, React, utils;
+'use strict';
 
-  React = require('react');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-  $ = require('jquery');
+var _react = require('react');
 
-  utils = require('../../common/utils');
+var _react2 = _interopRequireDefault(_react);
 
-  LoginAction = require('../../actions/LoginAction');
+var _jquery = require('jquery');
 
-  LoginComponent = require('../../../components/functions/LoginComponent');
+var _jquery2 = _interopRequireDefault(_jquery);
 
-  (function() {
-    var loginType, mainWindow;
-    loginType = utils.getValueFromUrl('type');
-    mainWindow = $('#login-frame')[0];
-    return React.render(LoginComponent({
-      formType: loginType
-    }), mainWindow);
-  })();
+var _commonUtils = require('../../common/utils');
 
-}).call(this);
+var _commonUtils2 = _interopRequireDefault(_commonUtils);
+
+var _actionsLoginAction = require('../../actions/LoginAction');
+
+var _actionsLoginAction2 = _interopRequireDefault(_actionsLoginAction);
+
+var _componentsFunctionsLoginComponent = require('../../../components/functions/LoginComponent');
+
+var _componentsFunctionsLoginComponent2 = _interopRequireDefault(_componentsFunctionsLoginComponent);
+
+var loginType = _commonUtils2['default'].getValueFromUrl('type');
+
+var mainWindow = (0, _jquery2['default'])('#login-frame')[0];
+
+_react2['default'].render((0, _componentsFunctionsLoginComponent2['default'])({
+    formType: loginType
+}), mainWindow);

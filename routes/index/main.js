@@ -1,48 +1,47 @@
-(function() {
-  var avDataHandler, components, express, getMsgBoardComponent, getNavBarComponent, getNewAnimationComponent, getSysRecommendComponent, getViewsData, router, titles;
+var avDataHandler, components, express, getMsgBoardComponent, getNavBarComponent, getNewAnimationComponent, getSysRecommendComponent, getViewsData, router, titles;
 
-  express = require('express');
+express = require('express');
 
-  router = express.Router();
+router = express.Router();
 
-  avDataHandler = require('../../model/avDataHandler.js')();
+avDataHandler = require('../../model/avDataHandler.js')();
 
-  components = require('../../components/');
+components = require('../../components/');
 
-  titles = {
+titles = {
     newAnimationTitle: 'AV'
-  };
+};
 
-  getMsgBoardComponent = function(recommends) {
+getMsgBoardComponent = function (recommends) {
     return components.rs(components.structure.MsgBoardComponent({
-      title: 'M'
+        title: 'M'
     }));
-  };
+};
 
-  getSysRecommendComponent = function(recommends) {
+getSysRecommendComponent = function (recommends) {
     return components.rs(components.structure.SysRecommendComponent({
-      title: 'R'
+        title: 'R'
     }));
-  };
+};
 
-  getNewAnimationComponent = function(animations) {
+getNewAnimationComponent = function (animations) {
     return components.rs(components.structure.NewAnimationComponent({
-      title: 'AV',
-      animations: animations
+        title: 'AV',
+        animations: animations
     }));
-  };
+};
 
-  getNavBarComponent = function() {
+getNavBarComponent = function () {
     var navbarStr;
     navbarStr = components.rs(components.structure.NavBarComponent({
-      userMsg: {
-        username: 'zhouyg from server'
-      }
+        userMsg: {
+            username: 'zhouyg from server'
+        }
     }));
     return navbarStr;
-  };
+};
 
-  getViewsData = function() {
+getViewsData = function () {
     var animations, msgBoardHTML, navbarHTML, newAnimationHTML, sysRecommendHTML;
     navbarHTML = getNavBarComponent();
     animations = avDataHandler.getAnimation(0, 10);
@@ -50,21 +49,20 @@
     sysRecommendHTML = getSysRecommendComponent();
     msgBoardHTML = getMsgBoardComponent();
     return {
-      navbar: navbarHTML,
-      newAnimation: newAnimationHTML,
-      sysRecommend: sysRecommendHTML,
-      msgBoard: msgBoardHTML
+        navbar: navbarHTML,
+        newAnimation: newAnimationHTML,
+        sysRecommend: sysRecommendHTML,
+        msgBoard: msgBoardHTML
     };
-  };
+};
 
-  router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     var viewObj;
     console.log('main---in');
     viewObj = getViewsData();
     viewObj.title = titles.newAnimationTitle;
     return res.render('index/main', viewObj);
-  });
+});
 
-  module.exports = router;
+module.exports = router;
 
-}).call(this);

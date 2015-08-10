@@ -1,4 +1,6 @@
-(function() {
+'use strict';
+
+(function () {
   var NavUserProfile, React, T, cc, ce, cf;
 
   React = require('react');
@@ -17,7 +19,7 @@
     propTypes: {
       userMsg: T.object.isRequired
     },
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       return {
         title: {
           name: '茵蒂克丝',
@@ -25,7 +27,7 @@
         }
       };
     },
-    render: function() {
+    render: function render() {
       var props, title;
       console.log('render navbar');
       props = this.props;
@@ -41,5 +43,4 @@
       }));
     }
   }));
-
-}).call(this);
+}).call(undefined);

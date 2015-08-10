@@ -1,4 +1,6 @@
-(function() {
+'use strict';
+
+(function () {
   var CommentOne, React, T, cc, ce, cf, helper;
 
   React = require('react');
@@ -17,7 +19,7 @@
     propTypes: {
       commentObj: T.object.isRequired
     },
-    render: function() {
+    render: function render() {
       var commentOjb;
       commentOjb = this.props.commentObj;
       return ce('li', {
@@ -48,10 +50,10 @@
       title: T.string.isRequired,
       comments: T.array.isRequired
     },
-    render: function() {
+    render: function render() {
       return ce('ul', {
         className: 'comments'
-      }, this.props.comments.map(function(commentObj, i) {
+      }, this.props.comments.map(function (commentObj, i) {
         return CommentOne({
           key: 'commentLi' + i,
           commentObj: commentObj
@@ -59,5 +61,4 @@
       }));
     }
   }));
-
-}).call(this);
+}).call(undefined);

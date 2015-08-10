@@ -1,4 +1,6 @@
-(function() {
+'use strict';
+
+(function () {
   var React, T, VoteOne, VoteOneDescription, VoteOneHeader, VoteOneSelect, cc, ce, cf;
 
   React = require('react');
@@ -15,11 +17,11 @@
     propTypes: {
       userMsg: T.object.isRequired
     },
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       var userMsg;
       return userMsg = this.props.userMsg;
     },
-    render: function() {
+    render: function render() {
       var avatar, ref, time, username;
       ref = this.state.userMsg, avatar = ref.avatar, username = ref.username, time = ref.time;
       return ce('header', {
@@ -38,11 +40,11 @@
     propTypes: {
       descMsg: T.object.isRequired
     },
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       var descMsg;
       return descMsg = this.props.descMsg;
     },
-    render: function() {
+    render: function render() {
       var description;
       description = this.state.descMsg.description;
       return ce('p', {
@@ -53,18 +55,18 @@
 
   VoteOneSelect = cc({
     propTypes: T.array.isRequired,
-    getInitialState: function() {}
+    getInitialState: function getInitialState() {}
   });
 
   VoteOne = cf(cc({
     propTypes: {
       voteOneObj: T.object.isRequired
     },
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       var voteOneObj;
       return voteOneObj = this.props.voteOneObj;
     },
-    render: function() {
+    render: function render() {
       var avatar, description, ref, selectOption, time, username;
       ref = this.state.voteOneObj, avatar = ref.avatar, username = ref.username, time = ref.time, description = ref.description, selectOption = ref.selectOption;
       return ce('li', {}, ce(VoteOneHeader, {
@@ -89,14 +91,14 @@
       title: T.string.isRequired,
       comments: T.array.isRequired
     },
-    render: function() {
+    render: function render() {
       var comments;
       comments = this.props.comments;
       return ce('section', {
         className: 'vote-board'
       }, ce('h2', {}, this.props.title), ce('div', {
         className: 'transparent-bg'
-      }, comments.map(function(voteOneObj, i) {
+      }, comments.map(function (voteOneObj, i) {
         return VoteOne({
           key: 'voteKeyLi' + i,
           voteOneObj: voteOneObj
@@ -104,5 +106,4 @@
       })));
     }
   }));
-
-}).call(this);
+}).call(undefined);

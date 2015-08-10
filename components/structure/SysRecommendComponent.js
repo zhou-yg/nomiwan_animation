@@ -1,4 +1,6 @@
-(function() {
+'use strict';
+
+(function () {
   var React, T, cc, ce, cf;
 
   React = require('react');
@@ -16,7 +18,7 @@
     propTypes: {
       title: T.string.isRequired
     },
-    render: function() {
+    render: function render() {
       return ce('section', {
         className: 'sys-recommend'
       }, ce('h2', {}, this.props.title), ce('div', {
@@ -24,5 +26,4 @@
       }));
     }
   }));
-
-}).call(this);
+}).call(undefined);

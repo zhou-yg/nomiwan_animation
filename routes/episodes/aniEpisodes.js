@@ -1,66 +1,63 @@
-(function() {
-  var avDataHandler, components, express, getCommentsComponent, getNavBarComponent, getViewsData, router, titles;
+var avDataHandler, components, express, getCommentsComponent, getNavBarComponent, getViewsData, router, titles;
 
-  express = require('express');
+express = require('express');
 
-  router = express.Router();
+router = express.Router();
 
-  avDataHandler = require('../../model/avDataHandler.js')();
+avDataHandler = require('../../model/avDataHandler.js')();
 
-  components = require('../../components/');
+components = require('../../components/');
 
-  titles = {
+titles = {
     newAnimationTitle: 'AV'
-  };
+};
 
-  getCommentsComponent = function() {
+getCommentsComponent = function () {
     var commentsEleStr;
     commentsEleStr = components.rs(components.structure.CommentsComponent({
-      title: 'AV',
-      comments: [
-        {
-          avatar: 'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
-          username: 'Zero丶one',
-          time: '10秒前',
-          content: '看评论看评论看评论看评论论'
-        }, {
-          avatar: 'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
-          username: 'Zero丶one',
-          time: '10秒前',
-          content: '看评论看评论看评论看评论论评论看评论论评论看评论论评论看评论论评论看评论论'
-        }
-      ]
+        title: 'AV',
+        comments: [
+            {
+                avatar: 'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
+                username: 'Zero丶one',
+                time: '10秒前',
+                content: '看评论看评论看评论看评论论'
+            }, {
+                avatar: 'http://i0.hdslb.com/52_52/user/46160/4616089/myface.jpg',
+                username: 'Zero丶one',
+                time: '10秒前',
+                content: '看评论看评论看评论看评论论评论看评论论评论看评论论评论看评论论评论看评论论'
+            }
+        ]
     }));
     return commentsEleStr;
-  };
+};
 
-  getNavBarComponent = function() {
+getNavBarComponent = function () {
     var navbarStr;
     navbarStr = components.rs(components.structure.NavBarComponent({
-      userMsg: {}
+        userMsg: {}
     }));
     return navbarStr;
-  };
+};
 
-  getViewsData = function() {
+getViewsData = function () {
     var commentsHTML, navbarHTML;
     navbarHTML = getNavBarComponent();
     commentsHTML = getCommentsComponent();
     return {
-      navbar: navbarHTML,
-      commentList: commentsHTML
+        navbar: navbarHTML,
+        commentList: commentsHTML
     };
-  };
+};
 
-  router.get('/episodes', function(req, res, next) {
+router.get('/episodes', function (req, res, next) {
     var viewObj;
     console.log('aniEpisodes---in');
     viewObj = getViewsData();
     console.log(viewObj);
     viewObj.title = titles.newAnimationTitle;
     return res.render('episodes/aniEpisodes', viewObj);
-  });
+});
 
-  module.exports = router;
-
-}).call(this);
+module.exports = router;

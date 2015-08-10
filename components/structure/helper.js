@@ -1,6 +1,8 @@
-(function() {
+'use strict';
+
+(function () {
   module.exports = {
-    getRainbowColor: function(i) {
+    getRainbowColor: function getRainbowColor(i) {
       var colors, colorsLen;
       colors = ['red', 'orange', 'blue', 'cyan', 'purple'];
       colorsLen = colors.length;
@@ -8,7 +10,7 @@
         return colors[i % colorsLen];
       } else {
         this.i = 0;
-        return function() {
+        return function () {
           if (i >= 5) {
             i = 0;
           }
@@ -17,5 +19,4 @@
       }
     }
   };
-
-}).call(this);
+}).call(undefined);

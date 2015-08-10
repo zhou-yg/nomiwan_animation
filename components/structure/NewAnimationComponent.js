@@ -1,4 +1,6 @@
-(function() {
+'use strict';
+
+(function () {
   var AnimationOne, React, T, cc, ce, cf, helper;
 
   React = require('react');
@@ -16,17 +18,17 @@
   AnimationOne = cf(cc({
     displayName: '新番列表',
     mixins: [helper],
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       return {
         liType: 'large'
       };
     },
-    render: function() {
+    render: function render() {
       var animations, liArr, liTypes;
       animations = this.props.animations;
       liTypes = this.state.liType;
-      liArr = animations.map((function(_this) {
-        return function(animationObj, i) {
+      liArr = animations.map((function (_this) {
+        return function (animationObj, i) {
           var current, finalClassName, updateTo;
           finalClassName = liTypes + ' ' + _this.getRainbowColor(i);
           current = animationObj.len;
@@ -64,7 +66,7 @@
       title: T.string.isRequired,
       animations: T.array.isRequired
     },
-    render: function() {
+    render: function render() {
       return ce('section', {
         className: 'new-animation'
       }, ce('h2', {}, this.props.title), ce('div', {
@@ -74,5 +76,4 @@
       }));
     }
   }));
-
-}).call(this);
+}).call(undefined);

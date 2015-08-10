@@ -7,7 +7,12 @@ module.exports = function (grunt) {
             move: {
                 expand: true,
                 flatten: true,
-                src: ['bower_components/*/*.js','bower_components/*/dist/*.js','bower_components/*/*.min.js', 'bower_components/*/*-min.js'],
+                src: [
+                    'bower_components/*/*.js',
+                    'bower_components/*/dist/*.js',
+                    'bower_components/*/*.min.js',
+                    'bower_components/*/*-min.js'
+                ],
                 dest: 'public/js/libs/',
                 filter: 'isFile'
             }
@@ -15,7 +20,7 @@ module.exports = function (grunt) {
         clean: {
             css: ['!public/style/libs/*.css','public/styles/**/*.css'],
             assets:['public/js/**/*.js','assets/**/*.js','!public/js/libs/*.js'],
-            components:['components/**.js']
+            components:['components/**/*.js']
         },
         less: {
             files: {
@@ -25,6 +30,25 @@ module.exports = function (grunt) {
                 src: ['**/*.less','!**/*_*.less'],
                 dest: 'public/styles/',
                 ext: '.css'
+            }
+        },
+        babel:{
+            options:{
+                sourceMap:false
+            },
+            components: {
+                expand: true,
+                cwd: 'precompile/components/',
+                src: ['**/*.jsx'],
+                dest: 'components/',
+                ext: '.js'
+            },
+            assets:{
+                expand: true,
+                cwd: 'precompile/assets/',
+                src: ['**/*.jsx','**/*.js'],
+                dest: 'assets/',
+                ext: '.js'
             }
         },
         watch: {
@@ -40,10 +64,11 @@ module.exports = function (grunt) {
                 tasks:[
                     'clean',
                     'less',
+                    'babel'
                 ]
             }
         }
     });
 
-    grunt.registerTask('default', ['copy','clean','less','watch']);
+    grunt.registerTask('default', ['copy','clean','less','babel','watch']);
 };

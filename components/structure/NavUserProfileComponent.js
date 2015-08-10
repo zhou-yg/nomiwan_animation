@@ -1,4 +1,6 @@
-(function() {
+'use strict';
+
+(function () {
   var LoginAction, React, T, UserGuide, cc, ce, cf;
 
   React = require('react');
@@ -14,30 +16,28 @@
   T = React.PropTypes;
 
   UserGuide = cc({
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       return {
-        liArr: [
-          {
-            name: '消息',
-            type: 'message'
-          }, {
-            name: '历史',
-            type: 'history'
-          }
-        ],
+        liArr: [{
+          name: '消息',
+          type: 'message'
+        }, {
+          name: '历史',
+          type: 'history'
+        }],
         username: 'zhouyg'
       };
     },
-    clickOnGuide: function(type) {
+    clickOnGuide: function clickOnGuide(type) {
       return console.log(type);
     },
-    render: function() {
+    render: function render() {
       return ce('ul', {
         className: 'user-guide'
-      }, this.state.liArr.map((function(_this) {
-        return function(guideObj, i) {
+      }, this.state.liArr.map((function (_this) {
+        return function (guideObj, i) {
           return ce('li', {
-            onClick: function() {
+            onClick: function onClick() {
               return _this.clickOnGuide(guideObj.type);
             },
             key: 'guideLi' + i
@@ -51,21 +51,21 @@
     propTypes: {
       userMsg: T.object.isRequired
     },
-    getInitialState: function() {
+    getInitialState: function getInitialState() {
       var userMsg;
       userMsg = this.props.userMsg || {};
       return {
         userMsg: userMsg
       };
     },
-    clickOnUsername: function(e) {},
-    login: function(e) {
+    clickOnUsername: function clickOnUsername(e) {},
+    login: function login(e) {
       return LoginAction.login();
     },
-    register: function(e) {
+    register: function register(e) {
       return LoginAction.register();
     },
-    render: function() {
+    render: function render() {
       var userBoard, userMsg, username;
       userMsg = this.state.userMsg;
       username = userMsg.username;
@@ -96,5 +96,4 @@
       }));
     }
   }));
-
-}).call(this);
+}).call(undefined);

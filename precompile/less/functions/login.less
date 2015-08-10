@@ -1,11 +1,24 @@
 @import "../var";
 
 @highlight: #03a9f4;
+@formWidth:320px;
 
 .form-unit {
-  width: 100%;
-  max-width: 320px;
-  margin: 30px auto;
+  margin-left: -@formWidth/2;
+  width: @formWidth;
+
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+
+  &:before , &:after{
+    content: '';
+    flex-grow:1;
+  }
 
   > form{
     padding: 20px;

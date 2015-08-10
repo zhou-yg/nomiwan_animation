@@ -1,5 +1,7 @@
-(function() {
-  var CommentsComponent, LoginComponent, MsgBoardComponent, NavBarComponent, NewAnimationComponent, React, SysRecommendComponent, cc, ce, exports, rs;
+'use strict';
+
+(function () {
+  var _CommentsComponent, _LoginComponent, _MsgBoardComponent, _NavBarComponent, _NewAnimationComponent, React, _SysRecommendComponent, cc, ce, exports, _rs;
 
   React = require('react');
 
@@ -7,48 +9,47 @@
 
   ce = React.createElement;
 
-  rs = React.renderToString;
+  _rs = React.renderToString;
 
-  NewAnimationComponent = require('./structure/NewAnimationComponent');
+  _NewAnimationComponent = require('./structure/NewAnimationComponent');
 
-  SysRecommendComponent = require('./structure/SysRecommendComponent');
+  _SysRecommendComponent = require('./structure/SysRecommendComponent');
 
-  MsgBoardComponent = require('./structure/MsgBoardComponent');
+  _MsgBoardComponent = require('./structure/MsgBoardComponent');
 
-  CommentsComponent = require('./structure/CommentsComponent');
+  _CommentsComponent = require('./structure/CommentsComponent');
 
-  NavBarComponent = require('./structure/NavBarComponent');
+  _NavBarComponent = require('./structure/NavBarComponent');
 
-  LoginComponent = require('./functions/LoginComponent');
+  _LoginComponent = require('./functions/LoginComponent');
 
   exports = {
     structure: {
-      NewAnimationComponent: function(props) {
-        return NewAnimationComponent(props);
+      NewAnimationComponent: function NewAnimationComponent(props) {
+        return _NewAnimationComponent(props);
       },
-      SysRecommendComponent: function(props) {
-        return SysRecommendComponent(props);
+      SysRecommendComponent: function SysRecommendComponent(props) {
+        return _SysRecommendComponent(props);
       },
-      MsgBoardComponent: function(props) {
-        return MsgBoardComponent(props);
+      MsgBoardComponent: function MsgBoardComponent(props) {
+        return _MsgBoardComponent(props);
       },
-      CommentsComponent: function(props) {
-        return CommentsComponent(props);
+      CommentsComponent: function CommentsComponent(props) {
+        return _CommentsComponent(props);
       },
-      NavBarComponent: function(props) {
-        return NavBarComponent(props);
+      NavBarComponent: function NavBarComponent(props) {
+        return _NavBarComponent(props);
       }
     },
     functions: {
-      LoginComponent: function(props) {
-        return LoginComponent(props);
+      LoginComponent: function LoginComponent(props) {
+        return _LoginComponent(props);
       }
     },
-    rs: function(component) {
-      return rs(component);
+    rs: function rs(component) {
+      return _rs(component);
     }
   };
 
   module.exports = exports;
-
-}).call(this);
+}).call(undefined);

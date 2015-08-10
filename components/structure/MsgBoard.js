@@ -1,4 +1,3 @@
-(function() {
+"use strict";
 
-
-}).call(this);
+(function () {}).call(undefined);
