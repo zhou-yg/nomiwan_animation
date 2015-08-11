@@ -1,6 +1,14 @@
 'use strict';
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _toolsAjax = require('../../tools/ajax');
+
+var _toolsAjax2 = _interopRequireDefault(_toolsAjax);
+
 var ButtonComponent, FormAction, FormStore, InputControlComponent, LoginFormClass, React, Reflux, RegisterFormClass, T, cc, ce, cf, formDataValidations;
+
+console.log(_toolsAjax2['default']);
 
 React = require('react');
 
@@ -31,7 +39,8 @@ FormStore = Reflux.createStore({
     listenables: FormAction,
     onDown: function onDown(data) {
         return this.trigger(data);
-    }
+    },
+    onLogin: function onLogin(formData) {}
 });
 
 formDataValidations = {
@@ -95,12 +104,20 @@ InputControlComponent = cc({
         };
     },
     validateInput: function validateInput() {
-        var errorMsg, formData, inputDom, inputPropertyObj, inputValue, validateName, validateResult;
-        formData = this.props.formState.formData;
-        inputDom = this.refs.input.getDOMNode();
-        inputValue = inputDom.value;
+        var errorMsg = undefined,
+            inputPropertyObj = undefined,
+            inputValue = undefined,
+            validateName = undefined,
+            validateResult = undefined;
+
+        var _props$formState = this.props.formState;
+        var action = _props$formState.action;
+        var formData = _props$formState.formData;
+
+        inputValue = this.refs.input.getDOMNode().value;
         inputPropertyObj = this.state.inputPropertyObj;
         validateName = inputPropertyObj.validate.name;
+
         if (validateName === 'validatePasswordRepeat') {
             validateResult = formData.password === inputValue;
         } else {
@@ -112,15 +129,19 @@ InputControlComponent = cc({
         } else {
             errorMsg = inputPropertyObj.validate.error;
         }
-        return this.setState({
+
+        this.setState({
             errorMsg: errorMsg
         });
+        //如果有错误
+        if (!errorMsg) {
+            FormAction[action](formData);
+        }
     },
     componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-        var formState;
-        formState = nextProps.formState;
+        var formState = nextProps.formState;
         if (formState.action === 'login' || formState.action === 'register') {
-            return this.validateInput();
+            this.validateInput();
         }
     },
     render: function render() {
@@ -129,6 +150,24 @@ InputControlComponent = cc({
         errorMsg = state.errorMsg;
         placeholder = state.placeholder;
         inputPropertyObj = state.inputPropertyObj;
+
+        return React.createElement(
+            'div',
+            { className: 'form-field' },
+            React.createElement(
+                'div',
+                { className: 'validation', style: { opacity: errorMsg ? 1 : 0 } },
+                React.createElement(
+                    'p',
+                    null,
+                    errorMsg
+                )
+            ),
+            React.createElement('input', { className: 'form-control', name: inputPropertyObj.name,
+                ref: 'input', required: 'true',
+                placeholder: placeholder, type: inputPropertyObj.type })
+        );
+
         return ce('div', {
             className: 'form-field'
         }, ce('div', {
@@ -136,8 +175,8 @@ InputControlComponent = cc({
             style: {
                 opacity: errorMsg ? 1 : 0
             }
-        }, ce('p', {}, errorMsg ? ' ' : ' ')), ce('input', {
-            ref: 'input',
+        }, ce('p', {}, errorMsg ? errorMsg : '')), ce('input', {
+
             placeholder: placeholder,
             type: inputPropertyObj.type,
             name: inputPropertyObj.name,
@@ -198,11 +237,14 @@ LoginFormClass = cc({
         };
     },
     componentWillMount: function componentWillMount() {
-        return this.removeFormStoreListend = FormStore.listen((function (_this) {
+        this.removeFormStoreListend = FormStore.listen((function (_this) {
             return function (data) {
                 var formState;
+
                 console.log(data);
+
                 formState = _this.state.formState;
+
                 formState.action = data.action;
                 return _this.setState({
                     formState: formState

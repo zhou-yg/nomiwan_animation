@@ -10,7 +10,8 @@ module.exports = {
 
     externals: {
         'react': "React",
-        'reflux': "Reflux"
+        'reflux': "Reflux",
+        'jquery':'$'
     },
     entry: {
         episodeIndex: './precompile/assets/index/episodes/index',

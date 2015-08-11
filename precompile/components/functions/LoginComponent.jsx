@@ -1,5 +1,7 @@
 var ButtonComponent, FormAction, FormStore, InputControlComponent, LoginFormClass, React, Reflux, RegisterFormClass, T, cc, ce, cf, formDataValidations;
 
+import ajax from '../../assets/tools/ajax'
+
 React = require('react');
 
 Reflux = require('reflux');
@@ -14,6 +16,12 @@ T = React.PropTypes;
 
 FormAction = Reflux.createActions({
     down: {},
+    loginValidate:{
+        children:['email','password']
+    },
+    registerValidate:{
+        children:['email','password','passwordRepeat']
+    },
     login: {
         children: ['success', 'fail']
     },
@@ -27,11 +35,31 @@ FormAction = Reflux.createActions({
 
 FormStore = Reflux.createStore({
     listenables: FormAction,
-    onDown: function (data) {
-        return this.trigger(data);
+    init(){
+        this.joinTrailing(
+            FormAction.loginValidate.email,
+            FormAction.loginValidate.password,
+            this.onLogin
+        );
+        this.joinTrailing(
+            FormAction.registerValidate.email,
+            FormAction.registerValidate.password,
+            FormAction.registerValidate.passwordRepeat,
+            this.onRegister
+        )
     },
-    onLogin:function(formData){
-        console.log(formData);
+    onDown(data) {
+        this.trigger(data);
+    },
+    onRegister(formData){
+        ajax.userRegister(formData, function (data) {
+            console.log(data)
+        })
+    },
+    onLogin(formData){
+        ajax.userLogin(formData, function (data) {
+            console.log(data)
+        })
     }
 });
 
@@ -119,9 +147,9 @@ InputControlComponent = cc({
         this.setState({
             errorMsg: errorMsg
         });
-        //如果有错误
+        //如果无错误
         if(!errorMsg){
-            FormAction[action](formData);
+            FormAction[inputPropertyObj.name](formData);
         }
     },
     componentWillReceiveProps: function (nextProps) {
@@ -136,21 +164,17 @@ InputControlComponent = cc({
         errorMsg = state.errorMsg;
         placeholder = state.placeholder;
         inputPropertyObj = state.inputPropertyObj;
-        return ce('div', {
-            className: 'form-field'
-        }, ce('div', {
-            className: 'validation',
-            style: {
-                opacity: errorMsg ? 1 : 0
-            }
-        }, ce('p', {}, errorMsg ? errorMsg : '')), ce('input', {
-            ref: 'input',
-            placeholder: placeholder,
-            type: inputPropertyObj.type,
-            name: inputPropertyObj.name,
-            className: 'form-control',
-            required: true
-        }));
+
+        return (
+            <div className="form-field">
+                <div className="validation" style={ {opacity:errorMsg?1:0} }>
+                    <p>{errorMsg}</p>
+                </div>
+                <input className="form-control" name={inputPropertyObj.name}
+                    ref='input' required="true"
+                    placeholder={placeholder} type={inputPropertyObj.type}  />
+            </div>
+        );
     }
 });
 
@@ -205,20 +229,18 @@ LoginFormClass = cc({
         };
     },
     componentWillMount: function () {
-        this.removeFormStoreListend = FormStore.listen((function (_this) {
-            return function (data) {
+        this.removeFormStoreListend = FormStore.listen( (data)=> {
                 var formState;
 
                 console.log(data);
 
-                formState = _this.state.formState;
+                formState = this.state.formState;
 
                 formState.action = data.action;
-                return _this.setState({
+                this.setState({
                     formState: formState
                 });
-            };
-        })(this));
+            });
     },
     componentWillUnmount: function () {
         return this.removeFormStoreListend();
@@ -227,37 +249,18 @@ LoginFormClass = cc({
         var formState, state;
         state = this.state;
         formState = state.formState;
-        return ce('form', {
-            method: 'post',
-            action: ''
-        }, ce('div', {
-            className: 'transparent-bg'
-        }), ce(InputControlComponent, {
-            formState: formState,
-            type: 'email',
-            placeholder: '邮箱/手机号'
-        }), ce(InputControlComponent, {
-            formState: formState,
-            type: 'password',
-            placeholder: '密码'
-        }), ce(ButtonComponent, {
-            formState: formState,
-            action: 'login',
-            type: 'select',
-            text: '登录'
-        }), ce('div', {
-            className: 'horizontal-line'
-        }), ce('div', {}, ce(ButtonComponent, {
-            formState: formState,
-            action: 'signup',
-            type: 'highlight',
-            text: '还没有账号？免费注册'
-        }), ce(ButtonComponent, {
-            formState: formState,
-            action: 'forgot',
-            type: 'other',
-            text: '忘记密码？重置'
-        })));
+
+        return (
+            <form method="post" action=''>
+                <div className="transparent-bg"></div>
+                <InputControlComponent formState={formState} type='email' placeholder='邮箱/手机号' />
+                <InputControlComponent formState={formState} type='password' placeholder='密码' />
+                <ButtonComponent formState={formState} action='login' type='select' text='登录' />
+                <div className="horizontal-line" />
+                <ButtonComponent formState={formState} action='signup' type='highlight' text='还没有账号？马上注册' />
+                <ButtonComponent formState={formState} action='forgot' type='other' text='忘记密码？重置' />
+            </form>
+        );
     }
 });
 
