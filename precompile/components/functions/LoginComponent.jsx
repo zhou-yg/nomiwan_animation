@@ -51,12 +51,16 @@ FormStore = Reflux.createStore({
     onDown(data) {
         this.trigger(data);
     },
-    onRegister(formData){
+    onRegister(args){
+        let formData = args[0];
+        console.log('r formData:',formData)
         ajax.userRegister(formData, function (data) {
             console.log(data)
         })
     },
-    onLogin(formData){
+    onLogin(args){
+        let formData = args[0];
+        console.log('l formData:',formData)
         ajax.userLogin(formData, function (data) {
             console.log(data)
         })
@@ -149,7 +153,7 @@ InputControlComponent = cc({
         });
         //如果无错误
         if(!errorMsg){
-            FormAction[inputPropertyObj.name](formData);
+            FormAction[action+'Validate'][inputPropertyObj.name](formData);
         }
     },
     componentWillReceiveProps: function (nextProps) {

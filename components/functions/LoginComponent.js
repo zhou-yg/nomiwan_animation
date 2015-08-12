@@ -2,13 +2,11 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _toolsAjax = require('../../tools/ajax');
+var _assetsToolsAjax = require('../../assets/tools/ajax');
 
-var _toolsAjax2 = _interopRequireDefault(_toolsAjax);
+var _assetsToolsAjax2 = _interopRequireDefault(_assetsToolsAjax);
 
 var ButtonComponent, FormAction, FormStore, InputControlComponent, LoginFormClass, React, Reflux, RegisterFormClass, T, cc, ce, cf, formDataValidations;
-
-console.log(_toolsAjax2['default']);
 
 React = require('react');
 
@@ -24,6 +22,12 @@ T = React.PropTypes;
 
 FormAction = Reflux.createActions({
     down: {},
+    loginValidate: {
+        children: ['email', 'password']
+    },
+    registerValidate: {
+        children: ['email', 'password', 'passwordRepeat']
+    },
     login: {
         children: ['success', 'fail']
     },
@@ -37,10 +41,27 @@ FormAction = Reflux.createActions({
 
 FormStore = Reflux.createStore({
     listenables: FormAction,
-    onDown: function onDown(data) {
-        return this.trigger(data);
+    init: function init() {
+        this.joinTrailing(FormAction.loginValidate.email, FormAction.loginValidate.password, this.onLogin);
+        this.joinTrailing(FormAction.registerValidate.email, FormAction.registerValidate.password, FormAction.registerValidate.passwordRepeat, this.onRegister);
     },
-    onLogin: function onLogin(formData) {}
+    onDown: function onDown(data) {
+        this.trigger(data);
+    },
+    onRegister: function onRegister(args) {
+        var formData = args[0];
+        console.log('r formData:', formData);
+        _assetsToolsAjax2['default'].userRegister(formData, function (data) {
+            console.log(data);
+        });
+    },
+    onLogin: function onLogin(args) {
+        var formData = args[0];
+        console.log('l formData:', formData);
+        _assetsToolsAjax2['default'].userLogin(formData, function (data) {
+            console.log(data);
+        });
+    }
 });
 
 formDataValidations = {
@@ -133,9 +154,9 @@ InputControlComponent = cc({
         this.setState({
             errorMsg: errorMsg
         });
-        //如果有错误
+        //如果无错误
         if (!errorMsg) {
-            FormAction[action](formData);
+            FormAction.loginValidate[inputPropertyObj.name](formData);
         }
     },
     componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
@@ -167,22 +188,6 @@ InputControlComponent = cc({
                 ref: 'input', required: 'true',
                 placeholder: placeholder, type: inputPropertyObj.type })
         );
-
-        return ce('div', {
-            className: 'form-field'
-        }, ce('div', {
-            className: 'validation',
-            style: {
-                opacity: errorMsg ? 1 : 0
-            }
-        }, ce('p', {}, errorMsg ? errorMsg : '')), ce('input', {
-
-            placeholder: placeholder,
-            type: inputPropertyObj.type,
-            name: inputPropertyObj.name,
-            className: 'form-control',
-            required: true
-        }));
     }
 });
 
@@ -237,20 +242,20 @@ LoginFormClass = cc({
         };
     },
     componentWillMount: function componentWillMount() {
-        this.removeFormStoreListend = FormStore.listen((function (_this) {
-            return function (data) {
-                var formState;
+        var _this2 = this;
 
-                console.log(data);
+        this.removeFormStoreListend = FormStore.listen(function (data) {
+            var formState;
 
-                formState = _this.state.formState;
+            console.log(data);
 
-                formState.action = data.action;
-                return _this.setState({
-                    formState: formState
-                });
-            };
-        })(this));
+            formState = _this2.state.formState;
+
+            formState.action = data.action;
+            _this2.setState({
+                formState: formState
+            });
+        });
     },
     componentWillUnmount: function componentWillUnmount() {
         return this.removeFormStoreListend();
@@ -259,37 +264,18 @@ LoginFormClass = cc({
         var formState, state;
         state = this.state;
         formState = state.formState;
-        return ce('form', {
-            method: 'post',
-            action: ''
-        }, ce('div', {
-            className: 'transparent-bg'
-        }), ce(InputControlComponent, {
-            formState: formState,
-            type: 'email',
-            placeholder: '邮箱/手机号'
-        }), ce(InputControlComponent, {
-            formState: formState,
-            type: 'password',
-            placeholder: '密码'
-        }), ce(ButtonComponent, {
-            formState: formState,
-            action: 'login',
-            type: 'select',
-            text: '登录'
-        }), ce('div', {
-            className: 'horizontal-line'
-        }), ce('div', {}, ce(ButtonComponent, {
-            formState: formState,
-            action: 'signup',
-            type: 'highlight',
-            text: '还没有账号？免费注册'
-        }), ce(ButtonComponent, {
-            formState: formState,
-            action: 'forgot',
-            type: 'other',
-            text: '忘记密码？重置'
-        })));
+
+        return React.createElement(
+            'form',
+            { method: 'post', action: '' },
+            React.createElement('div', { className: 'transparent-bg' }),
+            React.createElement(InputControlComponent, { formState: formState, type: 'email', placeholder: '邮箱/手机号' }),
+            React.createElement(InputControlComponent, { formState: formState, type: 'password', placeholder: '密码' }),
+            React.createElement(ButtonComponent, { formState: formState, action: 'login', type: 'select', text: '登录' }),
+            React.createElement('div', { className: 'horizontal-line' }),
+            React.createElement(ButtonComponent, { formState: formState, action: 'signup', type: 'highlight', text: '还没有账号？马上注册' }),
+            React.createElement(ButtonComponent, { formState: formState, action: 'forgot', type: 'other', text: '忘记密码？重置' })
+        );
     }
 });
 

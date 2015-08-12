@@ -34,7 +34,7 @@ let servers = {
 let request = function(api,data,callback){
 
     api = apis[api];
-    let url = path.resolve(servers.host(),api);
+    let url = servers.host() + api;
 
     $.get(url,data,callback);
 };
