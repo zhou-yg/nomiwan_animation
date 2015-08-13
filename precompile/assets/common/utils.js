@@ -46,7 +46,6 @@ export default {
       }
       return result;
     },
-
     /*
      * 链接跳转的控制方法,
      *     外部链接一律新窗口

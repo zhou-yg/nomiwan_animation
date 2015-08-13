@@ -1,45 +1,42 @@
-(function() {
-  var NavUserProfile, React, T, cc, ce, cf;
+var NavUserProfile, React, T, cc, ce, cf;
 
-  React = require('react');
+React = require('react');
 
-  NavUserProfile = require('./NavUserProfileComponent');
+NavUserProfile = require('./NavUserProfileComponent');
 
-  cf = React.createFactory;
+cf = React.createFactory;
 
-  cc = React.createClass;
+cc = React.createClass;
 
-  ce = React.createElement;
+ce = React.createElement;
 
-  T = React.PropTypes;
+T = React.PropTypes;
 
-  module.exports = cf(cc({
+module.exports = cf(cc({
     propTypes: {
-      userMsg: T.object.isRequired
+        userMsg: T.object.isRequired
     },
-    getInitialState: function() {
-      return {
-        title: {
-          name: '茵蒂克丝',
-          logo: 'images/index2.jpg'
-        }
-      };
+    getInitialState: function () {
+        return {
+            title: {
+                name: '茵蒂克丝',
+                logo: '/images/index2.jpg'
+            }
+        };
     },
-    render: function() {
-      var props, title;
-      console.log('render navbar');
-      props = this.props;
-      title = this.state.title;
-      return ce('header', {
-        id: 'topNavbar'
-      }, ce('h1', {}, ce('img', {
-        src: title.logo,
-        alt: 'logo',
-        height: '100%'
-      }), title.name), NavUserProfile({
-        userMsg: props.userMsg
-      }));
+    render: function () {
+        var props, title;
+        console.log('render navbar');
+        props = this.props;
+        title = this.state.title;
+        return ce('header', {
+            id: 'topNavbar'
+        }, ce('h1', {}, ce('img', {
+            src: title.logo,
+            alt: 'logo',
+            height: '100%'
+        }), title.name), NavUserProfile({
+            userMsg: props.userMsg
+        }));
     }
-  }));
-
-}).call(this);
+}));

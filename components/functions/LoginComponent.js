@@ -28,15 +28,11 @@ FormAction = Reflux.createActions({
     registerValidate: {
         children: ['email', 'password', 'passwordRepeat']
     },
-    login: {
-        children: ['success', 'fail']
-    },
-    register: {
-        children: ['success', 'fail']
-    },
     forget: {
         children: ['success', 'fail']
-    }
+    },
+    waiting: {}
+
 });
 
 FormStore = Reflux.createStore({
@@ -49,16 +45,18 @@ FormStore = Reflux.createStore({
         this.trigger(data);
     },
     onRegister: function onRegister(args) {
+        FormAction.waiting();
         var formData = args[0];
         console.log('r formData:', formData);
-        _assetsToolsAjax2['default'].userRegister(formData, function (data) {
+        _assetsToolsAjax2['default'].userSignup(formData, function (data) {
             console.log(data);
         });
     },
     onLogin: function onLogin(args) {
+        FormAction.waiting();
         var formData = args[0];
         console.log('l formData:', formData);
-        _assetsToolsAjax2['default'].userLogin(formData, function (data) {
+        _assetsToolsAjax2['default'].userSignin(formData, function (data) {
             console.log(data);
         });
     }
@@ -156,7 +154,7 @@ InputControlComponent = cc({
         });
         //如果无错误
         if (!errorMsg) {
-            FormAction.loginValidate[inputPropertyObj.name](formData);
+            FormAction[action + 'Validate'][inputPropertyObj.name](formData);
         }
     },
     componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
@@ -349,33 +347,47 @@ module.exports = cf(cc({
         formType: T.string.isRequired
     },
     getInitialState: function getInitialState() {
+
         return {
             formState: {
                 action: this.props.formType,
+                isWaiting: false,
                 formData: {}
             },
             formTypes: ['signin', 'signup']
         };
     },
     componentWillMount: function componentWillMount() {
+        var _this3 = this;
+
         var formTypes;
         formTypes = this.state.formTypes;
-        return this.removeFormStoreListend = FormStore.listen((function (_this) {
-            return function (data) {
-                var action, formState;
-                action = data.action;
-                if (-1 !== formTypes.indexOf(action)) {
-                    formState = _this.state.formState;
-                    formState.action = data.action;
-                    return _this.setState({
-                        formState: formState
-                    });
-                }
-            };
-        })(this));
+
+        this.removeFormActionsListened = FormAction.waiting.listen(function () {
+            var formState = _this3.state.formState;
+            formState.isWaiting = true;
+            _this3.setState({
+                formState: formState
+            });
+        });
+
+        this.removeFormStoreListened = FormStore.listen(function (data) {
+            var action = data.action;
+            if (-1 !== formTypes.indexOf(action)) {
+                var formState = _this3.state.formState;
+
+                formState.action = data.action;
+                formState.isWaiting = false;
+
+                _this3.setState({
+                    formState: formState
+                });
+            }
+        });
     },
     componentWillUnmount: function componentWillUnmount() {
-        return this.removeFormStoreListend();
+        this.removeFormActionsListened();
+        this.removeFormStoreListened();
     },
     onc: function onc() {},
     render: function render() {
@@ -384,17 +396,17 @@ module.exports = cf(cc({
         formState = state.formState;
         formType = state.formState.action;
         if (formType === 'signup') {
-            return ce('div', {
-                className: 'form-unit'
-            }, ce(RegisterFormClass, {
-                formState: formState
-            }));
+            return React.createElement(
+                'div',
+                { className: 'form-unit' },
+                React.createElement(RegisterFormClass, { formState: formState })
+            );
         } else if (formType === 'signin') {
-            return ce('div', {
-                className: 'form-unit'
-            }, ce(LoginFormClass, {
-                formState: formState
-            }));
+            return React.createElement(
+                'div',
+                { className: 'form-unit' },
+                React.createElement(LoginFormClass, { formState: formState })
+            );
         }
     }
 }));

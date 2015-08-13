@@ -22,7 +22,7 @@ var _componentsFunctionsLoginComponent = require('../../../components/functions/
 
 var _componentsFunctionsLoginComponent2 = _interopRequireDefault(_componentsFunctionsLoginComponent);
 
-var loginType = _commonUtils2['default'].getValueFromUrl('type');
+var loginType = location.href.indexOf('signin') === -1 ? 'signup' : 'signin';
 
 var mainWindow = (0, _jquery2['default'])('#login-frame')[0];
 

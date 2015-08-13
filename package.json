@@ -19,6 +19,7 @@
     "grunt-contrib-copy": "x.x.x",
     "grunt-contrib-less": "x.x.x",
     "grunt-contrib-watch": "x.x.x",
+    "halogen": "^0.1.10",
     "immutable": "~3.7.4",
     "jquery": "~2.1.4",
     "jsx-loader": "~x.x.x",

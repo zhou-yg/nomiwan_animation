@@ -22,15 +22,11 @@ FormAction = Reflux.createActions({
     registerValidate:{
         children:['email','password','passwordRepeat']
     },
-    login: {
-        children: ['success', 'fail']
-    },
-    register: {
-        children: ['success', 'fail']
-    },
     forget: {
         children: ['success', 'fail']
-    }
+    },
+    waiting:{}
+
 });
 
 FormStore = Reflux.createStore({
@@ -52,16 +48,18 @@ FormStore = Reflux.createStore({
         this.trigger(data);
     },
     onRegister(args){
+        FormAction.waiting();
         let formData = args[0];
-        console.log('r formData:',formData)
-        ajax.userRegister(formData, function (data) {
+        console.log('r formData:',formData);
+        ajax.userSignup(formData, function (data) {
             console.log(data)
         })
     },
     onLogin(args){
+        FormAction.waiting();
         let formData = args[0];
-        console.log('l formData:',formData)
-        ajax.userLogin(formData, function (data) {
+        console.log('l formData:',formData);
+        ajax.userSignin(formData, function (data) {
             console.log(data)
         })
     }
@@ -338,9 +336,11 @@ module.exports = cf(cc({
         formType: T.string.isRequired
     },
     getInitialState: function () {
+
         return {
             formState: {
                 action: this.props.formType,
+                isWaiting:false,
                 formData: {}
             },
             formTypes: ['signin', 'signup']
@@ -349,22 +349,32 @@ module.exports = cf(cc({
     componentWillMount: function () {
         var formTypes;
         formTypes = this.state.formTypes;
-        return this.removeFormStoreListend = FormStore.listen((function (_this) {
-            return function (data) {
-                var action, formState;
-                action = data.action;
+
+        this.removeFormActionsListened = FormAction.waiting.listen( ()=>{
+            let formState = this.state.formState;
+            formState.isWaiting = true;
+            this.setState({
+                formState:formState
+            })
+        });
+
+        this.removeFormStoreListened = FormStore.listen( (data)=>{
+                let action = data.action;
                 if (-1 !== formTypes.indexOf(action)) {
-                    formState = _this.state.formState;
+                    let formState = this.state.formState;
+
                     formState.action = data.action;
-                    return _this.setState({
+                    formState.isWaiting = false;
+
+                    this.setState({
                         formState: formState
                     });
                 }
-            };
-        })(this));
+            });
     },
     componentWillUnmount: function () {
-        return this.removeFormStoreListend();
+        this.removeFormActionsListened();
+        this.removeFormStoreListened();
     },
     onc: function () {
     },
@@ -374,17 +384,17 @@ module.exports = cf(cc({
         formState = state.formState;
         formType = state.formState.action;
         if (formType === 'signup') {
-            return ce('div', {
-                className: 'form-unit'
-            }, ce(RegisterFormClass, {
-                formState: formState
-            }));
+            return (
+              <div className="form-unit">
+                <RegisterFormClass formState={formState} />
+              </div>
+            );
         } else if (formType === 'signin') {
-            return ce('div', {
-                className: 'form-unit'
-            }, ce(LoginFormClass, {
-                formState: formState
-            }));
+            return (
+                <div className="form-unit">
+                    <LoginFormClass formState={formState} />
+                </div>
+            );
         }
     }
 }));

@@ -61,8 +61,8 @@ var apiActions = {
 };
 //请求的名字以及地址
 var apis = {
-    userRegister: '/user/register',
-    userLogin: '/user/login'
+    userSignup: '/user/signup',
+    userSignin: '/user/signin'
 };
 
 //根据请求名，往集合中添加动作

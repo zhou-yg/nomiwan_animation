@@ -60,15 +60,21 @@ module.exports = function (grunt) {
                 spawn:false
             },
             lessTask:{
-                files:['precompile/**/*.less','precompile/**/*.coffee'],
+                files:['precompile/**/*.less','precompile/**/*.jsx'],
                 tasks:[
                     'clean',
                     'less',
-                    'babel'
+                    'babel:components',
+                    'babel:assets',
                 ]
             }
         }
     });
 
-    grunt.registerTask('default', ['copy','clean','less','babel','watch']);
+    grunt.registerTask('default', [
+        'copy','clean','less',
+        'babel:components',
+        'babel:assets',
+        'watch'
+    ]);
 };
