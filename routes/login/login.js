@@ -6,7 +6,7 @@ router = express.Router();
 
 components = require('../../components/');
 
-var app = require('../../app'),
+var env = express().get('env'),
     webpackConfig = require('../../webpack.config');
 
 getLoginComponent = function () {
@@ -38,7 +38,7 @@ getViewsData = function () {
 
 router.get('/login', function (req, res, next) {
     var viewObj;
-    console.log('login---in');
+    console.log('login---in:',env);
     viewObj = getViewsData();
 
     if(env === 'development'){

@@ -30,14 +30,14 @@
 <script src="/js/libs/react.js"></script>
 <script src="/js/libs/reflux.js"></script>
 <script src="/js/libs/jquery.js"></script>
-<!-- webpack server 热切 -->
 
 <% if(isProduction){ %>
-<script src="http://localhost:<%= webpackDevPort %>/public/js/common/components.js"></script>
-<script src="http://localhost:<%= webpackDevPort %>/public/js/signInUp.js"></script>
-<% }else{ %>
 <!-- 项目静态 -->
 <script src="/js/common/components.js"></script>
 <script src="/js/mainIndex.js"></script>
+<% }else{ %>
+<!-- webpack server 热切 -->
+<script src="http://localhost:<%= webpackDevPort %>/public/js/common/components.js"></script>
+<script src="http://localhost:<%= webpackDevPort %>/public/js/signInUp.js"></script>
 <% } %>
 </html>
