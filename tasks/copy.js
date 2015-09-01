@@ -6,15 +6,14 @@ var gulpCopy = require('gulp-copy');
 
 module.exports = function(gulp,dirname){
 
-    gulp.task('cleanAssets',function(){
-
-        gulp.src([
+    gulp.task('copyBower',function(){
+        return gulp.src([
             'bower_components/*/*.js',
             'bower_components/*/dist/*.js',
             'bower_components/*/*.min.js',
             'bower_components/*/*-min.js'
         ].map(function(file){
                 return path.resolve(dirname,file);
-            })).pipe(gulpCopy('public/js/libs/'));
+            })).pipe(gulpCopy('public/js/'));
     });
 };

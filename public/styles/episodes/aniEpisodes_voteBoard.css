@@ -1,0 +1,164 @@
+/* basic */
+/* init */
+/* new Animation */
+/*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
+.vote-list {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  overflow-y: scroll;
+}
+.vote-list > ul {
+  width: 100%;
+  height: 100%;
+}
+.vote-list > ul > li {
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  position: relative;
+}
+.vote-list > ul > li > * {
+  margin-bottom: 6.66666667px;
+}
+.vote-list > ul > li > header {
+  height: 45px;
+  padding-bottom: 4px;
+}
+.vote-list > ul > li > header img {
+  height: 45px;
+  border-radius: 50%;
+  vertical-align: top;
+  position: absolute;
+  left: 4px;
+}
+.vote-list > ul > li > header div {
+  margin-left: 55px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.vote-list > ul > li > header div span {
+  width: 100%;
+  font-size: 12px;
+  color: #ffffff;
+}
+.vote-list > ul > li > header div .time {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+}
+.vote-list > ul > li > .description {
+  font-size: 12px;
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li:first-child {
+  border-top: 1px solid #ffffff;
+}
+.vote-list > ul > li > .selectors li {
+  padding: 5px 0;
+  border-bottom: 1px solid #ffffff;
+  font-size: 12px;
+  color: #5bc0de;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.vote-list > ul > li > .selectors li:after {
+  content: '';
+  opacity: 0.5;
+  transition: width 1s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.vote-list > ul > li > .selectors li.rainbowB1:after {
+  background-color: #ff0000;
+}
+.vote-list > ul > li > .selectors li.rainbowB2:after {
+  background-color: #ff8000;
+}
+.vote-list > ul > li > .selectors li.rainbowB3:after {
+  background-color: #ffff00;
+}
+.vote-list > ul > li > .selectors li.rainbowB4:after {
+  background-color: #00ff00;
+}
+.vote-list > ul > li > .selectors li.rainbowB5:after {
+  background-color: #00ffff;
+}
+.vote-list > ul > li > .selectors li.rainbowB6:after {
+  background-color: #0000ff;
+}
+.vote-list > ul > li > .selectors li.rainbowB7:after {
+  background-color: #8000ff;
+}
+.vote-list > ul > li > .selectors li.percent10 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent10:after {
+  width: 10%;
+}
+.vote-list > ul > li > .selectors li.percent20 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent20:after {
+  width: 20%;
+}
+.vote-list > ul > li > .selectors li.percent30 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent30:after {
+  width: 30%;
+}
+.vote-list > ul > li > .selectors li.percent40 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent40:after {
+  width: 40%;
+}
+.vote-list > ul > li > .selectors li.percent50 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent50:after {
+  width: 50%;
+}
+.vote-list > ul > li > .selectors li.percent60 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent60:after {
+  width: 60%;
+}
+.vote-list > ul > li > .selectors li.percent70 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent70:after {
+  width: 70%;
+}
+.vote-list > ul > li > .selectors li.percent80 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent80:after {
+  width: 80%;
+}
+.vote-list > ul > li > .selectors li.percent90 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent90:after {
+  width: 90%;
+}
+.vote-list > ul > li > .selectors li.percent100 {
+  color: #ffffff;
+}
+.vote-list > ul > li > .selectors li.percent100:after {
+  right: 100%;
+}

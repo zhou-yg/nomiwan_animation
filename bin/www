@@ -89,17 +89,4 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 
-  runGulp();
-}
-/**
- * 启动打包相关
- */
-function runGulp(){
-  var env = app.get('env');
-  if( env === 'development'){
-    gulpfile.start('development');
-  }
-  if( env === 'product'){
-    gulpfile.start('product');
-  }
 }

@@ -24,6 +24,7 @@
     "gulp-clean": "^0.3.1",
     "gulp-copy": "0.0.2",
     "gulp-less": "^3.0.3",
+    "gulp-sequence": "^0.4.1",
     "gulp-util": "^3.0.6",
     "halogen": "^0.1.10",
     "immutable": "~3.7.4",

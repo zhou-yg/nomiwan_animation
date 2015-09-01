@@ -1,0 +1,146 @@
+/* basic */
+/* init */
+/* new Animation */
+/*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
+/* 剧集选择 */
+.episodes-selector {
+  display: flex;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 50%;
+  font-size: 14px;
+  flex-flow: column;
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  right: 0;
+}
+.episodes-selector h3 {
+  margin-bottom: 10px;
+}
+.episodes-selector .episode-sources {
+  margin-bottom: 10px;
+  position: relative;
+  flex: 3;
+}
+.episodes-selector .episode-sources > .sources {
+  overflow: hidden;
+  height: 2.5em;
+  line-height: 28px;
+}
+.episodes-selector .episode-sources > .sources > li {
+  box-sizing: border-box;
+  background-color: #62D3B1;
+  width: 25%;
+  border: 2px solid #545454;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
+}
+.episodes-selector .episode-sources > .selector {
+  width: 100%;
+  position: absolute;
+  top: 2.5em;
+  bottom: 0;
+}
+.episodes-selector .episode-sources > .selector > .episodes-select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 2.5em;
+}
+.episodes-selector .episode-sources > .selector > .episodes-select > li {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 2px solid #545454;
+  width: 25%;
+  height: 33%;
+  min-height: 2em;
+  color: #666666;
+  font-size: 12px;
+  text-align: center;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.episodes-selector .episode-sources > .selector > .episodes-select > li:before,
+.episodes-selector .episode-sources > .selector > .episodes-select > li:after {
+  content: '';
+  flex: 1;
+}
+.episodes-selector .episode-sources > .selector > .pages {
+  width: 100%;
+  height: 2em;
+  position: absolute;
+  bottom: 0;
+}
+.episodes-selector .episode-sources > .selector > .pages > li {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin-right: -2px;
+  border: 2px solid #545454;
+  width: 20%;
+  height: 2em;
+  line-height: 2em;
+  color: #666666;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+}
+.episodes-selector .ani-tags {
+  flex: 1;
+}
+.episodes-selector .ani-tags > ol {
+  overflow: hidden;
+}
+.episodes-selector .ani-tags > ol li {
+  background-color: #ffffff;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  color: #474747;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+.episodes-selector .ani-tags > ol li:nth-child(1) {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+.episodes-selector .ani-tags > ol li:nth-child(2) {
+  background-color: #ff3333;
+}
+.episodes-selector .ani-tags > ol li:nth-child(3) {
+  background-color: #ff4d4d;
+}
+.episodes-selector .ani-tags > ol li:nth-child(4) {
+  background-color: #ff6666;
+}
+.episodes-selector .ani-tags > ol li:nth-child(5) {
+  background-color: #ff8080;
+}
+.episodes-selector .ani-tags > ol li:nth-child(6) {
+  background-color: #ff9999;
+}
+.episodes-selector .ani-tags > ol li:nth-child(7) {
+  background-color: #ffb3b3;
+}
+.episodes-selector .ani-tags > ol li:nth-child(8) {
+  background-color: #ffcccc;
+}
+.episodes-selector .ani-tags > ol li:nth-child(9) {
+  background-color: #ffe5e5;
+}
+.episodes-selector .ani-tags > ol li:nth-child(10) {
+  background-color: #ffffff;
+}
+.episodes-selector .ani-tags > ol li:hover {
+  background-color: #b30000;
+}

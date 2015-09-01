@@ -13,3 +13,5 @@ var mainWindow = $('#login-frame')[0];
 React.render(LoginComponent({
     formType: loginType
 }), mainWindow);
+
+console.log(1);

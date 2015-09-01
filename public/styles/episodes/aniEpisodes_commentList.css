@@ -1,0 +1,48 @@
+/* basic */
+/* init */
+/* new Animation */
+/*
+彩虹7色,分别对应14种
+background-color;
+color;
+*/
+ul.comments {
+  padding: 0 10px;
+  font-size: 12px;
+}
+ul.comments > li {
+  padding: 10px 0 5px;
+  border-bottom: 1px solid #DDD;
+  position: relative;
+}
+ul.comments > li a {
+  outline: medium none;
+  color: #00A1D6;
+  text-decoration: none;
+  cursor: pointer;
+}
+ul.comments > li .avatar {
+  float: left;
+  width: 60px;
+  position: relative;
+  margin-right: 5px;
+}
+ul.comments > li .comment-header {
+  color: #AAA;
+  line-height: 18px;
+}
+ul.comments > li .comment-header a {
+  margin-right: 5px;
+}
+ul.comments > li .content {
+  line-height: 20px;
+  padding: 5px 0px;
+  font-size: 12px;
+  text-shadow: none;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+ul.comments > li .time {
+  color: #999;
+  line-height: 26px;
+}

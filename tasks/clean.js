@@ -24,7 +24,6 @@ module.exports = function(gulp,dirname){
     });
 
     gulp.task('clean',function(){
-
-        gulp.src(finalClean).pipe(gulpClean());
+        return gulp.src(finalClean).pipe(gulpClean());
     });
 };

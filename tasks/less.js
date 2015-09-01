@@ -7,7 +7,7 @@ var path = require('path');
 module.exports = function(gulp,dirname){
 
     gulp.task('less', function () {
-        gulp.src(['precompile/less/**/*.less','!precompile/less/**/*_*.less'].map(function(file){
+        return gulp.src(['precompile/less/**/*.less','!precompile/less/**/*_*.less'].map(function(file){
             return path.resolve(dirname,file);
         }))
         .pipe(gulpLess({
