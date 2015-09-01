@@ -19,6 +19,12 @@
     "grunt-contrib-copy": "x.x.x",
     "grunt-contrib-less": "x.x.x",
     "grunt-contrib-watch": "x.x.x",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-copy": "0.0.2",
+    "gulp-less": "^3.0.3",
+    "gulp-util": "^3.0.6",
     "halogen": "^0.1.10",
     "immutable": "~3.7.4",
     "jquery": "~2.1.4",
@@ -32,7 +38,8 @@
     "serve-favicon": "~2.2.1",
     "style-loader": "^0.12.3",
     "stylus": "0.42.3",
-    "webpack": "~x.x.x"
+    "webpack": "~x.x.x",
+    "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
     "babel-core": "^5.8.21",

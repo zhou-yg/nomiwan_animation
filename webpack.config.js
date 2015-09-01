@@ -4,14 +4,16 @@
 // webpack.config.js
 var webpack = require('webpack');
 var componentsPlugin = new webpack.optimize.CommonsChunkPlugin('/common/components.js');
-
+var webpackDevPort = 7272;
 
 module.exports = {
+
+    webpackDevPort:webpackDevPort,
 
     externals: {
         'react': "React",
         'reflux': "Reflux",
-        'jquery':'$'
+        'jquery': '$'
     },
     entry: {
         episodeIndex: './precompile/assets/index/episodes/index',
@@ -20,19 +22,15 @@ module.exports = {
     },
     output: {
         path: './public/js/',
-        publicPath: 'http://localhost:8080/public/js/',
+        publicPath: 'http://localhost:'+webpackDevPort+'/public/js/',
         filename: '[name].js'
     },
     resolve: {
         // 现在可以写 require('file') 代替 require('file.coffee')
-        extensions: ['', '.js', '.jsx', '.coffee   ', '.less']
+        extensions: ['', '.js', '.jsx', '.less']
     },
     module: {
-        loaders: [{
-                test: /\.coffee$/,
-                exclude: /node_modules|bower_components/,
-                loader: 'coffee-loader'
-            },
+        loaders: [
             {
                 test: /\.jsx$|\.js/,
                 exclude: /node_modules|bower_components/,
@@ -47,7 +45,10 @@ module.exports = {
                 test: /\.less$/,
                 exclude: /node_modules|bower_components/,
                 loader: 'style-loader!css-loader!less-loader'
-        }]
+            }]
     },
+
+    devtool: 'source-map',
+
     plugins: [componentsPlugin]
 };
