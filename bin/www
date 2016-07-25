@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('nomiwan_animation:server');
+var debug = require('debug')('quickExpress:server');
 var http = require('http');
 
 var gulpfile = require('../gulpfile');
@@ -13,7 +13,8 @@ var gulpfile = require('../gulpfile');
 /**
  * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '1400');
+
+var port = normalizePort(process.env.PORT || '1414');
 app.set('port', port);
 
 /**
@@ -88,5 +89,22 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log('listen on:',addr.port);
 
+  runGulp();
+}
+
+/**
+ * 启动打包相关
+ */
+
+function runGulp(){
+  var env = app.get('env');
+  gulpfile.start('syncAPI');
+
+  if( env === 'development'){
+  }
+  if( env === 'product'){
+    //gulpfile.start('product');
+  }
 }

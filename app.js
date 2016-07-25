@@ -1,43 +1,60 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//---------------- 自定义 --------------------------
-var childProcess = require('child_process');
+var favicon = require('serve-favicon');
 
-//初始化
-var avDataHandler = require('./model/avDataHandler')(__dirname);
+var routes = require('./routes/index');
 
-//----------------- 开始    ---------------------------
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+if(process.env.NODE_ENV !== 'product'){
+  var webpackDevMiddleware = require('webpack-dev-middleware');var webpackHotMiddleware = require('webpack-hot-middleware');
+  var webpack = require('webpack');
+  var config = require('./webpack.config');
+  var compiler = webpack(config);
+
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
+
 // uncomment after placing your favicon in /public
-// app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(path.resolve(__dirname,'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false,
+  limit:'10000kb'
+}));
 app.use(cookieParser());
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
-//---------------------------------------------------
-var routesDirPath = './routes/';
-var mainRoute = require(routesDirPath+'index/main'),
-    episodesRoute = require(routesDirPath+'episodes/aniEpisodes'),
-    userRoute = require(routesDirPath+'user/user'),
-    loginRoute = require(routesDirPath+'login/login');
+app.use(function (req,res,next) {
+  if(process.env.NODE_ENV !== 'product'){
+    req.session.userFlag = 'admin';
+  }
 
-app.use('/', mainRoute);
-app.use('/', episodesRoute);
-app.use('/user', userRoute);
-app.use('/', loginRoute);
+  //@TODO 测试用
+  req.session.userFlag = 'admin';
+
+  next();
+});
+
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,11 +64,10 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -62,7 +78,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,

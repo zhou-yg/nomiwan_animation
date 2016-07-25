@@ -1,13 +1,7 @@
 {
-  "name": "nomiwan_animation",
+  "name": "react-redux-express",
   "version": "0.0.0",
-  "homepage": "https://github.com/zhou-yg/nomiwan_animation",
-  "authors": [
-    "zhou-yg <zhou.y.g890@gmail.com>"
-  ],
-  "keywords": [
-    "nomi"
-  ],
+  "description": "react-redux-express",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -16,11 +10,6 @@
     "test",
     "tests"
   ],
-  "dependencies":{
-    "react":"x.x.x",
-    "backbone":"x.x.x",
-    "jquery":"x.x.x",
-    "reflux":"~x.x.x",
-    "bootstrap":"~3.3.5"
+  "dependencies": {
   }
 }

@@ -1,34 +1,25 @@
-/**
- * Created by zyg on 15/9/1.
- */
-
 var path = require('path');
 var fs = require('fs');
 // 引入 gulp
-var gulp = require('gulp');
-var gulpSequence = require('gulp-sequence');
+var gulp = require('gulp'); 
+var gutil = require('gulp-util');
+
 
 var tasksPath = path.resolve(__dirname,'./tasks/');
 var taskList = fs.readdirSync(tasksPath).forEach(function(taskName){
-    var taskFn = require(path.resolve(tasksPath,taskName));
-    taskFn(gulp,__dirname);
+  var taskFn = require(path.resolve(tasksPath,taskName));
+  taskFn(gulp);
 });
+
 //默认任务
-gulp.task('default',
-    gulpSequence(
-        'clean',
-        ['copyBower',
-        'less',
-        'components',
-        'assets'],
-        'webpackDevServer'
-    )
-);
-//开发环境下的任务
 gulp.task('development', function(){
-    exec('node bin/www',function(){
-        console.log.apply(console,arguments);
-    });
+  //gulp.start('webpack');
+  gulp.start('webpackDevServer');
+  //gulp.start(['webpack','webpackDevServer']);
+});
+
+gulp.task('product',function(){
+  gulp.start('webpack');
 });
 
 module.exports = gulp;
