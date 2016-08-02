@@ -1,7 +1,7 @@
 /**
  * Created by zyg on 16/7/21.
  */
-module.expors = (req, res)=>{
+module.exports = (req, res)=>{
   res.json({
     success:true,
   })

@@ -50,7 +50,7 @@ class $componentName extends Component { \n
 $componentName.propTypes = propTypes; \n\r
 $componentName.defaultProps = defaultProps; \n\r
 
-module.exports = $componentName;"
+export default $componentName;"
 
 scssTmp="@import \"../../../styles/core/variables.scss\"; \n\r
 #$componentNameId{ \n\r
@@ -61,3 +61,5 @@ scssTmp="@import \"../../../styles/core/variables.scss\"; \n\r
 echo $indexTmp > $indexJSX
 echo -e $componentTmp > $componentJSX
 echo -e $scssTmp > $componentSCSS
+
+echo "done"

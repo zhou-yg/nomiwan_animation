@@ -4,31 +4,21 @@
 require('../../styles/main.scss');
 require('../../common/utils');
 
-let ReactDOM = require('react-dom');
-let React = require('react');
+import ReactDOM from 'react-dom'
+import React from 'react'
 
-let Navbar = require('../components/Navbar/index');
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-let ContentsBox = require('../componentsLayout/ContentsBox/index');
-
-let AsideBoard = require('../components/AsideBoard/index');
-
-let routerList = require('./router/index');
-
-window.R = React;
-window.RD = ReactDOM;
+import Navbar from '../components/Navbar'
 
 class Main extends React.Component {
 
   render(){
     return (
       <div>
-        <Navbar />
-
-        <ContentsBox>
-          <AsideBoard />
-          {routerList}
-        </ContentsBox>
+        <MuiThemeProvider>
+          <Navbar />
+        </MuiThemeProvider>
       </div>
     )
   }

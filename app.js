@@ -28,7 +28,7 @@ if(process.env.NODE_ENV !== 'product'){
 }
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.resolve(__dirname,'favicon.ico')));
+//app.use(favicon(path.resolve(__dirname,'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

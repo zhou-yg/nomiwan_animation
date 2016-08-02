@@ -11,6 +11,8 @@ module.exports = {
     extensions: ['', '.js','.jsx'],
   },
   externals:{
+    //react:'React',
+    //'react-dom':'ReactDOM'
   },
   entry: {
     index: [
@@ -34,11 +36,11 @@ module.exports = {
       },
       {
         test:/\.scss$/,
-        exclude: /node_modules|bower_components/,
+        //exclude: /node_modules|bower_components/,
         loaders:['style','css','sass-loader']
       },{
         test:/\.css$/,
-        exclude: /node_modules|bower_components/,
+        //exclude: /node_modules|bower_components/,
         loaders:['style','css']
       },{
         test:/\.ttf|otf$/,
