@@ -29,13 +29,17 @@ class Navbar extends Component {
     autoBind(this);
   }
 
+  titleClick(){
+    console.log('/')
+  }
+
   render() {
     return (
       <div id="navbar">
         <AppBar
+          onTitleTouchTap={this.titleClick}
           title={<span style={styles.title}>糯米丸</span>}
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          iconElementRight={<FlatButton label="Save" />}
+          iconElementLeft={<img className="navbar-logo" src="/images/nomiwan.png" alt=""/>}
           />
       </div>
     )
