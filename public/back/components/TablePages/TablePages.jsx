@@ -5,9 +5,13 @@ import ReactDOM from 'react-dom'
 const T = React.PropTypes;
 
 import autoBind from 'react-autobind'
-var propTypes = {};
+var propTypes = {
+  tabNumber:T.number,
+};
 
-var defaultProps = {};
+var defaultProps = {
+  tabNumber:7,
+};
 
 class TablePages extends Component {
   constructor(props) {
