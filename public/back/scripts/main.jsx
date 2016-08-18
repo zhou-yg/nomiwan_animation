@@ -12,6 +12,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Navbar from '../components/Navbar'
 
+import TablePages from '../components/TablePages'
+
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
@@ -21,16 +23,19 @@ class Main extends React.Component {
   render(){
     return (
       <div>
-        <MuiThemeProvider>
           <Navbar />
-        </MuiThemeProvider>
+          <TablePages>
+
+          </TablePages>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Main />,
+  <MuiThemeProvider>
+    <Main />
+  </MuiThemeProvider>,
   document.querySelector('#topContainer')
 );
 

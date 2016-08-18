@@ -1,4 +1,11 @@
-@import "../../../styles/core/variables.scss"; 
- #tablePages{ 
- }
+@import "../../../styles/core/variables.scss";
 
+#tablePages {
+  margin: 60px auto 0 auto;
+  width: 1000px;
+  line-height: 24px;
+}
+
+.tab-content{
+  padding: 20px;
+}
